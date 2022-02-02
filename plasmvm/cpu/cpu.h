@@ -110,7 +110,8 @@ enum {
 extern void(*InstructionHandlers[256])(void);
 
 #define Instruction(Name) void Name(void)
-#define ListInstruction(Name) [__##Name] = Name,
+#define ListInstruction(Name) [__##Name] = Name
+#define DeclInstruction(Name) void Name(void);
 
 void cpu_init(void);
 void cpu_clock(void);
