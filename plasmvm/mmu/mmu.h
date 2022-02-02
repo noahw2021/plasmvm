@@ -38,8 +38,12 @@ void* mmu_translate(u64 Virtual, byte AccessFlags);
 #define VMD0_GET_PAGECNT(x)  ((x & 0x00000001FFFFFFFE) >> 01)
 #define VMD0_GET_RESERVED(x) ((x & 0xFFFFFFFE00000000) >> 33)
 
-#define VMD0_SET_ENABLED(x, v)  ((x &= 0xFFFFFFFFFFFFFFFE); (x |= (v & 0x0000000000000001) >> 00)
-#define VMD0_SET_PAGECNT(x, v)  ((x &= 0xFFFFFFFE00000001); (x |= (v & 0x00000001FFFFFFFE) >> 01)
-#define VMD0_SET_RESERVED(x, v) ((x &= 0x00000001FFFFFFFF); (x |= (v & 0xFFFFFFFE00000000) >> 33)
+#define VMD0_SET_ENABLED(x, v)  (x &= 0xFFFFFFFFFFFFFFFE); (x |= (v & 0x0000000000000001) >> 00)
+#define VMD0_SET_PAGECNT(x, v)  (x &= 0xFFFFFFFE00000001); (x |= (v & 0x00000001FFFFFFFE) >> 01)
+#define VMD0_SET_RESERVED(x, v) (x &= 0x00000001FFFFFFFF); (x |= (v & 0xFFFFFFFE00000000) >> 33)
+
+#define VMD1_GET_ADDRESS(x) ((x & 0xFFFFFFFFFFFFFFFF) >> 0)
+
+#define VMD1_SET_ADDRESS(x, v) (x &= 0x0000000000000000); (x |= (v & 0xFFFFFFFFFFFFFFFF) >> 0)
 
 #endif /* mmu_h */
