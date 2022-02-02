@@ -19,6 +19,27 @@ word rx(byte Count);
 void mmu_init(void);
 void mmu_shutdown(void);
 void mmu_clock(void);
-word mmu_translate(u64 Virtual, byte AccessFlags);
+void* mmu_translate(u64 Virtual, byte AccessFlags);
+
+// Virtual Memory Descriptor Sections
+
+// Bit Locations
+
+// VMD0 written in PLANG structure notation
+/*
+ STRUCT plang:
+	00, 01, Enabled
+	01, 32, PageCount
+	31, 33, Reserved
+ END;
+ */
+
+#define VMD0_GET_ENABLED(x)  ((x & 0x0000000000000001) >> 0)
+#define VMD0_GET_PAGECNT(x)  ((x & 0x00000001FFFFFFFE) >> 1)
+#define VMD0_GET_RESERVED(x) ((x & 0xFFFFFFFE00000000) >> 33)
+
+#define VMD0_SET_ENABLED(x, v)  ((x &= 0xFFFFFFFFFFFFFFFE); (x |= (v & 0x0000000000000001) >> 0)
+#define VMD0_SET_PAGECNT(x, v)  ((x &= 0xFFFFFFFE00000001); (x |= (v & 0x00000001FFFFFFFE) >> 1)
+#define VMD0_SET_RESERVED(x, v) ((x &= 0x00000001FFFFFFFF); (x |= (v & 0xFFFFFFFE00000000) >> 33)
 
 #endif /* mmu_h */
