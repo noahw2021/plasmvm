@@ -28,6 +28,7 @@ typedef long long i64;
 #define FLAG_CF 0x0080 // Carry Flag
 #define FLAG_UF	0x0100 // User Flag
 #define FLAG_SF 0x0200 // System Flag
+#define FLAG_XF	0x0400 // Interrupt Input Flag
 
 #define GET_TRAPFLAG(x)		(x & FLAG_TF)
 #define GET_INTFLAG(x)		(x & FLAG_IF)
@@ -39,6 +40,7 @@ typedef long long i64;
 #define GET_CARRYFLAG(x)	(x & FLAG_CF)
 #define GET_USERFLAG(x)		(x & FLAG_UF)
 #define GET_SYSTEMFLAG(x)	(x & FLAG_SF)
+#define GET_INPUTFLAG(x) 	(x & FLAG_XF)
 
 #define SET_TRAPFLAG(x)		(x |= FLAG_TF)
 #define SET_INTFLAG(x)		(x |= FLAG_IF)
@@ -50,6 +52,7 @@ typedef long long i64;
 #define SET_CARRYFLAG(x)	(x |= FLAG_CF)
 #define SET_USERFLAG(x)		(x |= FLAG_UF)
 #define SET_SYSTEMFLAG(x)	(x |= FLAG_SF)
+#define SET_INPUTFLAG(x) 	(x |= FLAG_XF)
 
 #define CLR_TRAPFLAG(x)		(x &= FLAG_TF)
 #define CLR_INTFLAG(x)		(x &= FLAG_IF)
@@ -61,6 +64,7 @@ typedef long long i64;
 #define CLR_CARRYFLAG(x)	(x &= FLAG_CF)
 #define CLR_USERFLAG(x)		(x &= FLAG_UF)
 #define CLR_SYSTEMFLAG(x)	(x &= FLAG_SF)
+#define CLR_INPUTFLAG(x) 	(x &= FLAG_XF)
 
 typedef struct ictx {
 	union {

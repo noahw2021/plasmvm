@@ -8,6 +8,7 @@
 #include "ctx.h"
 #include "cpu/cpu.h"
 #include "mmu/mmu.h"
+#include "io/io.h"
 
 ictx_t* ctx;
 vmctx_t* vmctx;
@@ -90,11 +91,17 @@ int main(int argc, char** argv) {
 	
 	cpu_init();
 	mmu_init();
+	io_init();
 	
 	while (1) {
-		mmu_clock();
-		cpu_clock();
-		
-		
+		if (!GET_HALTFLAG(ctx->sf0)) {
+			mmu_clock();
+			cpu_clock();
+			io_clock();
+		} else {
+			if (GET_INTFLAG(ctx->sf0))
+				break;
+			io_clock();
+		}
 	}
 }
