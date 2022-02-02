@@ -77,18 +77,18 @@ enum {
 	CMPI, // Compare Register with Immediate (CMPI [R:(4,8),COMPARE0] [I:(64,64),COMPARE1]):80
 	GOF, // Go if Flag (GOF [R:(4,4),LOCATION] [R:(4,4),FLAG]):16
 	ENTF, // Enter if Flag (ENTF [R:(4,4),LOCATION] [R:(4,4),FLAG]):16
-	GOFI, // Go if Flag Immediate (GOFI [R:(4,8),LOCATION] [I:(64,64),FLAG]:80
-	ENTFI, // Enter if Flag Immediate (ENTFI [R:(4,8),LOCATION] [I:(64,64),FLAG]:80
-	GOFII, // Go if Flag Immediate Immediate  (GOFII [I:(64,64),LOCATION] [I:(64,64),FLAG]:136
-	ENTFII, // Enter if Flag Immediate Immediate
-	NEG, // Signed Negate Register
-	NOP, // No Operation
-	EIH, // Enable Interrupt Handling
-	DIH, // Disable Interrupt Handling
-	HLT, // Enter Halt State
-	INT, // Call Interrupt
-	INTI, // Call Interrupt Immediate
-	HND, // Handle Interrupt
+	GOFI, // Go if Flag Immediate (GOFI [R:(4,8),LOCATION] [I:(64,64),FLAG]):80
+	ENTFI, // Enter if Flag Immediate (ENTFI [R:(4,8),LOCATION] [I:(64,64),FLAG]):80
+	GOFII, // Go if Flag Immediate Immediate  (GOFII [I:(64,64),LOCATION] [I:(64,64),FLAG]):136
+	ENTFII, // Enter if Flag Immediate Immediate (ENTFII [I:(64,64),LOCATION] [I:(64,64),FLAG]):136
+	NEG, // Signed Negate Register (NEG [R:(4,8)]):16
+	NOP, // No Operation (NOP):8
+	EIH, // Enable Interrupt Handling (EIH):8
+	DIH, // Disable Interrupt Handling (DIH):8
+	HLT, // Enter Halt State (HLT):8
+	INT, // Call Interrupt (INT [R:(4,8),INTERRUPT]):8
+	INTI, // Call Interrupt Immediate (INTI [I:(8,8),INTERRUPT]):16
+	HND, // Handle Interrupt (HND [R:(4,4),INTERRUPT] [R:(4,4),LOCATION]):16
 	HNDI, // Handle Interrupt Immediate
 	HNDII, // Handle Interrupt Immediate Immediate
 	SPA, // Stack Pull All
