@@ -6,7 +6,6 @@
 //
 
 #include "cpu.h"
-void(*InstructionHandlers[256])(void);
 
 Instruction(SET) { // Set Register (SET [R:(4,4),DEST] [R:(4,4),SRC]):16
 	
@@ -201,3 +200,4 @@ Instruction(STVM) { // Store Virtual Descriptor to Registers (STVM [R:(4,4),PART
 Instruction(SPN) { // Stack Pull No Operand (SPN):8
 
 }
+
