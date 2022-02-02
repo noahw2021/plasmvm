@@ -102,6 +102,8 @@ int main(int argc, char** argv) {
 			if (GET_INTFLAG(ctx->sf0))
 				break;
 			io_clock();
+			if (GET_INPUTFLAG(ctx->sf0))
+				CLR_HALTFLAG(ctx->sf0);
 		}
 	}
 }
