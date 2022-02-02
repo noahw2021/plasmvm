@@ -48,14 +48,16 @@ void mmu_init(void) {
 		}
 		fseek(RamdiskImage, 0, SEEK_END);
 		u32 RamdiskImageSize = ftell(RamdiskImage);
+		fseek(RamdiskImage, 0, SEEK_SET);
 		
 		if (RamdiskImageSize > vmctx->PhysicalMemory) {
 			printf("[WARN]: The ramdisk image loaded is larger than available physical memory.\n");
 		}
 		
-		fseek(RamdiskImage, 0, SEEK_SET);
 		void* Ramdisk = malloc(RamdiskImageSize);
 		fread(Ramdisk, RamdiskImageSize, 1, RamdiskImage);
+		fclose(RamdiskImage);
+		
 		memcpy(vmctx->PhysicalRam, Ramdisk, RamdiskImageSize % vmctx->PhysicalMemory);
 		free(Ramdisk);
 	}
