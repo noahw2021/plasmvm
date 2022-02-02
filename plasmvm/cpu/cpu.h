@@ -89,19 +89,19 @@ enum {
 	INT, // Call Interrupt (INT [R:(4,8),INTERRUPT]):8
 	INTI, // Call Interrupt Immediate (INTI [I:(8,8),INTERRUPT]):16
 	HND, // Handle Interrupt (HND [R:(4,4),INTERRUPT] [R:(4,4),LOCATION]):16
-	HNDI, // Handle Interrupt Immediate
-	HNDII, // Handle Interrupt Immediate Immediate
-	SPA, // Stack Pull All
-	SPG, // Stack Pull General
-	SAA, // Stack Add (Push) All
-	SAG, // Stack Add (Push) General
-	LDSD, // Load System Descriptor
-	LDSDI, // Load System Descriptor Immediate
-	STSD, // Store System Descriptor to Register
-	LDVM, // Load Virtual Descriptor from Registers
-	LDVMI, // Load Virtual Descriptor from Immediates
-	STVM, // Store Virtual Descriptor to Registers
-	SPN, // Stack Pull No Operand
+	HNDI, // Handle Interrupt Immediate (HNDI [I:(8,8),INTERRUPT] [R:(4,8),LOCATION]):24
+	HNDII, // Handle Interrupt Immediate Immediate (HNDII [I:(8,8),INTERRUPT] [I:(64,64),LOCATION]):80
+	SPA, // Stack Pull All (SPA):8
+	SPG, // Stack Pull General (SPG):8
+	SAA, // Stack Add (Push) All (SAA):8
+	SAG, // Stack Add (Push) General (SAG):8
+	LDSD, // Load System Descriptor (LDSD [R:(4,4),PART0] [R:(4,4),PART1]):16
+	LDSDI, // Load System Descriptor Immediate (LDSDI [I:(64,64),PART0] [I:(64,64),PART1]):136
+	STSD, // Store System Descriptor to Registers (STSD [R:(4,4),PART0] [R:(4,4),PART1]):16
+	LDVM, // Load Virtual Descriptor from Registers (LDVM [R:(4,4),PART0] [R:(4,4),PART1]):16
+	LDVMI, // Load Virtual Descriptor from Immediates (LDVMI [I:(64,64),PART0] [I:(64,64),PART1]):136
+	STVM, // Store Virtual Descriptor to Registers (STVM [R:(4,4),PART0] [R:(4,4),PART1]):16
+	SPN, // Stack Pull No Operand (SPN):8
 };
 
 extern void(*InstructionHandlers[256])(void);
