@@ -10,6 +10,7 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 void mmu_init(void) {
 	vmctx->PhysicalRam = malloc(vmctx->PhysicalMemory);
