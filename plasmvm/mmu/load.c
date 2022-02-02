@@ -37,13 +37,32 @@ void mmu_init(void) {
 	memcpy(vmctx->PhysicalRam, PhysicalBios, BiosImageSize);
 	ctx->ip = 0x00;
 	
+	free(PhysicalBios);
+	
 	if (vmctx->Flags.RamdiskPresent) {
+		FILE* RamdiskImage = fopen(vmctx->RamdiskString, "rb");
+		if (!RamdiskImage) {
+			printf("[ERR]: Failed to open ramdisk image '%s'.\n", vmctx->RamdiskString);
+			vmctx->Error = _ERROR_INVALIDFILE;
+			return;
+		}
+		fseek(RamdiskImage, 0, SEEK_END);
+		u32 RamdiskImageSize = ftell(RamdiskImage);
 		
+		if (RamdiskImageSize > vmctx->PhysicalMemory) {
+			printf("[WARN]: The ramdisk image loaded is larger than available physical memory.\n");
+		}
+		
+		fseek(RamdiskImage, 0, SEEK_SET);
+		void* Ramdisk = malloc(RamdiskImageSize);
+		fread(Ramdisk, RamdiskImageSize, 1, RamdiskImage);
+		memcpy(vmctx->PhysicalRam, Ramdisk, RamdiskImageSize % vmctx->PhysicalMemory);
+		free(Ramdisk);
 	}
 }
 void mmu_shutdown(void) {
-	
+	free(vmctx->PhysicalRam);
 }
 void mmu_clock(void) {
-	
+	return; // not much to do here yet, maybe mmio?
 }
