@@ -18,6 +18,50 @@ typedef short i16;
 typedef long i32;
 typedef long long i64;
 
+#define FLAG_TF 0x0001 // Trap Flag
+#define FLAG_IF	0x0002 // Interupt Flag
+#define FLAG_HF	0x0004 // Halt Flag
+#define FLAG_GF	0x0008 // Greater Flag
+#define FLAG_LF 0x0010 // Less Flag
+#define FLAG_EF 0x0020 // Equal Flag
+#define FLAG_ZF 0x0040 // Zero Flag
+#define FLAG_CF 0x0080 // Carry Flag
+#define FLAG_UF	0x0100 // User Flag
+#define FLAG_SF 0x0200 // System Flag
+
+#define GET_TRAPFLAG(x)		(x & FLAG_TF)
+#define GET_INTFLAG(x)		(x & FLAG_IF)
+#define GET_HALTFLAG(x)		(x & FLAG_HF)
+#define GET_GREATFLAG(x)	(x & FLAG_GF)
+#define GET_LESSFLAG(x)		(x & FLAG_LF)
+#define GET_EQUALFLAG(x)	(x & FLAG_EF)
+#define GET_ZEROFLAG(x)		(x & FLAG_ZF)
+#define GET_CARRYFLAG(x)	(x & FLAG_CF)
+#define GET_USERFLAG(x)		(x & FLAG_UF)
+#define GET_SYSTEMFLAG(x)	(x & FLAG_SF)
+
+#define SET_TRAPFLAG(x)		(x |= FLAG_TF)
+#define SET_INTFLAG(x)		(x |= FLAG_IF)
+#define SET_HALTFLAG(x)		(x |= FLAG_HF)
+#define SET_GREATFLAG(x)	(x |= FLAG_GF)
+#define SET_LESSFLAG(x)		(x |= FLAG_LF)
+#define SET_EQUALFLAG(x)	(x |= FLAG_EF)
+#define SET_ZEROFLAG(x)		(x |= FLAG_ZF)
+#define SET_CARRYFLAG(x)	(x |= FLAG_CF)
+#define SET_USERFLAG(x)		(x |= FLAG_UF)
+#define SET_SYSTEMFLAG(x)	(x |= FLAG_SF)
+
+#define CLR_TRAPFLAG(x)		(x &= FLAG_TF)
+#define CLR_INTFLAG(x)		(x &= FLAG_IF)
+#define CLR_HALTFLAG(x)		(x &= FLAG_HF)
+#define CLR_GREATFLAG(x)	(x &= FLAG_GF)
+#define CLR_LESSFLAG(x)		(x &= FLAG_LF)
+#define CLR_EQUALFLAG(x)	(x &= FLAG_EF)
+#define CLR_ZEROFLAG(x)		(x &= FLAG_ZF)
+#define CLR_CARRYFLAG(x)	(x &= FLAG_CF)
+#define CLR_USERFLAG(x)		(x &= FLAG_UF)
+#define CLR_SYSTEMFLAG(x)	(x &= FLAG_SF)
+
 typedef struct ictx {
 	union {
 		u64 Registers[24];
