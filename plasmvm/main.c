@@ -70,7 +70,7 @@ int main(int argc, char** argv) {
 		if (strstr(argv[i], "-r=")) {
 			vmctx->HddString = malloc(241);
 			strcpy(vmctx->RamdiskString, argv[i] + 3);
-			vmctx->Flags.RamdiskString = 1;
+			vmctx->Flags.RamdiskPresent = 1;
 		}
 		if (strstr(argv[i], "-b=")) {
 			vmctx->HddString = malloc(241);
@@ -81,7 +81,7 @@ int main(int argc, char** argv) {
 	
 	if (!vmctx->Flags.BiosPresent) {
 		printf("[ERR]: No BIOS Present!\n");
-		if (vmctx->Flags.RamdiskString)
+		if (vmctx->Flags.RamdiskPresent)
 			free(vmctx->RamdiskString);
 		if (vmctx->Flags.HddPresent)
 			free(vmctx->HddString);
@@ -95,7 +95,7 @@ int main(int argc, char** argv) {
 	if (vmctx->Error == _ERROR_INVALIDFILE) {
 		cpu_shutdown();
 		mmu_shutdown();
-		if (vmctx->Flags.RamdiskString)
+		if (vmctx->Flags.RamdiskPresent)
 			free(vmctx->RamdiskString);
 		if (vmctx->Flags.HddPresent)
 			free(vmctx->HddString);

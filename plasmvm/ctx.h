@@ -104,7 +104,7 @@ typedef struct vmctx {
 		struct {
 			byte HddPresent;
 			byte BiosPresent;
-			byte RamdiskString;
+			byte RamdiskPresent;
 		};
 	}Flags;
 	void* PhysicalRam;
