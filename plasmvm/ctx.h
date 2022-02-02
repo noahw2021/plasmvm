@@ -20,7 +20,7 @@ typedef long long i64;
 
 typedef struct ictx {
 	union {
-		u64 Registers[22];
+		u64 Registers[24];
 		struct {
 			// General Purpose Registers
 			u64 r0,  r1,  r2,  r3;
@@ -35,10 +35,29 @@ typedef struct ictx {
 			// System Control Registers
 			u64 sd0, sd1; // System Descriptor
 			u64 vm0, vm1; // Virtual Memory Descriptor
+			
+			// Program Control Registers
+			u64 sf0, sf1; // System Flags
 		};
 	};
 }ictx_t;
 
+typedef struct vmctx {
+	u64 PhysicalMemory;
+	char* HddString;
+	char* BiosString;
+	char* RamdiskString;
+	union {
+		u64 Raw;
+		struct {
+			byte HddPresent;
+			byte BiosPresent;
+			byte RamdiskString;
+		};
+	}Flags;
+}vmctx_t;
+
+extern vmctx_t* vmctx;
 extern ictx_t* ctx;
 
 #endif /* ctx_h */

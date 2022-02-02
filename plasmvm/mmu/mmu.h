@@ -13,10 +13,11 @@ byte r1(void);
 byte rx(byte Count);
 
 #define _ACCESS_READ	0x01	
-#define _ACCESS_WRITE
-#define _ACCESS_EXEC
+#define _ACCESS_WRITE	0x02
+#define _ACCESS_EXEC	0x04
 
 void mmu_init(void);
+void mmu_shutdown(void);
 void mmu_clock(void);
 word mmu_translate(u64 Physical, byte AccessFlags);
 
