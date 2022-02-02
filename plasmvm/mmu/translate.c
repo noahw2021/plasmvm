@@ -8,8 +8,6 @@
 #include "../ctx.h"
 #include "mmu.h"
 
-#define InRange(x, min, max) (x > min && x < max)
-
 typedef union pagetableentry {
 	u64 Data[3];
 	struct {

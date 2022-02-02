@@ -114,4 +114,6 @@ typedef struct vmctx {
 extern vmctx_t* vmctx;
 extern ictx_t* ctx;
 
+#define InRange(x, min, max) (x > min && x < max)
+
 #endif /* ctx_h */
