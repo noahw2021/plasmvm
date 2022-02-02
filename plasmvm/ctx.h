@@ -103,6 +103,7 @@ typedef struct vmctx {
 			byte RamdiskString;
 		};
 	}Flags;
+	void* PhysicalRam;
 }vmctx_t;
 
 extern vmctx_t* vmctx;

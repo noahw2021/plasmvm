@@ -10,7 +10,7 @@
 #include "../ctx.h"
 
 byte r1(void);
-byte rx(byte Count);
+word rx(byte Count);
 
 #define _ACCESS_READ	0x01	
 #define _ACCESS_WRITE	0x02
@@ -19,6 +19,6 @@ byte rx(byte Count);
 void mmu_init(void);
 void mmu_shutdown(void);
 void mmu_clock(void);
-word mmu_translate(u64 Physical, byte AccessFlags);
+word mmu_translate(u64 Virtual, byte AccessFlags);
 
 #endif /* mmu_h */
