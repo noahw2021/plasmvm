@@ -10,6 +10,7 @@
 		8C925E7A27AAED6E00150F9E /* handlers.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C925E7927AAED6E00150F9E /* handlers.c */; };
 		8C925E7C27AAF04200150F9E /* engine.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C925E7B27AAF04200150F9E /* engine.c */; };
 		8C925E7E27AB043600150F9E /* read.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C925E7D27AB043600150F9E /* read.c */; };
+		8C925E8027AB057900150F9E /* load.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C925E7F27AB057900150F9E /* load.c */; };
 		8CB19B2027A9FDCB00CC7204 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CB19B1F27A9FDCB00CC7204 /* main.c */; };
 		8CB19B3027A9FF9A00CC7204 /* ops.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CB19B2F27A9FF9A00CC7204 /* ops.c */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 		8C925E7927AAED6E00150F9E /* handlers.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = handlers.c; sourceTree = "<group>"; };
 		8C925E7B27AAF04200150F9E /* engine.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = engine.c; sourceTree = "<group>"; };
 		8C925E7D27AB043600150F9E /* read.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = read.c; sourceTree = "<group>"; };
+		8C925E7F27AB057900150F9E /* load.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = load.c; sourceTree = "<group>"; };
 		8CB19B1C27A9FDCB00CC7204 /* plasmvm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = plasmvm; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CB19B1F27A9FDCB00CC7204 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		8CB19B2A27A9FDF800CC7204 /* io.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = io.h; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			children = (
 				8CB19B2B27A9FDFF00CC7204 /* mmu.h */,
 				8C925E7D27AB043600150F9E /* read.c */,
+				8C925E7F27AB057900150F9E /* load.c */,
 			);
 			path = mmu;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 				8C925E7E27AB043600150F9E /* read.c in Sources */,
 				8CB19B3027A9FF9A00CC7204 /* ops.c in Sources */,
 				8CB19B2027A9FDCB00CC7204 /* main.c in Sources */,
+				8C925E8027AB057900150F9E /* load.c in Sources */,
 				8C925E7A27AAED6E00150F9E /* handlers.c in Sources */,
 				8C925E7C27AAF04200150F9E /* engine.c in Sources */,
 			);

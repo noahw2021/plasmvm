@@ -90,6 +90,10 @@ typedef struct ictx {
 	};
 }ictx_t;
 
+#define _SUCCESS		   0x10000000
+#define _ERROR			   0x20000000
+#define _ERROR_INVALIDFILE 0x20000001
+
 typedef struct vmctx {
 	u64 PhysicalMemory;
 	char* HddString;
@@ -104,6 +108,7 @@ typedef struct vmctx {
 		};
 	}Flags;
 	void* PhysicalRam;
+	u32 Error;
 }vmctx_t;
 
 extern vmctx_t* vmctx;

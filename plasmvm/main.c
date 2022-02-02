@@ -91,6 +91,20 @@ int main(int argc, char** argv) {
 	
 	cpu_init();
 	mmu_init();
+	
+	if (vmctx->Error == _ERROR_INVALIDFILE) {
+		cpu_shutdown();
+		mmu_shutdown();
+		if (vmctx->Flags.RamdiskString)
+			free(vmctx->RamdiskString);
+		if (vmctx->Flags.HddPresent)
+			free(vmctx->HddString);
+		if (vmctx->Flags.BiosPresent)
+			free(vmctx->BiosString);
+		free(vmctx);
+		return -1;
+	}
+	
 	io_init();
 	
 	while (1) {
