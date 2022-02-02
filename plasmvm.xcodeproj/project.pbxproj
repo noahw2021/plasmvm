@@ -34,6 +34,7 @@
 		8C925E7D27AB043600150F9E /* read.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = read.c; sourceTree = "<group>"; };
 		8C925E7F27AB057900150F9E /* load.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = load.c; sourceTree = "<group>"; };
 		8C925E8127AB08C000150F9E /* translate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = translate.c; sourceTree = "<group>"; };
+		8C925E8427AB0EED00150F9E /* term.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = term.h; sourceTree = "<group>"; };
 		8CB19B1C27A9FDCB00CC7204 /* plasmvm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = plasmvm; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CB19B1F27A9FDCB00CC7204 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		8CB19B2A27A9FDF800CC7204 /* io.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = io.h; sourceTree = "<group>"; };
@@ -54,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C925E8327AB0EDD00150F9E /* term */ = {
+			isa = PBXGroup;
+			children = (
+				8C925E8427AB0EED00150F9E /* term.h */,
+			);
+			path = term;
+			sourceTree = "<group>";
+		};
 		8CB19B1327A9FDCA00CC7204 = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				8CB19B2A27A9FDF800CC7204 /* io.h */,
+				8C925E8327AB0EDD00150F9E /* term */,
 			);
 			path = io;
 			sourceTree = "<group>";
