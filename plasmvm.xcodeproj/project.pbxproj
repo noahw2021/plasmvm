@@ -15,6 +15,10 @@
 		8C925E8627AB0F3400150F9E /* termdata.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C925E8527AB0F3400150F9E /* termdata.c */; };
 		8CAFC6FE27AD9F9F00FA69B7 /* sdl.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFC6FD27AD9F9F00FA69B7 /* sdl.c */; };
 		8CAFC70327ADA51500FA69B7 /* libSDL2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAFC70227ADA51500FA69B7 /* libSDL2.dylib */; };
+		8CAFC70627ADA69700FA69B7 /* kb.h in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFC70527ADA69700FA69B7 /* kb.h */; };
+		8CAFC70827ADA76C00FA69B7 /* io.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFC70727ADA76C00FA69B7 /* io.c */; };
+		8CAFC70C27ADA8B100FA69B7 /* scd.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFC70B27ADA8B100FA69B7 /* scd.c */; };
+		8CAFC70E27ADA8CA00FA69B7 /* events.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFC70D27ADA8CA00FA69B7 /* events.c */; };
 		8CB19B2027A9FDCB00CC7204 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CB19B1F27A9FDCB00CC7204 /* main.c */; };
 		8CB19B3027A9FF9A00CC7204 /* ops.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CB19B2F27A9FF9A00CC7204 /* ops.c */; };
 /* End PBXBuildFile section */
@@ -42,6 +46,11 @@
 		8CAFC6FD27AD9F9F00FA69B7 /* sdl.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = sdl.c; sourceTree = "<group>"; };
 		8CAFC70027AD9FD200FA69B7 /* libSDL2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSDL2.dylib; path = ../../../../../../../../usr/local/Cellar/sdl2/2.0.18/lib/libSDL2.dylib; sourceTree = "<group>"; };
 		8CAFC70227ADA51500FA69B7 /* libSDL2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSDL2.dylib; path = ../../../../../../../../usr/local/Cellar/sdl2/2.0.20/lib/libSDL2.dylib; sourceTree = "<group>"; };
+		8CAFC70527ADA69700FA69B7 /* kb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kb.h; sourceTree = "<group>"; };
+		8CAFC70727ADA76C00FA69B7 /* io.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = io.c; sourceTree = "<group>"; };
+		8CAFC70A27ADA7E100FA69B7 /* scd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = scd.h; sourceTree = "<group>"; };
+		8CAFC70B27ADA8B100FA69B7 /* scd.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = scd.c; sourceTree = "<group>"; };
+		8CAFC70D27ADA8CA00FA69B7 /* events.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = events.c; sourceTree = "<group>"; };
 		8CB19B1C27A9FDCB00CC7204 /* plasmvm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = plasmvm; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CB19B1F27A9FDCB00CC7204 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		8CB19B2A27A9FDF800CC7204 /* io.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = io.h; sourceTree = "<group>"; };
@@ -80,6 +89,24 @@
 				8CAFC70027AD9FD200FA69B7 /* libSDL2.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8CAFC70427ADA66800FA69B7 /* kb */ = {
+			isa = PBXGroup;
+			children = (
+				8CAFC70527ADA69700FA69B7 /* kb.h */,
+			);
+			path = kb;
+			sourceTree = "<group>";
+		};
+		8CAFC70927ADA7D600FA69B7 /* scd */ = {
+			isa = PBXGroup;
+			children = (
+				8CAFC70A27ADA7E100FA69B7 /* scd.h */,
+				8CAFC70B27ADA8B100FA69B7 /* scd.c */,
+				8CAFC70D27ADA8CA00FA69B7 /* events.c */,
+			);
+			path = scd;
 			sourceTree = "<group>";
 		};
 		8CB19B1327A9FDCA00CC7204 = {
@@ -137,6 +164,9 @@
 			isa = PBXGroup;
 			children = (
 				8CB19B2A27A9FDF800CC7204 /* io.h */,
+				8CAFC70727ADA76C00FA69B7 /* io.c */,
+				8CAFC70927ADA7D600FA69B7 /* scd */,
+				8CAFC70427ADA66800FA69B7 /* kb */,
 				8C925E8327AB0EDD00150F9E /* term */,
 			);
 			path = io;
@@ -199,9 +229,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CAFC70C27ADA8B100FA69B7 /* scd.c in Sources */,
+				8CAFC70627ADA69700FA69B7 /* kb.h in Sources */,
 				8C925E7E27AB043600150F9E /* read.c in Sources */,
 				8C925E8227AB08C000150F9E /* translate.c in Sources */,
 				8CB19B3027A9FF9A00CC7204 /* ops.c in Sources */,
+				8CAFC70E27ADA8CA00FA69B7 /* events.c in Sources */,
+				8CAFC70827ADA76C00FA69B7 /* io.c in Sources */,
 				8CAFC6FE27AD9F9F00FA69B7 /* sdl.c in Sources */,
 				8CB19B2027A9FDCB00CC7204 /* main.c in Sources */,
 				8C925E8027AB057900150F9E /* load.c in Sources */,

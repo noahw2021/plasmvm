@@ -8,9 +8,6 @@
 #include "term.h"
 #include <stdio.h>
 
-void term_clock(void) {
-	return; // can't think of something for this to do rn but i will keep here it in case
-}
 void term_data(byte Data) {
 	if (InRange(Data, 0x00, 0x1F) || InRange(Data, 0x7F, 0xFF)) { // ASCII Control Codes
 		switch (Data) {
