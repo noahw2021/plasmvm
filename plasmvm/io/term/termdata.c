@@ -68,6 +68,6 @@ void term_data(byte Data) {
 				break;
 		}
 	} else {
-		printf("%c", Data);
+		termi_print(Data);
 	}
 }
