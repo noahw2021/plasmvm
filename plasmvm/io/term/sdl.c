@@ -132,6 +132,8 @@ void termi_sendcc(byte Code) {
 			Rectangle.h = 400;
 			SDL_RenderDrawRect(Renderer, &Rectangle);
 			SDL_RenderPresent(Renderer);
+			termctx->CursorX = 0;
+			termctx->CursorY = 0;
 			break;
 	}
 }

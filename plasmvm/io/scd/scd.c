@@ -26,3 +26,7 @@ void scd_clock(void) {
 	if (scdctx->Flags.CallCmd)
 		ctx->ip = scdctx->CallNext;
 }
+
+void scdi_sethandler(byte Event, u64 Handler) {
+	
+}

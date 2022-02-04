@@ -20,6 +20,7 @@ void scd_clock(void);
 void scd_data(byte Event);
 
 void scdi_sendevent(byte Event);
+void scdi_sethandler(byte Event, u64 Handler);
 
 typedef struct _scdctx {
 	byte PendingCommand;
