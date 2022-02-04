@@ -7,8 +7,10 @@
 
 #include <SDL.h>
 
+
 #include "term.h"
 #include "../kb/kb.h"
+#include "../scd/scd.h"
 
 SDL_Window* Window;
 SDL_Renderer* Renderer;
@@ -27,6 +29,7 @@ void term_init(void) {
 	Rectangle.h = 400;
 	SDL_RenderDrawRect(Renderer, &Rectangle);
 	SDL_RenderPresent(Renderer);
+	return;
 }
 
 void term_clock(void) {
@@ -36,12 +39,20 @@ void term_clock(void) {
 		kbi_keydown(Event.key.keysym.scancode);
 	if (Event.type == SDL_KEYUP)
 		kbi_keyup(Event.key.keysym.scancode);
-	if (Event.type == SDL_QUIT) {
-		CLR_INTFLAG(ctx->sd0);
-		SET_HALTFLAG(ctx->sd0);
-	}
+	if (Event.type == SDL_QUIT)
+		scdi_sendevent(SCD_SHUTDOWN);
+	return;
 }
 
 void term_shutdown(void) {
+	SDL_DestroyRenderer(Renderer);
+	SDL_DestroyWindow(Window);
+	return;
+}
+
+void termi_print(char Data) {
+	
+}
+void termi_sendcc(byte Code) {
 	
 }

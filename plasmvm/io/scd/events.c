@@ -6,9 +6,6 @@
 //
 
 #include "scd.h"
-#define SCD_SHUTDOWN	0x00
-#define SCD_REBOOT		0x01
-#define SCD_LOCK		0x02
 
 void scd_data(byte Event) {
 	
