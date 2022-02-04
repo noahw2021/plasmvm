@@ -123,5 +123,15 @@ void termi_sendcc(byte Code) {
 		case CC_SETCURY:
 			termctx->CursorY = termctx->BigData;
 			break;
+		case CC_CLEAR:
+			SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 255);
+			SDL_Rect Rectangle;
+			Rectangle.x = 0;
+			Rectangle.y = 0;
+			Rectangle.w = 640;
+			Rectangle.h = 400;
+			SDL_RenderDrawRect(Renderer, &Rectangle);
+			SDL_RenderPresent(Renderer);
+			break;
 	}
 }

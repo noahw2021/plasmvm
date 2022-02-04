@@ -6,6 +6,8 @@
 //
 
 #include "kb.h"
+#include "../../mmu/mmu.h"
+#include "../../cpu/cpu.h"
 kbctx_t* kbctx;
 
 #include <stdlib.h>
@@ -20,8 +22,12 @@ void kb_shutdown(void) {
 }
 
 void kbi_keyup(byte Scancode) {
-	
+	mmui_stackputbyte(Scancode);
+	cpui_fireint(CPUINT_KEYUP);
+	return;
 }
 void kbi_keydown(byte Scancode) {
-	
+	mmui_stackputbyte(Scancode);
+	cpui_fireint(CPUINT_KEYDOWN);
+	return;
 }
