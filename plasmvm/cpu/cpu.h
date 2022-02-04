@@ -105,6 +105,12 @@ enum {
 	__LDVMI = 0x41, // Load Virtual Descriptor from Immediates (LDVMI [I:(64,64),PART0] [I:(64,64),PART1]):136
 	__STVM = 0x42, // Store Virtual Descriptor to Registers (STVM [R:(4,4),PART0] [R:(4,4),PART1]):16
 	__SPN = 0x43, // Stack Pull No Operand (SPN):8
+	__MSP = 0x44, // Multiply Stack Pointer (DATA is multiplied by IMM) (MSP [R:(4,4),DATA] [I:(20,20),IMM]):32
+	__SSP = 0x45, // Subtract Stack Pointer (DATA is multiplied by IMM) (SSP [R:(4,4),DATA] [I:(20,20),IMM]):32
+	__ASP = 0x47, // Add Stack Pointer (DATA is multiplied by IMM) (ASP [R:(4,4),DATA] [I:(20,20),IMM]):32
+	__SPB = 0x48, // Stack Pull Byte (SPB [R:(4,8),DEST]):16
+	__SAB = 0x49, // Stack Add Byte (SAB [R:(4,8),SRC]):16
+	__SAII = 0x4A, // Stack Add Byte Immediate (SAII [I:(8,8),SRC]):16
 };
 
 extern void(*InstructionHandlers[256])(void);

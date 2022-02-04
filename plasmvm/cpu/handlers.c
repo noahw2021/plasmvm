@@ -74,6 +74,12 @@ DeclInstruction(LDVM);
 DeclInstruction(LDVMI);
 DeclInstruction(STVM);
 DeclInstruction(SPN);
+DeclInstruction(MSP);
+DeclInstruction(SSP);
+DeclInstruction(ASP);
+DeclInstruction(SPB);
+DeclInstruction(SAB);
+DeclInstruction(SAII);
 
 void(*InstructionHandlers[256])(void) = {
 	ListInstruction(SET),
@@ -143,4 +149,10 @@ void(*InstructionHandlers[256])(void) = {
 	ListInstruction(LDVMI),
 	ListInstruction(STVM),
 	ListInstruction(SPN),
+	ListInstruction(MSP),
+	ListInstruction(SSP),
+	ListInstruction(ASP),
+	ListInstruction(SPB),
+	ListInstruction(SAB),
+	ListInstruction(SAII)
 };

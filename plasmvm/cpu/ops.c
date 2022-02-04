@@ -200,4 +200,21 @@ Instruction(STVM) { // Store Virtual Descriptor to Registers (STVM [R:(4,4),PART
 Instruction(SPN) { // Stack Pull No Operand (SPN):8
 
 }
-
+Instruction(MSP) { // Subtract Stack Pointer (DATA is multiplied by IMM) (SSP [R:(4,4),DATA] [I:(20,20),IMM]):32
+	
+}
+Instruction(SSP) { // Subtract Stack Pointer (DATA is multiplied by IMM) (SSP [R:(4,4),DATA]
+	
+}
+Instruction(ASP) { // Add Stack Pointer (DATA is multiplied by IMM) (ASP [R:(4,4),DATA] [I:(20,20),IMM]):32
+	
+}
+Instruction(SPB) { // Stack Pull Byte (SPB [R:(4,8),DEST]):16
+	
+}
+Instruction(SAB) { // Stack Add Byte (SAB [R:(4,8),SRC]):16
+	
+}
+Instruction(SAII) { // Stack Add Byte Immediate (SAII [I:(8,8),SRC]):16
+	
+}
