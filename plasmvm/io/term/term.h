@@ -24,6 +24,15 @@ void term_data(byte Data);
 #define CC_SETCURY		0x06
 
 void termi_print(char Data);
+void termi_bigdata(u32 Data);
 void termi_sendcc(byte Code);
+
+typedef struct _termctx {
+	u32 Color;
+	u32 CursorX;
+	u32 CursorY;
+	u32 BigData;
+}termctx_t;
+extern termctx_t* termctx;
 
 #endif /* term_h */

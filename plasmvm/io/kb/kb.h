@@ -7,6 +7,11 @@
 
 #include "../../ctx.h"
 
+typedef struct _kbctx {
+	u64 Keys[4]; // bits
+}kbctx_t;
+extern kbctx_t* kbctx;
+
 void kb_init(void);
 void kb_shutdown(void);
 

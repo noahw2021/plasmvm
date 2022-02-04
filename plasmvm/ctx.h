@@ -88,6 +88,7 @@ typedef struct ictx {
 			u64 sf0, sf1; // System Flags
 		};
 	};
+	u64 InterruptHandlers[256]; // This should be a location in memory probably
 }ictx_t;
 
 #define _SUCCESS		   0x10000000

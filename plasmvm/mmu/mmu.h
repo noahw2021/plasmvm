@@ -12,6 +12,12 @@
 byte r1(void);
 word rx(byte Count);
 
+word mmui_stackpull(void);
+byte mmui_stackpullbyte(void);
+
+void mmui_stackput(word Value);
+void mmui_stackputbyte(byte Value);
+
 #define _ACCESS_READ	0x01	
 #define _ACCESS_WRITE	0x02
 #define _ACCESS_EXEC	0x04

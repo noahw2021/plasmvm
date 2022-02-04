@@ -124,4 +124,6 @@ void cpu_clock(void);
 void cpu_opcode(byte Opcode);
 void cpu_shutdown(void);
 
+void cpui_fireint(byte Interrupt);
+
 #endif /* cpu_h */
