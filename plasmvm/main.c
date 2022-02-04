@@ -120,4 +120,11 @@ int main(int argc, char** argv) {
 				CLR_HALTFLAG(ctx->sf0);
 		}
 	}
+	
+	cpu_shutdown();
+	mmu_shutdown();
+	io_shutdown();
+	
+	free(vmctx);
+	return 0;
 }
