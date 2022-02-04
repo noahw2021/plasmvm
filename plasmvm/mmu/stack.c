@@ -10,19 +10,25 @@
 word mmui_stackpull(void) {
 	u64* Stack = mmu_translate(ctx->sp, _ACCESS_READ);
 	u64 Return = Stack[0];
-	ctx->sp += 8;
+	ctx->sp -= 8;
 	return Return;
 }
 byte mmui_stackpullbyte(void) {
 	byte* Stack = mmu_translate(ctx->sp, _ACCESS_READ);
 	byte Return = Stack[0];
-	ctx->sp += 1;
+	ctx->sp -= 1;
 	return Return;
 }
 
 void mmui_stackput(word Value) {
-	
+	u64* Stack = mmu_translate(ctx->sp, _ACCESS_READ);
+	Stack[1] = Value;
+	ctx->sp += 8;
+	return Return;
 }
 void mmui_stackputbyte(byte Value) {
-	
+	byte* Stack = mmu_translate(ctx->sp, _ACCESS_READ);
+	Stack[1] = Value;
+	ctx->sp += 1;
+	return Return;
 }
