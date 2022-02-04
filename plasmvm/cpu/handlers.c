@@ -156,7 +156,7 @@ void(*InstructionHandlers[256])(void) = {
 	ListInstruction(ASP),
 	ListInstruction(SPB),
 	ListInstruction(SAB),
-	ListInstruction(SAII)
+	ListInstruction(SAII),
 	ListInstruction(INC),
 	ListInstruction(DEC),
 };
