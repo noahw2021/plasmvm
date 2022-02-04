@@ -111,6 +111,8 @@ enum {
 	__SPB = 0x48, // Stack Pull Byte (SPB [R:(4,8),DEST]):16
 	__SAB = 0x49, // Stack Add Byte (SAB [R:(4,8),SRC]):16
 	__SAII = 0x4A, // Stack Add Byte Immediate (SAII [I:(8,8),SRC]):16
+	__INC = 0x4B, // Increment (INC [R:(4,8),SRC]):16
+	__DEC = 0x4C, // Decrement (DEC [R:(4,8),SRC]):16
 };
 
 extern void(*InstructionHandlers[256])(void);

@@ -218,3 +218,11 @@ Instruction(SAB) { // Stack Add Byte (SAB [R:(4,8),SRC]):16
 Instruction(SAII) { // Stack Add Byte Immediate (SAII [I:(8,8),SRC]):16
 	
 }
+
+Instruction(INC) { // Increment (INC [R:(4,8),SRC]):16
+	
+}
+
+Instruction(DEC) { // Decrement (DEC [R:(4,8),SRC]):16
+	
+}
