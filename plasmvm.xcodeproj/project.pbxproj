@@ -329,7 +329,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = "/usr/local/Cellar/sdl2/2.0.18/include/SDL2/**";
+				HEADER_SEARCH_PATHS = "/usr/local/Cellar/sdl2/2.0.20/include/SDL2/**";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)/**",
 					/usr/local/Cellar/sdl2/2.0.20/lib,
@@ -342,7 +342,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = "/usr/local/Cellar/sdl2/2.0.18/include/SDL2/**";
+				HEADER_SEARCH_PATHS = "/usr/local/Cellar/sdl2/2.0.20/include/SDL2/**";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)/**",
 					/usr/local/Cellar/sdl2/2.0.20/lib,
