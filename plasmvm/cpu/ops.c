@@ -164,34 +164,32 @@ Instruction(SAI) { // Stack Add (Push) Immediate (SAI [I:(64, 64)]):72
 }
 Instruction(GO) { // Go (Jump) (GO [R:(4,8),LOCATION]):16
 	byte Register = r1() & 0xF;
-	ctx->ip = ctx->Registers[Register];
+	cpui_go(ctx->Registers[Register]);
 }
 Instruction(ENT) { // Enter (Call) (GO [R:(4,8),LOCATION]):16
 	byte Register = r1() & 0xF;
-	mmui_stackput(ctx->ip);
-	ctx->ip = ctx->Registers[Register];
+	cpui_enter(ctx->Registers[Register]);
 }
 Instruction(RT) { // Return (RT):8
-	ctx->ip = mmui_stackpull();
+	cpui_return();
 }
 Instruction(RTF) { // Return if Flag (RTF [R:(4,8),FLAG]):16
 	byte Register = r1() & 0xF;
 	if (ctx->sf0 & ctx->Registers[Register])
-		RT();
+		cpui_return();
 }
 Instruction(RTFI) { // Return if Flag Immediate (RTFI [I:(64,64),FLAG]):72
 	byte Immediate = rx(8);
 	if (ctx->sf0 & Immediate)
-		RT();
+		cpui_return();
 }
 Instruction(GOI) { // Go (Jump) Immediate (GOI [I:(64,64),LOCATION]):72
 	u64 Immediate = rx(8);
-	ctx->ip = Immediate;
+	cpui_go(Immediate);
 }
 Instruction(ENTI) { // Enter (Call) Immediate (ENTI [I:(64,64),LOCATION]):72
 	u64 Immediate = rx(8);
-	mmui_stackput(ctx->ip);
-	ctx->ip = Immediate;
+	cpui_enter(Immediate);
 }
 Instruction(CMP) { // Compare Registers (CMP [R:(4,4),COMPARE0] [R:(4,4),COMPARE1]):16
 	byte Registers = r1();

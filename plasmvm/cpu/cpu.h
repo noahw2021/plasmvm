@@ -132,6 +132,8 @@ void cpu_shutdown(void);
 
 void cpui_fireint(byte Interrupt);
 
-void cpui_
+void cpui_go(word Address);
+void cpui_enter(word Address);
+void cpui_return(void);
 
 #endif /* cpu_h */

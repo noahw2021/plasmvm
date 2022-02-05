@@ -10,3 +10,13 @@
 void cpui_fireint(byte Interrupt) {
 	
 }
+
+void cpui_go(word Address) {
+	
+}
+void cpui_enter(word Address) {
+	
+}
+void cpui_return(void) {
+	
+}
