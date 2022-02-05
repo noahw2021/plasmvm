@@ -113,6 +113,7 @@ enum {
 	__SAII = 0x4A, // Stack Add Byte Immediate (SAII [I:(8,8),SRC]):16
 	__INC = 0x4B, // Increment (INC [R:(4,8),SRC]):16
 	__DEC = 0x4C, // Decrement (DEC [R:(4,8),SRC]):16
+	__SBN = 0x4D, // Stack Pull Byte No Operand (SBN):8
 };
 
 extern void(*InstructionHandlers[256])(void);

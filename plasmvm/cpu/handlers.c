@@ -82,6 +82,7 @@ DeclInstruction(SAB);
 DeclInstruction(SAII);
 DeclInstruction(INC);
 DeclInstruction(DEC);
+DeclInstruction(SBN);
 
 void(*InstructionHandlers[256])(void) = {
 	ListInstruction(SET),
@@ -159,4 +160,5 @@ void(*InstructionHandlers[256])(void) = {
 	ListInstruction(SAII),
 	ListInstruction(INC),
 	ListInstruction(DEC),
+	ListInstruction(SBN),
 };

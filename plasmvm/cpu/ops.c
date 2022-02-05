@@ -375,3 +375,6 @@ Instruction(DEC) { // Decrement (DEC [R:(4,8),SRC]):16
 	byte Register = r1() & 0xF;
 	ctx->Registers[Register]--;
 }
+Instruction(SBN) { // Stack Pull Byte No Operand (SBN):8
+	mmui_stackpullbyte();
+}
