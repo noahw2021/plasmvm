@@ -48,3 +48,23 @@ void* mmu_translate(word Virtual, byte Access) {
 	}
 	return NULL;
 }
+
+u64 mmu_translate(word Virtual, byte Access) {
+	if (VMD0_GET_ENABLED(ctx->vm0)) {
+		for (int i = 0; i < VMD0_GET_PAGECNT(ctx->vm0); i++) {
+			pagetableentry_t* Table = (pagetableentry_t*)((byte*)vmctx->PhysicalRam + VMD1_GET_ADDRESS(ctx->vm1));
+			if (InRange(Virtual, Table->Virtual, Table->Virtual + Table->Size)) {
+				if (Access & _ACCESS_READ && !Table[i].Flags.Read)
+					return 0;
+				if (Access & _ACCESS_WRITE && !Table[i].Flags.Write)
+					return 0;
+				if (Access & _ACCESS_EXEC && !Table[i].Flags.Execute)
+					return 0;
+				return Table[i].Physical + (Virtual - Table[i].Virtual);
+			}
+		}
+	} else {
+		return Virtual;
+	}
+	return 0;
+}

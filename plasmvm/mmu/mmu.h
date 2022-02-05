@@ -26,6 +26,7 @@ void mmu_init(void);
 void mmu_shutdown(void);
 void mmu_clock(void);
 void* mmu_translate(u64 Virtual, byte AccessFlags);
+word mmu_translatevm(u64 Virtual, byte AccessFlags);
 
 // Virtual Memory Descriptor Sections
 
