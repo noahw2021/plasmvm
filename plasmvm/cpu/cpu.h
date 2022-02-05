@@ -114,6 +114,12 @@ enum {
 	__INC = 0x4B, // Increment (INC [R:(4,8),SRC]):16
 	__DEC = 0x4C, // Decrement (DEC [R:(4,8),SRC]):16
 	__SBN = 0x4D, // Stack Pull Byte No Operand (SBN):8
+	__IOB = 0x4E, // I/O Output Byte (IOB [R:(4,4),PORT] [R:(4,4),DATA]):16
+	__IIB = 0x4F, // I/O Input Byte (IIB [R:(4,4),PORT] [R:(4,4),DATA]):16
+	__IOW = 0x50, // I/O Output Word (IOW [R:(4,4),PORT] [R:(4,4),DATA]):16
+	__IIW = 0x51, // I/O Input Word (IIW [R:(4,4),PORT] [R:(4,4),DATA]):16
+	__IOS = 0x52, // I/O Output String (IOB [R:(4,4),PORT] [R:(4,4),DATA] [R:(4,8),LEN]):24
+	__IIS = 0x53, // I/O Input String (IOB [R:(4,4),PORT] [R:(4,4),STR] [R:(4,8),LEN]):24
 };
 
 extern void(*InstructionHandlers[256])(void);

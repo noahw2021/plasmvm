@@ -83,6 +83,13 @@ DeclInstruction(SAII);
 DeclInstruction(INC);
 DeclInstruction(DEC);
 DeclInstruction(SBN);
+DeclInstruction(SBN);
+DeclInstruction(IOB);
+DeclInstruction(IIB);
+DeclInstruction(IOW);
+DeclInstruction(IIW);
+DeclInstruction(IOS);
+DeclInstruction(IIS);
 
 void(*InstructionHandlers[256])(void) = {
 	ListInstruction(SET),
@@ -161,4 +168,10 @@ void(*InstructionHandlers[256])(void) = {
 	ListInstruction(INC),
 	ListInstruction(DEC),
 	ListInstruction(SBN),
+	ListInstruction(IOB),
+	ListInstruction(IIB),
+	ListInstruction(IOW),
+	ListInstruction(IIW),
+	ListInstruction(IOS),
+	ListInstruction(IIS),
 };

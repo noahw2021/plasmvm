@@ -10,6 +10,7 @@
 
 #include "cpu.h"
 #include "../mmu/mmu.h"
+#include "../io/io.h"
 
 Instruction(SET) { // Set Register (SET [R:(4,4),DEST] [R:(4,4),SRC]):16
 	byte Registers = r1();
@@ -375,6 +376,54 @@ Instruction(DEC) { // Decrement (DEC [R:(4,8),SRC]):16
 	byte Register = r1() & 0xF;
 	ctx->Registers[Register]--;
 }
+
 Instruction(SBN) { // Stack Pull Byte No Operand (SBN):8
 	mmui_stackpullbyte();
+}
+
+Instruction(IOB) { // I/O Output Byte (IOB [R:(4,4),PORT] [R:(4,4),DATA]):16
+	byte Registers = r1();
+	io_data(REG_LO(Registers), REG_HI(Registers));
+}
+
+Instruction(IIB) { // I/O Input Byte (IIB [R:(4,4),PORT] [R:(4,4),DATA]):16
+	byte Registers = r1();
+	ctx->Registers[REG_HI(Registers)] = io_get(REG_LO(Registers));
+}
+
+Instruction(IOW) { // I/O Output Word (IOW [R:(4,4),PORT] [R:(4,4),DATA]):16
+	byte Registers = r1();
+	union {
+		u64 Big;
+		byte Small[8];
+	}BigData;
+	BigData.Big = ctx->Registers[REG_HI(Registers)];
+	for (int i = 0; i < 8; i++)
+		io_data(REG_LO(Registers), BigData.Small[i]);
+}
+
+Instruction(IIW) { // I/O Input Word (IIW [R:(4,4),PORT] [R:(4,4),DATA]):16
+	byte Registers = r1();
+	union {
+		u64 Big;
+		byte Small[8];
+	}BigData;
+	BigData.Big = 0;
+	for (int i = 0; i < 8; i++)
+		BigData.Small[i] = io_get(REG_LO(Registers));
+	ctx->Registers[REG_HI(Registers)] = BigData.Big;
+}
+
+Instruction(IOS) { // I/O Output String (IOB [R:(4,4),PORT] [R:(4,4),DATA] [R:(4,8),LEN]):24
+	byte Registers0 = r1();
+	byte Registers1 = r1() & 0xF;
+	for (int i = 0; i < Registers1; i++)
+		io_data(REG_LO(Registers0), ((byte*)mmu_translate(REG_HI(Registers0), _ACCESS_READ))[i]);
+}
+
+Instruction(IIS) { // I/O Input String (IOB [R:(4,4),PORT] [R:(4,4),STR] [R:(4,8),LEN]):24
+	byte Registers0 = r1();
+	byte Registers1 = r1() & 0xF;
+	for (int i = 0; i < Registers1; i++)
+		((byte*)mmu_translate(REG_HI(Registers0), _ACCESS_READ))[i] = io_get(REG_LO(Registers0));
 }

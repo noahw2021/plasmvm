@@ -13,4 +13,7 @@ void io_shutdown(void);
 
 void io_clock(void);
 
+void io_data(byte Port, byte Data);
+byte io_get(byte Port);
+
 #endif /* io_h */
