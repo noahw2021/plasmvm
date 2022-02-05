@@ -28,17 +28,21 @@ void cpui_return(void) {
 }
 
 void cpui_pushall(void) {
-	
+	for (int i = 0; i < _REGISTERCNT; i++)
+		mmui_stackput(ctx->Registers[i]);
 }
 
 void cpui_pushgen(void) {
-	
+	for (int i = 0; i < _GPRCNT; i++)
+		mmui_stackput(ctx->GPRs[i]);
 }
 
 void cpui_pullall(void) {
-	
+	for (int i = 0; i< _REGISTERCNT; i++)
+		ctx->Registers[i] = mmui_stackpull();
 }
 
 void cpui_pullgen(void) {
-	
+	for (int i = 0; i< _GPRCNT; i++)
+		ctx->Registers[i] = mmui_stackpull();
 }

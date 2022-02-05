@@ -66,15 +66,23 @@ typedef long long i64;
 #define CLR_SYSTEMFLAG(x)	(x &= FLAG_SF)
 #define CLR_INPUTFLAG(x) 	(x &= FLAG_XF)
 
+#define _REGISTERCNT 24
+#define _GPRCNT 16
+
 typedef struct ictx {
 	union {
-		u64 Registers[24];
+		u64 Registers[_REGISTERCNT];
 		struct {
 			// General Purpose Registers
-			u64 r0,  r1,  r2,  r3;
-			u64 r4,  r5,  r6,  r7;
-			u64 r8,  r9,  r10, r11;
-			u64 r12, r13, r14, r15;
+			union {
+				u64 GPRs[_GPRCNT];
+				struct {
+					u64 r0,  r1,  r2,  r3;
+					u64 r4,  r5,  r6,  r7;
+					u64 r8,  r9,  r10, r11;
+					u64 r12, r13, r14, r15;
+				};
+			};
 			
 			// System State Registers
 			u64 ip; // Instruction Pointer
