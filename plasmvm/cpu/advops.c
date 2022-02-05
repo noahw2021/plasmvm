@@ -6,3 +6,7 @@
 //
 
 #include "cpu.h"
+
+void cpui_fireint(byte Interrupt) {
+	
+}

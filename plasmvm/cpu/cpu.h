@@ -132,4 +132,6 @@ void cpu_shutdown(void);
 
 void cpui_fireint(byte Interrupt);
 
+void cpui_
+
 #endif /* cpu_h */

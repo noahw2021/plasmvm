@@ -22,7 +22,6 @@
 		8CAFC71027ADAABE00FA69B7 /* libSDL2_ttf.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAFC70F27ADAABE00FA69B7 /* libSDL2_ttf.dylib */; };
 		8CAFC71227ADB0FD00FA69B7 /* kb.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFC71127ADB0FD00FA69B7 /* kb.c */; };
 		8CAFC71527ADB33200FA69B7 /* stack.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFC71427ADB33200FA69B7 /* stack.c */; };
-		8CAFC71727ADB36700FA69B7 /* interrupts.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFC71627ADB36700FA69B7 /* interrupts.c */; };
 		8CAFC71927ADBEBF00FA69B7 /* advops.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFC71827ADBEBF00FA69B7 /* advops.c */; };
 		8CB19B2027A9FDCB00CC7204 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CB19B1F27A9FDCB00CC7204 /* main.c */; };
 		8CB19B3027A9FF9A00CC7204 /* ops.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CB19B2F27A9FF9A00CC7204 /* ops.c */; };
@@ -59,7 +58,6 @@
 		8CAFC70F27ADAABE00FA69B7 /* libSDL2_ttf.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSDL2_ttf.dylib; path = ../../../../../../../../usr/local/Cellar/sdl2_ttf/2.0.18/lib/libSDL2_ttf.dylib; sourceTree = "<group>"; };
 		8CAFC71127ADB0FD00FA69B7 /* kb.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = kb.c; sourceTree = "<group>"; };
 		8CAFC71427ADB33200FA69B7 /* stack.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = stack.c; sourceTree = "<group>"; };
-		8CAFC71627ADB36700FA69B7 /* interrupts.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = interrupts.c; sourceTree = "<group>"; };
 		8CAFC71827ADBEBF00FA69B7 /* advops.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = advops.c; sourceTree = "<group>"; };
 		8CB19B1C27A9FDCB00CC7204 /* plasmvm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = plasmvm; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CB19B1F27A9FDCB00CC7204 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
@@ -158,7 +156,6 @@
 				8CB19B2F27A9FF9A00CC7204 /* ops.c */,
 				8C925E7927AAED6E00150F9E /* handlers.c */,
 				8C925E7B27AAF04200150F9E /* cpu.c */,
-				8CAFC71627ADB36700FA69B7 /* interrupts.c */,
 				8CAFC71827ADBEBF00FA69B7 /* advops.c */,
 			);
 			path = cpu;
@@ -259,7 +256,6 @@
 				8C925E8027AB057900150F9E /* load.c in Sources */,
 				8C925E8627AB0F3400150F9E /* termdata.c in Sources */,
 				8C925E7A27AAED6E00150F9E /* handlers.c in Sources */,
-				8CAFC71727ADB36700FA69B7 /* interrupts.c in Sources */,
 				8CAFC71227ADB0FD00FA69B7 /* kb.c in Sources */,
 				8C925E7C27AAF04200150F9E /* cpu.c in Sources */,
 			);
