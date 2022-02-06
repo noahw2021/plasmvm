@@ -427,3 +427,35 @@ Instruction(IIS) { // I/O Input String (IOB [R:(4,4),PORT] [R:(4,4),STR] [R:(4,8
 	for (int i = 0; i < Registers1; i++)
 		((byte*)mmu_translate(REG_HI(Registers0), _ACCESS_READ))[i] = io_get(REG_LO(Registers0));
 }
+
+Instruction(LDQM) { // Load Register Quarter-Word from Memory (LDQM [R:(4,4),DEST] [R:(4,4),SRC_PTR]):16
+	
+}
+
+Instruction(LDHM) { // Load Register Half-Word from Memory (LDHM [R:(4,4),DEST] [R:(4,4),SRC_PTR]):16
+	
+}
+
+Instruction(STQM) { // Store Register Quarter-Word from Memory (STQM [R:(4,4),DEST] [R:(4,4),SRC_PTR]):16
+	
+}
+
+Instruction(STHM) { // Store Register Half-Word in Memory (STHM [R:(4,4),DEST] [R:(4,4),SRC_PTR]):16
+	
+}
+
+Instruction(LDQMI) { // Load Immediate Quarter-Word from Memory (LDQM [R:(4,8),DEST] [I:(16,16),SRC]):32
+	
+}
+
+Instruction(LDHMI) { // Load Immediate Half-Word from Memory (LDHM [R:(4,8),DEST] [I:(32,32),SRC]):48
+	
+}
+
+Instruction(STQMI) { // Store Immediate Quarter-Word from Memory (STQM [R:(4,8),DEST] [I:(16,16),SRC]):32
+	
+}
+
+Instruction(STHMI) { // Store Immediate Half-Word in Memory (STHM [R:(4,8),DEST] [I:(32,32),SRC):48
+	
+}

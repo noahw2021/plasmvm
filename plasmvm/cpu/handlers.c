@@ -90,6 +90,14 @@ DeclInstruction(IOW);
 DeclInstruction(IIW);
 DeclInstruction(IOS);
 DeclInstruction(IIS);
+DeclInstruction(LDQM);
+DeclInstruction(LDQMI);
+DeclInstruction(LDHM);
+DeclInstruction(LDHMI);
+DeclInstruction(STQM);
+DeclInstruction(STQMI);
+DeclInstruction(STHM);
+DeclInstruction(STHMI);
 
 void(*InstructionHandlers[256])(void) = {
 	ListInstruction(SET),
@@ -174,4 +182,12 @@ void(*InstructionHandlers[256])(void) = {
 	ListInstruction(IIW),
 	ListInstruction(IOS),
 	ListInstruction(IIS),
+	ListInstruction(LDQM),
+	ListInstruction(LDQMI),
+	ListInstruction(LDHM),
+	ListInstruction(LDHMI),
+	ListInstruction(STQM),
+	ListInstruction(STQMI),
+	ListInstruction(STHM),
+	ListInstruction(STHMI),
 };
