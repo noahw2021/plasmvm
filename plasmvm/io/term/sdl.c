@@ -44,6 +44,18 @@ void term_init(void) {
 	Rectangle.h = 400;
 	SDL_RenderDrawRect(Renderer, &Rectangle);
 	SDL_RenderPresent(Renderer);
+	termctx->Color = 0xFFFFFFFF;
+	
+	termi_print('H');
+	termi_print('e');
+	termi_print('l');
+	termi_print('l');
+	termi_print('o');
+	termi_print('H');
+	termi_print('e');
+	termi_print('l');
+	termi_print('l');
+	termi_print('o');
 	
 	return;
 }
@@ -86,6 +98,8 @@ void termi_print(char Data) {
 	TargetRect.y = (int)termctx->CursorY * 16;
 	TargetRect.w = 8;
 	TargetRect.h = 16;
+	
+	termctx->CursorX++;
 	
 	SDL_RenderCopy(Renderer, NewTexture, NULL, &TargetRect);
 	SDL_RenderPresent(Renderer);

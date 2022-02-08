@@ -16,6 +16,14 @@ vmctx_t* vmctx;
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+
+#ifdef _WIN32
+void __stdcall Sleep(int Milliseconds);
+#define _usleep Sleep
+#else
+#define _usleep usleep
+#endif
 
 int main(int argc, char** argv) {
 	vmctx = malloc(sizeof(vmctx_t));
@@ -108,6 +116,7 @@ int main(int argc, char** argv) {
 	io_init();
 	
 	while (1) {
+		_usleep(45);
 		if (!GET_HALTFLAG(ctx->sf0)) {
 			mmu_clock();
 			cpu_clock();
