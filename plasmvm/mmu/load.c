@@ -66,5 +66,6 @@ void mmu_shutdown(void) {
 	free(vmctx->PhysicalRam);
 }
 void mmu_clock(void) {
+	
 	return; // not much to do here yet, maybe mmio?
 }

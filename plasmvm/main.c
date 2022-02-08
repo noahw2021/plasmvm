@@ -63,17 +63,17 @@ int main(int argc, char** argv) {
 		}
 		
 		if (strstr(argv[i], "-d=")) {
-			vmctx->HddString = malloc(241);
+			vmctx->HddString = malloc(441);
 			strcpy(vmctx->HddString, argv[i] + 3);
 			vmctx->Flags.HddPresent = 1;
 		}
 		if (strstr(argv[i], "-r=")) {
-			vmctx->HddString = malloc(241);
+			vmctx->RamdiskString = malloc(441);
 			strcpy(vmctx->RamdiskString, argv[i] + 3);
 			vmctx->Flags.RamdiskPresent = 1;
 		}
 		if (strstr(argv[i], "-b=")) {
-			vmctx->HddString = malloc(241);
+			vmctx->BiosString = malloc(441);
 			strcpy(vmctx->BiosString, argv[i] + 3);
 			vmctx->Flags.BiosPresent = 1;
 		}
@@ -113,7 +113,7 @@ int main(int argc, char** argv) {
 			cpu_clock();
 			io_clock();
 		} else {
-			if (GET_INTFLAG(ctx->sf0))
+			if (!GET_INTFLAG(ctx->sf0))
 				break;
 			io_clock();
 			if (GET_INPUTFLAG(ctx->sf0))

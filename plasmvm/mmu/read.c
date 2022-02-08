@@ -9,15 +9,26 @@
 
 byte r1(void) {
 	byte* VirtualRam = (byte*)mmu_translate(ctx->ip, _ACCESS_READ);
-	return VirtualRam[++ctx->ip];
+	byte Return = VirtualRam[0];
+	ctx->ip++;
+	return Return;
 }
+
+u64 Masks[8] = {
+	0x00000000000000FF,
+	0x000000000000FFFF,
+	0x0000000000FFFFFF,
+	0x00000000FFFFFFFF,
+	0x000000FFFFFFFFFF,
+	0x0000FFFFFFFFFFFF,
+	0x00FFFFFFFFFFFFFF,
+	0xFFFFFFFFFFFFFFFF
+};
+
 word rx(byte Count) {
-	word Return = 0;
-	
-	while (Count) {
-		Return |= r1();
-		Return <<= 8;
-		Count--;
-	}
+	word* VirtualRam = (word*)mmu_translate(ctx->ip, _ACCESS_READ);
+	word Return = VirtualRam[0];
+	Return &= Masks[Count - 1];
+	ctx->ip += Count;
 	return Return;
 }
