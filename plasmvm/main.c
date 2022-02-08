@@ -9,6 +9,7 @@
 #include "cpu/cpu.h"
 #include "mmu/mmu.h"
 #include "io/io.h"
+#include "io/term/term.h"
 
 ictx_t* ctx;
 vmctx_t* vmctx;

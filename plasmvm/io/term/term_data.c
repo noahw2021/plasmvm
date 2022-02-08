@@ -1,5 +1,5 @@
 //
-//  termdata.c
+//  term_data.c
 //  plasmvm
 //
 //  Created by Noah Wooten on 2/2/22.
@@ -68,6 +68,8 @@ void term_data(byte Data) {
 				break;
 		}
 	} else {
+		termi_print(Data);
+		termctx->CursorX--;
 		termi_print(Data);
 	}
 }

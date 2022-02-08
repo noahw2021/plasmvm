@@ -1,5 +1,5 @@
 //
-//  ops.c
+//  cpu_ops.c
 //  plasmvm
 //
 //  Created by Noah Wooten on 2/1/22.

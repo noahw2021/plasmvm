@@ -1,5 +1,5 @@
 //
-//  scd.c
+//  scd_init.c
 //  plasmvm
 //
 //  Created by Noah Wooten on 2/4/22.

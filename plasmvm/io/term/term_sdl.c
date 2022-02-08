@@ -1,5 +1,5 @@
 //
-//  sdl.c
+//  term_sdl.c
 //  plasmvm
 //
 //  Created by Noah Wooten on 2/4/22.
@@ -46,17 +46,6 @@ void term_init(void) {
 	SDL_RenderPresent(Renderer);
 	termctx->Color = 0xFFFFFFFF;
 	
-	termi_print('H');
-	termi_print('e');
-	termi_print('l');
-	termi_print('l');
-	termi_print('o');
-	termi_print('H');
-	termi_print('e');
-	termi_print('l');
-	termi_print('l');
-	termi_print('o');
-	
 	return;
 }
 
@@ -79,9 +68,9 @@ void term_shutdown(void) {
 }
 
 void termi_print(char Data) {
-	char* RealData = malloc(2);
+	char* RealData = malloc(4);
 	RealData[0] = Data;
-	RealData[1] = 0;
+	RealData[1] = 0x00;
 	
 	SDL_Color RealColor;
 	RealColor.r = (termctx->Color & 0xFF000000) >> 24;
@@ -103,6 +92,7 @@ void termi_print(char Data) {
 	
 	SDL_RenderCopy(Renderer, NewTexture, NULL, &TargetRect);
 	SDL_RenderPresent(Renderer);
+	free(RealData);
 }
 
 void termi_bigdata(u32 Data) {
