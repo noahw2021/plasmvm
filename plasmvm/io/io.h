@@ -7,6 +7,7 @@
 
 #ifndef io_h
 #define io_h
+#include "../ctx.h"
 
 void io_init(void);
 void io_shutdown(void);

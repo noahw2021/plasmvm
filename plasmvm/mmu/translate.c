@@ -49,7 +49,7 @@ void* mmu_translate(word Virtual, byte Access) {
 	return NULL;
 }
 
-u64 mmu_translate(word Virtual, byte Access) {
+u64 mmu_translatevm(word Virtual, byte Access) {
 	if (VMD0_GET_ENABLED(ctx->vm0)) {
 		for (int i = 0; i < VMD0_GET_PAGECNT(ctx->vm0); i++) {
 			pagetableentry_t* Table = (pagetableentry_t*)((byte*)vmctx->PhysicalRam + VMD1_GET_ADDRESS(ctx->vm1));
