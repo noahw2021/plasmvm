@@ -8,8 +8,9 @@ Below, badges for continous integration are available.
 | macOS (10.15)            |[![macOS Legacy Build](https://github.com/noahw2021/plasmvm/actions/workflows/c-osxlegacy.yml/badge.svg)](https://github.com/noahw2021/plasmvm/actions/workflows/c-osxlegacy.yml)|
 | Linux (Ubuntu Latest)    |[![Ubuntu Build](https://github.com/noahw2021/plasmvm/actions/workflows/c-ubuntu.yml/badge.svg)](https://github.com/noahw2021/plasmvm/actions/workflows/c-ubuntu.yml)|
 | Linux (Ubuntu LTS 18.04) |[![Ubuntu LTS Build](https://github.com/noahw2021/plasmvm/actions/workflows/c-ubuntults.yml/badge.svg)](https://github.com/noahw2021/plasmvm/actions/workflows/c-ubuntults.yml)|
-| Windows (Latest)         |N/A|
-| Windows (2016)           |N/A|
+| Windows (Latest)         |[![Windows Build](https://github.com/noahw2021/plasmvm/actions/workflows/c-winlatest.yml/badge.svg)](https://github.com/noahw2021/plasmvm/actions/workflows/c-winlatest.yml)|
+| Windows (2016)           |[![Windows Build (2016)](https://github.com/noahw2021/plasmvm/actions/workflows/c-win2016.yml/badge.svg)](https://github.com/noahw2021/plasmvm/actions/workflows/c-win2016.yml)|
+| Windows (Latest Debug)   |[![Windows Debug Build](https://github.com/noahw2021/plasmvm/actions/workflows/c-winlatestdbg.yml/badge.svg)](https://github.com/noahw2021/plasmvm/actions/workflows/c-winlatestdbg.yml)|
 
 ## Precompiled Binaries
 Upon major milestone releases, precompiled releases are provided in the 'Releases' section on the right hand side of the desktop website.
