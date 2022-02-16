@@ -6,8 +6,14 @@ Upon major milestone releases, precompiled releases are provided in the 'Release
 
 ## Continous Integration
 Below, badges for continous integration are available.
-[![Ubuntu Build](https://github.com/noahw2021/plasmvm/actions/workflows/c-ubuntu.yml/badge.svg)](https://github.com/noahw2021/plasmvm/actions/workflows/c-ubuntu.yml)
-![macOS Build](https://github.com/noahw2021/plasmvm/actions/workflows/c-macos.yml/badge.svg)](https://github.com/noahw2021/plasmvm/actions/workflows/c-macos.yml)
+| Platform                 | Main |
+|--------------------------|------|
+| macOS (Latest)           |[![macOS Build](https://github.com/noahw2021/plasmvm/actions/workflows/c-macos.yml/badge.svg)](https://github.com/noahw2021/plasmvm/actions/workflows/c-macos.yml)|
+| macOS (10.15)            |N/A|
+| Linux (Ubuntu Latest)    |[![Ubuntu Build](https://github.com/noahw2021/plasmvm/actions/workflows/c-ubuntu.yml/badge.svg)](https://github.com/noahw2021/plasmvm/actions/workflows/c-ubuntu.yml)|
+| Linux (Ubuntu LTS 18.04) |N/A|
+| Windows (Latest)         |N/A|
+| Windows (2016)           |N/A|
 
 ## Building yourself
 ### Prerequisites
