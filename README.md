@@ -44,9 +44,19 @@ For Windows, there is currently no route to building the project. In the future,
 User contributions are considered, but not expected.
 ### Code Style
 The code style of the project should be maintained. Examples are given below.
-
+<br>
+| Example       | Bad 1         | Bad 2          | Good          |
+|---------------|---------------|----------------|---------------|
+| Variable Name | helloVariable | hello_variable | HelloVariable |
+| Function Name | ModFunction   | Function       | mod_function  |
+| Type Case 1   | long          | i32            | int           |
+| Type Case 2   | unsigned long | unsigned i32   | u32           |
+| File Name     | File.cpp      | File.ixx       | File.c        |
+<br>
+In general, from viewing the code the code style should be easily figured out. It is the descretion of the reviewer to determine what is okay, and this table may not always be consistent.
 
 ### Tests
+Under all circumstances, a pull request must pass every CI test before and after human contributor review. Afterwards, they may be merged with master.
 
 ## License
-This software is licensed under the BSD-3 license. A full text can be viewed ![here](LICENSE).
+This software is licensed under the BSD-3 license. A full text can be viewed [here](LICENSE).
