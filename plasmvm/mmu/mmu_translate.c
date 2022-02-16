@@ -40,7 +40,7 @@ void* mmu_translate(word Virtual, byte Access) {
 					return NULL;
 				if (Access & _ACCESS_EXEC && !Table[i].Flags.Execute)
 					return NULL;
-				return vmctx->PhysicalRam + Table[i].Physical + (Virtual - Table[i].Virtual);
+				return (byte*)vmctx->PhysicalRam + Table[i].Physical + (Virtual - Table[i].Virtual);
 			}
 		}
 	} else {

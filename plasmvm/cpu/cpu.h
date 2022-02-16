@@ -66,7 +66,7 @@ enum {
 	__SR = 0x1A, // Shift Right (SR [R:(4,4),DEST] [R:(4,4),AMT]):16
 	__SLI = 0x1B, // Shift Left Immediate (SLI [R:(4,8),SRC] [I:(6,8),AMT]):24
 	__SRI = 0x1C, // Shift Right Immediate (SRI [R:(4,8),SRC] [I:(6,8,AMT]):24
-	__SA = 0x1D, // Stack Add (Push) (SA	[R:(4,8),SRC]):16
+	__SA = 0x1D, // Stack Add (Push) (SA [R:(4,8),SRC]):16
 	__SP = 0x1E, // Stack Pull (SP [R:(4,8),DEST]):16
 	__SAI = 0x1F, // Stack Add (Push) Immediate (SAI [I:(64, 64)]):72
 	__GO = 0x20, // Go (Jump) (GO [R:(4,8),LOCATION]):16
