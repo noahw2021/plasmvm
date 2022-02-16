@@ -14,7 +14,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: get sdl2
-      run: brew install SDL2 SDL2_ttf
+      run: |
+        brew install SDL2
+        brew install SDL2_ttf
     - uses: actions/checkout@v2
     - name: make
       run: make
