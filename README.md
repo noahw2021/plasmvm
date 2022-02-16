@@ -1,9 +1,5 @@
 # plasmvm
 An interpreted PLASM emulator.
-
-## Precompiled Binaries
-Upon major milestone releases, precompiled releases are provided in the 'Releases' section on the right hand side of the desktop website.
-
 ## Continous Integration
 Below, badges for continous integration are available.
 | Platform                 | Main |
@@ -14,6 +10,9 @@ Below, badges for continous integration are available.
 | Linux (Ubuntu LTS 18.04) |N/A|
 | Windows (Latest)         |N/A|
 | Windows (2016)           |N/A|
+
+## Precompiled Binaries
+Upon major milestone releases, precompiled releases are provided in the 'Releases' section on the right hand side of the desktop website.
 
 ## Building yourself
 ### Prerequisites
