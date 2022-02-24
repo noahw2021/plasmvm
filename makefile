@@ -11,7 +11,7 @@ INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 CPPFLAGS := $(INC_FLAGS) -MMD -MP
 ifeq ($(UNAME_S),Linux)
         CPPFLAGS += -lSDL2 -I /usr/include/SDL2/ -I/usr/include/SDL2_ttf -lm -ldl
-		LNKFLAGS := -lSDL2 -lSDL2_ttf
+		LNKFLAGS := -lSDL2 -lSDL2_ttf -lm -ldl
 endif
 ifeq ($(UNAME_S),Darwin)
         CPPFLAGS += -I"/usr/local/Cellar/sdl2/2.0.20/include/SDL2" -I"/usr/local/Cellar/sdl2_ttf/2.0.18_1/include/SDL2"
