@@ -479,3 +479,28 @@ Instruction(STHMI) { // Store Immediate Half-Word in Memory (STHM [R:(4,8),DEST]
 	u32* Memory = mmu_translate(Register, _ACCESS_WRITE);
 	Memory[0] = Immediate;
 }
+
+Instruction(STWMII) { // Store Immediate Immediate Word in Memory (STWMII [I:(64,64),DEST] [I:(64,64),SRC]):136
+	u64 ImmediateDest = rx(8);
+	u64 ImmediateSource = rx(8);
+	u64* Memory = mmu_translate(ImmediateDest, _ACCESS_WRITE);
+	Memory[0] = ImmediateSource;
+}
+Instruction(STHMII) { // Store Immediate Immediate Half Word in Memory (STHMII [I:(64,64),DEST] [I:(32,32),SRC]):104
+	u64 ImmediateDest = rx(8);
+	u32 ImmediateSource = rx(4);
+	u32* Memory = mmu_translate(ImmediateDest, _ACCESS_WRITE);
+	Memory[0] = ImmediateSource;
+}
+Instruction(STQMII) { // Store Immediate Immediate Quarter Word in Memory (STQMII [I:(64,64),DEST] [I:(16,16),SRC]):88
+	u64 ImmediateDest = rx(8);
+	u16 ImmediateSource = rx(2);
+	u16* Memory = mmu_translate(ImmediateDest, _ACCESS_WRITE);
+	Memory[0] = ImmediateSource;
+}
+Instruction(STBMII) { // Store Immediate Immediate Byte in Memory (STBMII [I:(64,64),DEST] [I:(8,8),SRC]):80
+	u64 ImmediateDest = rx(8);
+	byte ImmediateSource = rx(1);
+	byte* Memory = mmu_translate(ImmediateDest, _ACCESS_WRITE);
+	Memory[0] = ImmediateSource;
+}

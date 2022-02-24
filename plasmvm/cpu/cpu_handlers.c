@@ -98,6 +98,10 @@ DeclInstruction(STQM);
 DeclInstruction(STQMI);
 DeclInstruction(STHM);
 DeclInstruction(STHMI);
+DeclInstruction(STWMII);
+DeclInstruction(STHMII);
+DeclInstruction(STQMII);
+DeclInstruction(STBMII);
 
 void(*InstructionHandlers[256])(void) = {
 	ListInstruction(SET),
@@ -190,4 +194,8 @@ void(*InstructionHandlers[256])(void) = {
 	ListInstruction(STQMI),
 	ListInstruction(STHM),
 	ListInstruction(STHMI),
+	ListInstruction(STWMII),
+	ListInstruction(STHMII),
+	ListInstruction(STQMII),
+	ListInstruction(STBMII),
 };
