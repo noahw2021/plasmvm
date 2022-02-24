@@ -164,6 +164,9 @@
     <ClCompile Include="mmu\mmu_read.c" />
     <ClCompile Include="mmu\mmu_stack.c" />
     <ClCompile Include="mmu\mmu_translate.c" />
+    <ClCompile Include="fpu\fpu_single.c" />
+    <ClCompile Include="fpu\fpu_double.c" />
+    <ClCompile Include="fpu\fpu_soft.c" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
