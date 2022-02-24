@@ -6,7 +6,9 @@
 //
 
 #include "fpu.h"
+#ifdef __APPLE__
 #include <math.h>
+#endif
 
 x64 fpudi_integrand(x64 x, x64 Value) {
 	x64 Return;

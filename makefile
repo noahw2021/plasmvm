@@ -10,7 +10,7 @@ INC_DIRS := $(shell find $(SRC_DIRS) -type d)
 INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 CPPFLAGS := $(INC_FLAGS) -MMD -MP
 ifeq ($(UNAME_S),Linux)
-        CPPFLAGS += -lSDL2 -I /usr/include/SDL2/ -I/usr/include/SDL2_ttf
+        CPPFLAGS += -lSDL2 -I /usr/include/SDL2/ -I/usr/include/SDL2_ttf -lm -ldl
 		LNKFLAGS := -lSDL2 -lSDL2_ttf
 endif
 ifeq ($(UNAME_S),Darwin)

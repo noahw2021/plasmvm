@@ -20,4 +20,10 @@ x32 fpus_fact(x32 Source);
 x64 fpud_abs(x64 Source);
 x64 fpud_fact(x64 Source);
 
+#ifndef __APPLE__
+#ifdef _FPU_SOFT
+double pow(float Base, float Power);
+#endif
+#endif
+
 #endif /* fpu_h */
