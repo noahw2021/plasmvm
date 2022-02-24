@@ -429,11 +429,15 @@ Instruction(IIS) { // I/O Input String (IOB [R:(4,4),PORT] [R:(4,4),STR] [R:(4,8
 }
 
 Instruction(LDQM) { // Load Register Quarter-Word from Memory (LDQM [R:(4,4),DEST] [R:(4,4),SRC_PTR]):16
-	
+	byte Registers = r1();
+	u16* Memory = mmu_translate(ctx->Registers[REG_HI(Registers)], _ACCESS_READ);
+	ctx->Registers[REG_LO(Registers)] = Memory[0];
 }
 
 Instruction(LDHM) { // Load Register Half-Word from Memory (LDHM [R:(4,4),DEST] [R:(4,4),SRC_PTR]):16
-	
+	byte Registers = r1();
+	u32* Memory = mmu_translate(ctx->Registers[REG_HI(Registers)], _ACCESS_READ);
+	ctx->Registers[REG_LO(Registers)] = Memory[0];
 }
 
 Instruction(STQM) { // Store Register Quarter-Word from Memory (STQM [R:(4,4),DEST] [R:(4,4),SRC_PTR]):16
