@@ -67,7 +67,7 @@
 		8CB19B2B27A9FDFF00CC7204 /* mmu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mmu.h; sourceTree = "<group>"; };
 		8CB19B2D27A9FE1600CC7204 /* cpu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cpu.h; sourceTree = "<group>"; };
 		8CB19B2E27A9FE6A00CC7204 /* ctx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ctx.h; sourceTree = "<group>"; };
-		8CB19B2F27A9FF9A00CC7204 /* cpu_ops.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cpu_ops.c; sourceTree = "<group>"; };
+		8CB19B2F27A9FF9A00CC7204 /* cpu_ops.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cpu_ops.c; sourceTree = "<group>"; wrapsLines = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
