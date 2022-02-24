@@ -15,11 +15,12 @@
  
  Where NAME is the Instruction's name
  Where DESCRIPTION is the Instruction's functional description
- Where (R|I) represents R or I depending on if the value is a register or immediate
- Where D is the Operand's name
- Where PSZ is the allocated size of the operand in bits
- Where USZ is the usable size of the operand in bits
- Where TISZ is the total size of the instruction in bits
+ Where (R|I) represents R, I, or F depending on if the value is a Register, Immediate or Floating (Special)
+	Register.
+ Where D is the Operand's name.
+ Where PSZ is the allocated size of the operand in bits.
+ Where USZ is the usable size of the operand in bits.
+ Where TISZ is the total size of the instruction in bits.
  Where NN is the total size of the opcode. See example below.
  
  Differences between PSZ and USZ occur when needed to be used as padding when an instruction's argument size in bits not divisible by 8 (or byte size on architecture).
@@ -132,7 +133,29 @@ enum {
 	__STHMII = 0x5D, // Store Immediate Immediate Half Word in Memory (STHMII [I:(64,64),DEST] [I:(32,32),SRC]):104
 	__STQMII = 0x5E, // Store Immediate Immediate Quarter Word in Memory (STQMII [I:(64,64),DEST] [I:(16,16),SRC]):88
 	__STBMII = 0x5F, // Store Immediate Immediate Byte in Memory (STBMII [I:(64,64),DEST] [I:(8,8),SRC]):80
-	
+	__GFCPS = 0x60, // Get Floating CoProcessor Status (GFCPS [R:(4,8),DEST]):16
+	__SFDP = 0x61, // Set Floating Double Precision (SFDP):8
+	__CFDP = 0x62, // Clear Floating Double Precision (CFDP):8
+	__TFRX = 0x63, // Exchange Floating with Regular Register (TFRX [F:(4,4),FP_REG] [R:(4,4),INT_REG]):16
+	__CFRI = 0x64, // Convert Floating to Regular Integer (CFRI [F:(4,4),FP_REG] [R:(4,4),INT_REG]):16
+	__CFFI = 0x65, // Convert Floating to Floating Integer (CFFI [F:(4,4),FP_REG0] [F:(4,4),FP_REG1]):16
+	__LSFR = 0x66, // Load Single Precision Float from Register (LSFR [F:(4,4),FP_DEST] [R:(4,4),INT_SRC]):16
+	__LDFR = 0x67, // Load Double Precision Float from Register (LSFR [F:(4,4),FP_DEST] [R:(4,4),INT_SRC]):16
+	__FABS = 0x68, // Floating Absolute Value (FABS [F:(4,8),SRC]):16
+	__FABST = 0x68, // Floating Absolute Value To (FABS [F:(4,4),SRC] [F:(4,4),DEST]):16
+	__FADD = 0x69, // Floating Addition (FADD [F:(4,4),SRC] [F:(4,4),ADDER]):16
+	__FADDT = 0x6A, // Floating Addition To (FADDT [F:(4,4),SRC] [F:(4,4),ADDER] [F:(4,8),DST]):24
+	__FSUB = 0x6B, // Floating Subtraction (FSUB [F:(4,4),SRC] [F:(4,4),SUBBER]):16
+	__FSUBT = 0x6C, // Floating Subtraction To (FSUBT [F:(4,4),SRC] [F:(4,4),SUBBER], [F:(4,8),DEST]):24
+	__FMUL = 0x6D, // Floating Multiply (FMUL [F:(4,4),SRC] [F:(4,4),FACTOR]):16
+	__FMULT = 0x6E, // Floating Multiply To (FMULT [F:(4,4),SRC] [F:(4,4),FACTOR] [F:(4,8),DEST]):24
+	__FDIV = 0x6F, // Floating Divide (FDIV [F:(4,4),SRC] [F:(4,4),DIVISOR]):16
+	__FDIVT = 0x70, // Floating Divide To (FDIVT [F:(4,4),SRC] [F:(4,4),DIVISOR] [F:(4,8),DEST]):24
+	__FMOD = 0x71, // Floating Modulo (FMOD [F:(4,4),SRC] [F:(4,4),DIVISOR]):16
+	__FMODT = 0x72, // Floating Modulo To (FMODT [F:(4,4),SRC] [F:(4,4),DIVISOR] [F:(4,8),DEST]):24
+	__FSIN = 0x73, // Floating Sine{x} (FSIN [F:(4,8),SRC]):16
+	__FSINT = 0x74, // Floating Sine{x} To (FSINT [F:(4,4),SRC] [F:(4,4),DEST]):16
+
 };
 
 extern void(*InstructionHandlers[256])(void);
