@@ -9,6 +9,6 @@
 
 #ifdef _FPU_SOFT
 double pow(float Base, float Power) {
-
+	return 0.0; // this will be a challenge
 }
 #endif

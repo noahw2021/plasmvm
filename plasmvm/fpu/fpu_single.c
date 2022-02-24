@@ -6,9 +6,7 @@
 //
 
 #include "fpu.h"
-#ifdef _APPLE
 #include <math.h>
-#endif
 
 x32 fpusi_integrand(x32 x, x32 Value) {
 	x32 Return;
