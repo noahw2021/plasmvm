@@ -69,10 +69,11 @@ typedef float x32;
 #define CLR_SYSTEMFLAG(x)	(x &= FLAG_SF)
 #define CLR_INPUTFLAG(x) 	(x &= FLAG_XF)
 
-#define _REGISTERCNT 32
+
 #define _GPRCNT 16
 #define _FPRCNT 8
 #define _SYSCNT 8
+#define _REGISTERCNT (_GPRCNT + _FPRCNT + _SYSCNT)
 
 typedef struct ictx {
 	union {
