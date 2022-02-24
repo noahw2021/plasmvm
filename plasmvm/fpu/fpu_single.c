@@ -25,7 +25,7 @@ x32 fpus_abs(x32 Source) {
 }
 
 x32 fpus_fact(x32 Source) {
-	x32 Area;
+	x32 Area = 0.0;
 	x32 A = 0;
 	x32 B = __FPU_FACTORIALB;
 	x32 P = 50 * B * _FPU_FACTORIALPREC;

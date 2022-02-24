@@ -25,7 +25,7 @@ x64 fpud_abs(x64 Source) {
 }
 
 x64 fpud_fact(x64 Source) {
-	x64 Area;
+	x64 Area = 0.0;
 	x64 A = 0;
 	x64 B = __FPU_FACTORIALB;
 	x64 P = 50 * B * _FPU_FACTORIALPREC;
