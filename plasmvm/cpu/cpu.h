@@ -155,7 +155,50 @@ enum {
 	__FMODT = 0x72, // Floating Modulo To (FMODT [F:(4,4),SRC] [F:(4,4),DIVISOR] [F:(4,8),DEST]):24
 	__FSIN = 0x73, // Floating Sine{x} (FSIN [F:(4,8),SRC]):16
 	__FSINT = 0x74, // Floating Sine{x} To (FSINT [F:(4,4),SRC] [F:(4,4),DEST]):16
-
+	__FCOS = 0x75, // Floating CoSine{x} (FCOS [F:(4,8),SRC]):16
+	__FCOST = 0x76, // Floating CoSine{x} To (FCOST [F:(4,4),SRC] [F:(4,4),DEST]):16
+	__FTAN = 0x77, // Floating Tangent{x} (FTAN [F:(4,8),SRC]):16
+	__FTANT = 0x78, // Floating Tangnet{x} To (FTANT [F:(4,4),SRC] [F:(4,4),DEST]):16
+	__FSEC = 0x79, // Floating Secant{x} (FSEC [F:(4,8),SRC]):16
+	__FSECT = 0x7A, // Floating Secant{x} To (FSECT [F:(4,4),SRC] [F:(4,4),DEST]):16
+	__FCSC = 0x7B, // Floating CoSecant{x} (FCSC [F:(4,8),SRC]):16
+	__FCSCT = 0x7C, // Floating CoSecant{x} To (FCSCT [F:(4,4),SRC] [F:(4,4),DEST]):16
+	__FCOT = 0x7B, // Floating CoTangent{x} (FCOT [F:(4,8),SRC]):16
+	__FCOTT = 0x7C, // Floating CoTangent{x} To (FCOTT [F:(4,4),SRC] [F:(4,4),DEST]):16
+	__FEXP = 0x7D, // Floating Exponent (FEXP [F:(4,4),BASE] [F:(4,4),EXPONENT]):16
+	__FEXPI = 0x7E, // Floating Exponent Integer (FEXPI [F:(4,4),BASE] [R:(4,4),EXPONENT]):16
+	__FEXPII = 0x7F, // Floating Exponent Immediate Integer (FEXPII [F:(4,8),BASE] [I:(16,16),EXPONENT]):32
+	__FEXPT = 0x80, // Floating Exponent To (FEXPT [F:(4,4),BASE] [F:(4,4),EXPONENT] [F:(4,8),DEST]):24
+	__FEXPIT = 0x81, // Floating Exponent Integer To (FEXPIT [F:(4,4),BASE] [R:(4,4),EXPONENT] [F:(4,8),DEST]):24
+	__FEXPIIT = 0x82, // Floating Exponent Immediate To Integer (FEXPIIT [F:(4,8),BASE] [I:(16,16),EXPONENT] [F:(4,8),DEST]):40
+	__FNSIN = 0x83, // Floating Inverse Sine{x} (FNSIN [F:(4,8),SRC]):16
+	__FNSINT = 0x84, // Floating Inverse Sine{x} To (FNSINT [F:(4,4),SRC] [F:(4,4),DEST]):16
+	__FNCOS = 0x85, // Floating Inverse CoSine{x} (FNCOS [F:(4,8),SRC]):16
+	__FNCOST = 0x86, // Floating Inverse CoSine{x} To (FNCOST [F:(4,4),SRC] [F:(4,4),DEST]):16
+	__FNTAN = 0x87, // Floating Inverse Tangent{x} (FNTAN [F:(4,8),SRC]):16
+	__FNTANT = 0x88, // Floating Inverse Tangent{x} To (FNTANT [F:(4,4),SRC] [F:(4,4),DEST]):16
+	__FNSEC = 0x89, // Floating Inverse Secant{x} (FNSEC [F:(4,8),SRC]):16
+	__FNCSC = 0x8A, // Floating Inverse CoSecant{x} (FNCSC [F:(4,8),SRC]):16
+	__FNCOT = 0x8B, // Floating Inverse CoTangent{x} (FNCOT [F:(4,8),SRC]):16
+	__FNSECT = 0x8C, // Floating Inverse Secant{x} To (FNSECT [F:(4,4),SRC] [F:(4,4),DEST]):16
+	__FNCSCT = 0x8D, // Floating Inverse CoSecant{x} To (FNCSCT [F:(4,4),SRC] [F:(4,4),DEST]):16
+	__FNCOTT = 0x8E, // Floating Inverse CoTangent{x} To (FNCOTT [F:(4,4),SRC] [F:(4,4),DEST]):16
+	__FINC = 0x8F, // Floating Increment (FINC [F:(4,8),REG]):16
+	__FDEC = 0x90, // Floating Decrement (FDEC [F:(4,8),REG]):16
+	__FNEG = 0x91, // Floating Negate (FNEG [F:(4,8),REG]):16
+	__F1OX = 0x92, // Floating 1/x (F1OX [F:(4,8),REG]):16
+	__FFCT = 0x93, // Floating Factorial (FFCT [F:(4,8),REG]):16
+	__FFSF = 0x94, // Floating Flip Sign (FFSF [F:(4,8),REG]):16
+	__FAIF = 0x95, // Floating Add Floating With Regular (FAIF [F:(4,4),SRC] [R:(4,4),REG]):16
+	__FSIF = 0x96, // Floating Sub Floating With Regular (FSIF [F:(4,4),SRC] [R:(4,4),REG]):16
+	__FMIF = 0x97, // Floating Multiply Floating With Regular (FMIF [F:(4,4),SRC] [R:(4,4),REG]):16
+	__FDIF = 0x98, // Floating Divison Floating With Regular (FDIF [F:(4,4),SRC] [R:(4,4),REG]):16
+	__FMODIF = 0x99, // Floating Modulo Floating With Regular (FMODIF [F:(4,4),SRC] [R:(4,4),REG]):16
+	__FAIFI = 0x9A, // Floating Add Floating with Regular (FAIFI [F:(4,8), SRC] [I:(64,64),IMMT]):80
+	__FSIFI = 0x9B, // Floating Subtract Floating with Regular (FSIFI [F:(4,8), SRC] [I:(64,64),IMMT]):80
+	__FMIFI = 0x9C, // Floating Multiply Floating with Regular (FMIFI [F:(4,8), SRC] [I:(64,64),IMMT]):80
+	__FDIFI = 0x9D, // Floating Division Floating with Regular (FDIFI [F:(4,8), SRC] [I:(64,64),IMMT]):80
+	__FMODIFI = 0x9E, // Floating Modulo Floating with Regular (FMODIFI [F:(4,8), SRC] [I:(64,64),IMMT]):80
 };
 
 extern void(*InstructionHandlers[256])(void);
