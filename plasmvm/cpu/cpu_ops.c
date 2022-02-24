@@ -151,7 +151,7 @@ Instruction(SRI) { // Shift Right Immediate (SRI [R:(4,8),SRC] [I:(6,8,AMT]):24
 	byte Immediate = r1() & 0x3F;
 	ctx->Registers[Register] <<= Immediate;
 }
-Instruction(SA) { // Stack Add (Push) (SA	[R:(4,8),SRC]):16
+Instruction(SA) { // Stack Add (Push) (SA [R:(4,8),SRC]):16
 	byte Register = r1() & 0xF;
 	mmui_stackput(ctx->Registers[Register]);
 }
