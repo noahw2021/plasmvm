@@ -18,6 +18,9 @@ typedef short i16;
 typedef long i32;
 typedef long long i64;
 
+typedef double x64;
+typedef float x32;
+
 #define FLAG_TF 0x0001 // Trap Flag
 #define FLAG_IF	0x0002 // Interupt Flag
 #define FLAG_HF	0x0004 // Halt Flag
@@ -66,8 +69,10 @@ typedef long long i64;
 #define CLR_SYSTEMFLAG(x)	(x &= FLAG_SF)
 #define CLR_INPUTFLAG(x) 	(x &= FLAG_XF)
 
-#define _REGISTERCNT 24
+#define _REGISTERCNT 32
 #define _GPRCNT 16
+#define _FPRCNT 8
+#define _SYSCNT 8
 
 typedef struct ictx {
 	union {
@@ -84,16 +89,36 @@ typedef struct ictx {
 				};
 			};
 			
-			// System State Registers
-			u64 ip; // Instruction Pointer
-			u64 sp; // Stack Pointer
+			// System Registers
+			union {
+				u64 SYSs[_SYSCNT];
+				struct {
+					// System State Registers
+					u64 ip; // Instruction Pointer
+					u64 sp; // Stack Pointer
 			
-			// System Control Registers
-			u64 sd0, sd1; // System Descriptor
-			u64 vm0, vm1; // Virtual Memory Descriptor
+					// System Control Registers
+					u64 sd0, sd1; // System Descriptor
+					u64 vm0, vm1; // Virtual Memory Descriptor
 			
-			// Program Control Registers
-			u64 sf0, sf1; // System Flags
+					// Program Control Registers
+					u64 sf0, sf1; // System Flags
+				};
+			};
+			// Floating Point Registers
+			union {
+				u64 FPRs[_FPRCNT];
+				struct {
+					x32 f0,  f1,  f2,  f3;
+					x32 f4,  f5,  f6,  f7;
+					x32 f8,  f9,  f10, f11;
+					x32 f12, f13, f14, f15;
+				};
+				struct {
+					x64 x0, x1, x2, x3;
+					x64 x4, x5, x6, x7;
+				};
+			};
 		};
 	};
 	u64 InterruptHandlers[256]; // This should be a location in memory probably

@@ -505,7 +505,7 @@ Instruction(STBMII) { // Store Immediate Immediate Byte in Memory (STBMII [I:(64
 	Memory[0] = ImmediateSource;
 }
 Instruction(FINC) {
-
+	
 } // = 0x8F, // Floating Increment (FINC [F:(4,8),REG]):16
 
 Instruction(FDEC) {
