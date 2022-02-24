@@ -441,25 +441,41 @@ Instruction(LDHM) { // Load Register Half-Word from Memory (LDHM [R:(4,4),DEST] 
 }
 
 Instruction(STQM) { // Store Register Quarter-Word from Memory (STQM [R:(4,4),DEST] [R:(4,4),SRC_PTR]):16
-	
+	byte Registers = r1();
+	u16* Memory = mmu_translate(ctx->Registers[REG_HI(Registers)], _ACCESS_WRITE);
+	Memory[0] = ctx->Registers[REG_LO(Registers)];
 }
 
 Instruction(STHM) { // Store Register Half-Word in Memory (STHM [R:(4,4),DEST] [R:(4,4),SRC_PTR]):16
-	
+	byte Registers = r1();
+	u32* Memory = mmu_translate(ctx->Registers[REG_HI(Registers)], _ACCESS_WRITE);
+	Memory[0] = ctx->Registers[REG_LO(Registers)];
 }
 
 Instruction(LDQMI) { // Load Immediate Quarter-Word from Memory (LDQM [R:(4,8),DEST] [I:(16,16),SRC]):32
-	
+	byte Register = r1();
+	u16 Immediate = rx(2);
+	u16* Memory = mmu_translate(Immediate, _ACCESS_READ);
+	ctx->Registers[Register] = Memory[0];
 }
 
 Instruction(LDHMI) { // Load Immediate Half-Word from Memory (LDHM [R:(4,8),DEST] [I:(32,32),SRC]):48
-	
+	byte Register = r1();
+	u32 Immediate = rx(4);
+	u32* Memory = mmu_translate(Immediate, _ACCESS_READ);
+	ctx->Registers[Register] = Memory[0];
 }
 
-Instruction(STQMI) { // Store Immediate Quarter-Word from Memory (STQM [R:(4,8),DEST] [I:(16,16),SRC]):32
-	
+Instruction(STQMI) { // Store Immediate Quarter-Word in Memory (STQM [R:(4,8),DEST] [I:(16,16),SRC]):32
+	byte Register = r1();
+	u16 Immediate = rx(2);
+	u16* Memory = mmu_translate(Register, _ACCESS_WRITE);
+	Memory[0] = Immediate;
 }
 
 Instruction(STHMI) { // Store Immediate Half-Word in Memory (STHM [R:(4,8),DEST] [I:(32,32),SRC):48
-	
+	byte Register = r1();
+	u32 Immediate = rx(2);
+	u32* Memory = mmu_translate(Register, _ACCESS_WRITE);
+	Memory[0] = Immediate;
 }
