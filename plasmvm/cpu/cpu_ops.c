@@ -11,6 +11,7 @@
 #include "cpu.h"
 #include "../mmu/mmu.h"
 #include "../io/io.h"
+#include "../fpu/fpu.h"
 
 Instruction(SET) { // Set Register (SET [R:(4,4),DEST] [R:(4,4),SRC]):16
 	byte Registers = r1();
@@ -505,23 +506,42 @@ Instruction(STBMII) { // Store Immediate Immediate Byte in Memory (STBMII [I:(64
 	Memory[0] = ImmediateSource;
 }
 Instruction(FINC) {
-	
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[Register] += 1.0f;
+	else
+		ctx->FPR_SINGLE[Register] += 1.0f;
+	return;
 } // = 0x8F, // Floating Increment (FINC [F:(4,8),REG]):16
 
 Instruction(FDEC) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[Register] -= 1.0f;
+	else
+		ctx->FPR_SINGLE[Register] -= 1.0f;
+	return;
 } // = 0x90, // Floating Decrement (FDEC [F:(4,8),REG]):16
 
 Instruction(FNEG) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[Register] = fpud_abs(ctx->FPR_DOUBLE[Register]) * -1.0f;
+	else
+		ctx->FPR_SINGLE[Register] = fpus_abs(ctx->FPR_SINGLE[Register]) * -1.0f;
 } // = 0x91, // Floating Negate (FNEG [F:(4,8),REG]):16
 
 Instruction(F1OX) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[Register] = 1.0f / ctx->FPR_DOUBLE[Register];
+	else
+		ctx->FPR_SINGLE[Register] = 1.0f / ctx->FPR_SINGLE[Register];
+	return;
 } // = 0x92, // Floating 1/x (F1OX [F:(4,8),REG]):16
 
 Instruction(FFCT) {
-
+	
 } // = 0x93, // Floating Factorial (FFCT [F:(4,8),REG]):16
 
 Instruction(FFSF) {

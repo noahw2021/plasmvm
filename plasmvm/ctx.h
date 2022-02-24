@@ -32,6 +32,7 @@ typedef float x32;
 #define FLAG_UF	0x0100 // User Flag
 #define FLAG_SF 0x0200 // System Flag
 #define FLAG_XF	0x0400 // Interrupt Input Flag
+#define FLAG_PF 0x0800 // Precise Flag
 
 #define GET_TRAPFLAG(x)		(x & FLAG_TF)
 #define GET_INTFLAG(x)		(x & FLAG_IF)
@@ -44,6 +45,7 @@ typedef float x32;
 #define GET_USERFLAG(x)		(x & FLAG_UF)
 #define GET_SYSTEMFLAG(x)	(x & FLAG_SF)
 #define GET_INPUTFLAG(x) 	(x & FLAG_XF)
+#define GET_PRECISEFLAG(x)  (x & FLAG_PF)
 
 #define SET_TRAPFLAG(x)		(x |= FLAG_TF)
 #define SET_INTFLAG(x)		(x |= FLAG_IF)
@@ -56,19 +58,20 @@ typedef float x32;
 #define SET_USERFLAG(x)		(x |= FLAG_UF)
 #define SET_SYSTEMFLAG(x)	(x |= FLAG_SF)
 #define SET_INPUTFLAG(x) 	(x |= FLAG_XF)
+#define SAET_PRECISEFLAG(x) (x |= FLAG_PF)
 
-#define CLR_TRAPFLAG(x)		(x &= FLAG_TF)
-#define CLR_INTFLAG(x)		(x &= FLAG_IF)
-#define CLR_HALTFLAG(x)		(x &= FLAG_HF)
-#define CLR_GREATFLAG(x)	(x &= FLAG_GF)
-#define CLR_LESSFLAG(x)		(x &= FLAG_LF)
-#define CLR_EQUALFLAG(x)	(x &= FLAG_EF)
-#define CLR_ZEROFLAG(x)		(x &= FLAG_ZF)
-#define CLR_CARRYFLAG(x)	(x &= FLAG_CF)
-#define CLR_USERFLAG(x)		(x &= FLAG_UF)
-#define CLR_SYSTEMFLAG(x)	(x &= FLAG_SF)
-#define CLR_INPUTFLAG(x) 	(x &= FLAG_XF)
-
+#define CLR_TRAPFLAG(x)		(x &= ~FLAG_TF)
+#define CLR_INTFLAG(x)		(x &= ~FLAG_IF)
+#define CLR_HALTFLAG(x)		(x &= ~FLAG_HF)
+#define CLR_GREATFLAG(x)	(x &= ~FLAG_GF)
+#define CLR_LESSFLAG(x)		(x &= ~FLAG_LF)
+#define CLR_EQUALFLAG(x)	(x &= ~FLAG_EF)
+#define CLR_ZEROFLAG(x)		(x &= ~FLAG_ZF)
+#define CLR_CARRYFLAG(x)	(x &= ~FLAG_CF)
+#define CLR_USERFLAG(x)		(x &= ~FLAG_UF)
+#define CLR_SYSTEMFLAG(x)	(x &= ~FLAG_SF)
+#define CLR_INPUTFLAG(x) 	(x &= ~FLAG_XF)
+#define CLR_PRECISEFLAG(x)  (x &= ~FLAG_PF)
 
 #define _GPRCNT 16
 #define _FPRCNT 8
@@ -110,14 +113,24 @@ typedef struct ictx {
 			union {
 				u64 FPRs[_FPRCNT];
 				struct {
-					x32 f0,  f1,  f2,  f3;
-					x32 f4,  f5,  f6,  f7;
-					x32 f8,  f9,  f10, f11;
-					x32 f12, f13, f14, f15;
+					union {
+						x32 FPR_SINGLE[_FPRCNT * 2];
+						struct {
+							x32 f0,  f1,  f2,  f3;
+							x32 f4,  f5,  f6,  f7;
+							x32 f8,  f9,  f10, f11;
+							x32 f12, f13, f14, f15;
+						};
+					};
 				};
 				struct {
-					x64 x0, x1, x2, x3;
-					x64 x4, x5, x6, x7;
+					union {
+						x64 FPR_DOUBLE[_FPRCNT];
+						struct {
+							x64 x0, x1, x2, x3;
+							x64 x4, x5, x6, x7;
+						};
+					};
 				};
 			};
 		};

@@ -14,6 +14,8 @@
 		8C925E8027AB057900150F9E /* mmu_load.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C925E7F27AB057900150F9E /* mmu_load.c */; };
 		8C925E8227AB08C000150F9E /* mmu_translate.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C925E8127AB08C000150F9E /* mmu_translate.c */; };
 		8C925E8627AB0F3400150F9E /* term_data.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C925E8527AB0F3400150F9E /* term_data.c */; };
+		8CA8731127C7F6F500C84A63 /* fpu_single.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CA8731027C7F6F500C84A63 /* fpu_single.c */; };
+		8CA8731327C7F86A00C84A63 /* fpu_double.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CA8731227C7F86A00C84A63 /* fpu_double.c */; };
 		8CAFC6FE27AD9F9F00FA69B7 /* term_sdl.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFC6FD27AD9F9F00FA69B7 /* term_sdl.c */; };
 		8CAFC70327ADA51500FA69B7 /* libSDL2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAFC70227ADA51500FA69B7 /* libSDL2.dylib */; };
 		8CAFC70627ADA69700FA69B7 /* kb.h in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFC70527ADA69700FA69B7 /* kb.h */; };
@@ -49,6 +51,9 @@
 		8C925E8127AB08C000150F9E /* mmu_translate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = mmu_translate.c; sourceTree = "<group>"; };
 		8C925E8427AB0EED00150F9E /* term.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = term.h; sourceTree = "<group>"; };
 		8C925E8527AB0F3400150F9E /* term_data.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = term_data.c; sourceTree = "<group>"; };
+		8CA8730F27C7F6B900C84A63 /* fpu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fpu.h; sourceTree = "<group>"; };
+		8CA8731027C7F6F500C84A63 /* fpu_single.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fpu_single.c; sourceTree = "<group>"; };
+		8CA8731227C7F86A00C84A63 /* fpu_double.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fpu_double.c; sourceTree = "<group>"; };
 		8CAFC6FD27AD9F9F00FA69B7 /* term_sdl.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = term_sdl.c; sourceTree = "<group>"; };
 		8CAFC70027AD9FD200FA69B7 /* libSDL2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSDL2.dylib; path = ../../../../../../../../usr/local/Cellar/sdl2/2.0.18/lib/libSDL2.dylib; sourceTree = "<group>"; };
 		8CAFC70227ADA51500FA69B7 /* libSDL2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSDL2.dylib; path = ../../../../../../../../usr/local/Cellar/sdl2/2.0.20/lib/libSDL2.dylib; sourceTree = "<group>"; };
@@ -91,6 +96,16 @@
 				8CAFC6FD27AD9F9F00FA69B7 /* term_sdl.c */,
 			);
 			path = term;
+			sourceTree = "<group>";
+		};
+		8CA8730E27C7F6B300C84A63 /* fpu */ = {
+			isa = PBXGroup;
+			children = (
+				8CA8730F27C7F6B900C84A63 /* fpu.h */,
+				8CA8731027C7F6F500C84A63 /* fpu_single.c */,
+				8CA8731227C7F86A00C84A63 /* fpu_double.c */,
+			);
+			path = fpu;
 			sourceTree = "<group>";
 		};
 		8CAFC6FF27AD9FD200FA69B7 /* Frameworks */ = {
@@ -142,6 +157,7 @@
 		8CB19B1E27A9FDCB00CC7204 /* plasmvm */ = {
 			isa = PBXGroup;
 			children = (
+				8CA8730E27C7F6B300C84A63 /* fpu */,
 				8CB19B2927A9FDEC00CC7204 /* io */,
 				8CB19B2827A9FDE900CC7204 /* mmu */,
 				8CB19B2727A9FDE500CC7204 /* cpu */,
@@ -250,8 +266,10 @@
 				8CAFC70627ADA69700FA69B7 /* kb.h in Sources */,
 				8C925E7E27AB043600150F9E /* mmu_read.c in Sources */,
 				8C925E8227AB08C000150F9E /* mmu_translate.c in Sources */,
+				8CA8731127C7F6F500C84A63 /* fpu_single.c in Sources */,
 				8CAFC71927ADBEBF00FA69B7 /* cpu_advops.c in Sources */,
 				8CB19B3027A9FF9A00CC7204 /* cpu_ops.c in Sources */,
+				8CA8731327C7F86A00C84A63 /* fpu_double.c in Sources */,
 				8CAFC70E27ADA8CA00FA69B7 /* scd_events.c in Sources */,
 				8C05BC6327B2B701006F57AD /* io_bus.c in Sources */,
 				8CAFC70827ADA76C00FA69B7 /* io_load.c in Sources */,
