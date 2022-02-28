@@ -53,5 +53,5 @@ x64 fpud_fact(x64 Source) {
 }
 
 x64 fpud_sin(x64 Source) {
-	
+	return fpudi_taylorsin(5, Source);
 }
