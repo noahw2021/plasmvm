@@ -37,7 +37,9 @@ x32 fpus_pow(x32 Power, x32 Source);
 x32 fpus_rooti(int Root, x32 Source);
 x32 fpus_expi(int Exponent, x32 Source);
 x32 fpus_mod(x32 Divisor, x32 Source);
-x32 fpud_log2(x32 Source);
+x32 fpus_log2(x32 Source);
+
+x64 fpui_rooti(x64 Number, int Root);
 
 // Declarations for helper functions
 #define __FPU_FACTORIALB (_FPU_FACTORIALPREC * 3000)
