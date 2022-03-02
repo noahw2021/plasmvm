@@ -11,7 +11,7 @@
 
 x64 fpud_pow(x64 Power, x64 Source) {
 	x64 Return = 1.0;
-	x64 Fraction, Fraction2, Multiplier = 1.0;
+	x64 Fraction, Fraction2;
 	modf(Power, &Fraction);
 	if (Fraction == 0) {
 		for (int i = 0; i < Power; i++) {
@@ -19,13 +19,9 @@ x64 fpud_pow(x64 Power, x64 Source) {
 		}
 		return Return;
 	} else {
-		modf(Fraction, &Fraction2);
-		do {
-			Fraction *= 10;
-			Multiplier *= 10;
-			modf(Fraction, &Fraction2);
-		} while (Fraction2 != 0.0);
-		return fpud_expi(Fraction, fpud_rooti(Multiplier, Source));
+		x64 Fraction3 = modf(Fraction, &Fraction2);
+		u64 Root = (u64)(1.0 / (x64)Fraction3);
+		return fpud_rooti((int)Root, fpud_pow(Fraction2, Source));
 	}
 }
 
