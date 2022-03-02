@@ -9,6 +9,8 @@
 #include <math.h>
 #include "../fpu.h"
 
+
+
 x64 fpud_pow(x64 Power, x64 Source) {
 	x64 Return = 1.0;
 	x64 Fraction, Fraction2;

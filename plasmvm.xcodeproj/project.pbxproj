@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8C05BC6327B2B701006F57AD /* io_bus.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C05BC6227B2B701006F57AD /* io_bus.c */; };
+		8C60515927CFE26300D4C6D4 /* fpu_softroots.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C60515827CFE26300D4C6D4 /* fpu_softroots.c */; };
 		8C925E7A27AAED6E00150F9E /* cpu_handlers.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C925E7927AAED6E00150F9E /* cpu_handlers.c */; };
 		8C925E7C27AAF04200150F9E /* cpu_engine.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C925E7B27AAF04200150F9E /* cpu_engine.c */; };
 		8C925E7E27AB043600150F9E /* mmu_read.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C925E7D27AB043600150F9E /* mmu_read.c */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		8C05BC6227B2B701006F57AD /* io_bus.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = io_bus.c; sourceTree = "<group>"; };
+		8C60515827CFE26300D4C6D4 /* fpu_softroots.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fpu_softroots.c; sourceTree = "<group>"; };
 		8C925E7927AAED6E00150F9E /* cpu_handlers.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cpu_handlers.c; sourceTree = "<group>"; };
 		8C925E7B27AAF04200150F9E /* cpu_engine.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cpu_engine.c; sourceTree = "<group>"; };
 		8C925E7D27AB043600150F9E /* mmu_read.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = mmu_read.c; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			children = (
 				8CD94B4027CD1FFB0030DEF5 /* fpu_c.c */,
 				8CD94B4427CD23130030DEF5 /* fpu_soft.c */,
+				8C60515827CFE26300D4C6D4 /* fpu_softroots.c */,
 			);
 			path = impl;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				8CAFC6FE27AD9F9F00FA69B7 /* term_sdl.c in Sources */,
 				8CB19B2027A9FDCB00CC7204 /* main.c in Sources */,
 				8C925E8027AB057900150F9E /* mmu_load.c in Sources */,
+				8C60515927CFE26300D4C6D4 /* fpu_softroots.c in Sources */,
 				8C925E8627AB0F3400150F9E /* term_data.c in Sources */,
 				8C925E7A27AAED6E00150F9E /* cpu_handlers.c in Sources */,
 				8CAFC71227ADB0FD00FA69B7 /* kb_events.c in Sources */,
