@@ -13,12 +13,10 @@
 #define _FPU_SINEPREC	    1
 
 #define __FPUENUM_SOFT	0x01
-#define __FPUENUM_X86	0x02
-#define __FPUENUM_X64	0x03
-#define __FPUENUM_CMATH	0x04
+#define __FPUENUM_CMATH	0x02
 
 // If you are getting compliation errors, ensure you are capable of using the desired FPU engine.
-#define _FPU_TYPE __FPUENUM_X64
+#define _FPU_TYPE __FPUENUM_SOFT
 
 // Abstracted higher level functions
 x32 fpus_abs(x32 Source);
@@ -38,6 +36,9 @@ x32 fpus_pow(x32 Power, x32 Source);
 x32 fpus_rooti(int Root, x32 Source);
 x32 fpus_expi(int Exponent, x32 Source);
 x32 fpus_mod(x32 Divisor, x32 Source);
+
+x32 fpuf32_getsignificand(x32 Source);
+x64 fpuf64_getsignificand(x64 Source);
 
 // Declarations for helper functions
 #define __FPU_FACTORIALB (_FPU_FACTORIALPREC * 3000)

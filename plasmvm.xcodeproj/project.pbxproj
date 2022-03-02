@@ -29,6 +29,7 @@
 		8CB19B3027A9FF9A00CC7204 /* cpu_ops.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CB19B2F27A9FF9A00CC7204 /* cpu_ops.c */; };
 		8CD94B4127CD1FFB0030DEF5 /* fpu_c.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD94B4027CD1FFB0030DEF5 /* fpu_c.c */; };
 		8CD94B4327CD22030030DEF5 /* libSDL2_ttf.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD94B4227CD22030030DEF5 /* libSDL2_ttf.dylib */; };
+		8CD94B4527CD23130030DEF5 /* fpu_soft.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD94B4427CD23130030DEF5 /* fpu_soft.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -76,6 +77,7 @@
 		8CB19B2F27A9FF9A00CC7204 /* cpu_ops.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cpu_ops.c; sourceTree = "<group>"; wrapsLines = 0; };
 		8CD94B4027CD1FFB0030DEF5 /* fpu_c.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fpu_c.c; sourceTree = "<group>"; };
 		8CD94B4227CD22030030DEF5 /* libSDL2_ttf.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSDL2_ttf.dylib; path = ../../../../../../../../usr/local/Cellar/sdl2_ttf/2.0.18_1/lib/libSDL2_ttf.dylib; sourceTree = "<group>"; };
+		8CD94B4427CD23130030DEF5 /* fpu_soft.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fpu_soft.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				8CD94B4027CD1FFB0030DEF5 /* fpu_c.c */,
+				8CD94B4427CD23130030DEF5 /* fpu_soft.c */,
 			);
 			path = impl;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				8C925E7A27AAED6E00150F9E /* cpu_handlers.c in Sources */,
 				8CAFC71227ADB0FD00FA69B7 /* kb_events.c in Sources */,
 				8C925E7C27AAF04200150F9E /* cpu_engine.c in Sources */,
+				8CD94B4527CD23130030DEF5 /* fpu_soft.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
