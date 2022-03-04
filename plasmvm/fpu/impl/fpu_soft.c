@@ -45,6 +45,7 @@ x64 fpud_mod(x64 Divisor, x64 Source) {
 		if (Return < Divisor)
 			return Return;
 	}
+	return 0.0;
 }
 
 x32 fpus_pow(x32 Power, x32 Source) {
@@ -61,6 +62,7 @@ x32 fpus_pow(x32 Power, x32 Source) {
 		u64 Root = (u64)(1.0 / (x64)Fraction3);
 		return fpud_rooti((int)Root, fpud_pow(Fraction2, Source));
 	}
+	return 0.0;
 }
 
 x32 fpus_rooti(int Root, x32 Source) {
@@ -83,4 +85,12 @@ x32 fpus_mod(x32 Divisor, x32 Source) {
 		if (Return < Divisor)
 			return Return;
 	}
+}
+
+x32 fpus_log2(x32 Source) {
+
+}
+
+x64 fpud_log2(x64 Source) {
+	
 }

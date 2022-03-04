@@ -199,6 +199,23 @@ enum {
 	__FMIFI = 0x9C, // Floating Multiply Floating with Regular (FMIFI [F:(4,8), SRC] [I:(64,64),IMMT]):80
 	__FDIFI = 0x9D, // Floating Division Floating with Regular (FDIFI [F:(4,8), SRC] [I:(64,64),IMMT]):80
 	__FMODIFI = 0x9E, // Floating Modulo Floating with Regular (FMODIFI [F:(4,8), SRC] [I:(64,64),IMMT]):80
+	__FLOG2 = 0x9F, // Floating Log2{x}
+	__FLOG10 = 0xA0, // Floating Log10{x}
+	__FLOGE = 0xA1, // Floating Ln{x}
+	__FE10X = 0xA2, // Floating 10^x
+	__FNOP = 0xA3, // Floating No Operation
+	__F2XM1 = 0xA4, // Flating {2^x}-1
+	__FCMPFR = 0xA5, // Floating Compare Float Regular
+	__FCMPFF = 0xA6, // Floating Compare Float Float
+	__FCMPFRI = 0xA7, // Floating Compare Float Regular{Imm}
+	__FCMPFFI = 0xA8, // Floating Compare Float Float{Imm}
+	__FCMPFRII = 0xA9, // Floating Compare Float{Imm} Regular{Imm}
+	__FCMPFFII = 0xAA, // Floating Compare Float{Imm} Float{Imm}
+	__FEEX = 0xAB, // Floating e^x
+	__CFFT = 0xAC, // Copy Floating Flags to System Flags
+	__FSQRT = 0xAD, // Floating square root
+	__FCBRT = 0xAE, // Floating cubic root
+	__FNRT = 0xAF, // Floating nth-root
 };
 
 extern void(*InstructionHandlers[256])(void);

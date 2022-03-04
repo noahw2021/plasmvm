@@ -228,4 +228,3 @@ x64 fpui_rooti(x64 Number, int Root) {
 	}
 	return fpud_abs(Return);
 }
-
