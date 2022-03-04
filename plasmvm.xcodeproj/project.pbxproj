@@ -95,6 +95,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C1DAC3E27D26A3D001A5485 /* softmath */ = {
+			isa = PBXGroup;
+			children = (
+				8C60515827CFE26300D4C6D4 /* fpu_softroots.c */,
+			);
+			path = softmath;
+			sourceTree = "<group>";
+		};
 		8C925E8327AB0EDD00150F9E /* term */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,7 +226,7 @@
 			children = (
 				8CD94B4027CD1FFB0030DEF5 /* fpu_c.c */,
 				8CD94B4427CD23130030DEF5 /* fpu_soft.c */,
-				8C60515827CFE26300D4C6D4 /* fpu_softroots.c */,
+				8C1DAC3E27D26A3D001A5485 /* softmath */,
 			);
 			path = impl;
 			sourceTree = "<group>";
