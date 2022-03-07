@@ -33,11 +33,16 @@ x64 fpud_rooti(int Root, x64 Source);
 x64 fpud_expi(int Exponent, x64 Source);
 x64 fpud_mod(x64 Divisor, x64 Source);
 x64 fpud_log2(x64 Source);
+x64 fpud_logx(int Base, x64 Source);
+x64 fpud_ln(x64 Source);
+
 x32 fpus_pow(x32 Power, x32 Source);
 x32 fpus_rooti(int Root, x32 Source);
 x32 fpus_expi(int Exponent, x32 Source);
 x32 fpus_mod(x32 Divisor, x32 Source);
 x32 fpus_log2(x32 Source);
+x32 fpus_logx(int Base, x32 Source);
+x32 fpus_ln(x32 Source);
 
 x64 fpui_rooti(x64 Number, int Root);
 x64 fpui_log(int Base, x64 Value);

@@ -88,9 +88,22 @@ x32 fpus_mod(x32 Divisor, x32 Source) {
 }
 
 x32 fpus_log2(x32 Source) {
-
+	return (x32)fpui_log(2, (x64)Source);
 }
 
 x64 fpud_log2(x64 Source) {
-	
+	return fpui_log(2, Source);
+}
+
+x32 fpus_logx(int Base, x32 Source) {
+	return (x32)fpui_log(Base, (x64)Source);
+}
+x32 fpus_ln(x32 Source) {
+	return (x32)fpui_ln((x64)Source);
+}
+x64 fpud_logx(int Base, x64 Source) {
+	return fpui_log(Base, Source);
+}
+x64 fpud_ln(x64 Source) {
+	return fpui_ln(Source);
 }
