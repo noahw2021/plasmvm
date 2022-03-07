@@ -9,6 +9,8 @@
 #define fpu_h
 #include "../ctx.h"
 
+#define _FPU_PI 3.141592653589693
+
 #define _FPU_FACTORIALPREC  1
 #define _FPU_SINEPREC	    1
 
@@ -55,6 +57,9 @@ x64 fpui_rooti(x64 Number, int Root);
 x64 fpui_log(int Base, x64 Value);
 x64 fpui_ln(x64 Value);
 x64 fpui_round(x64 Value);
+x64 fpui_sin(x64 Value);
+x64 fpui_cos(x64 Value);
+x64 fpui_tan(x64 Value);
 
 // Declarations for helper functions
 #define __FPU_FACTORIALB (_FPU_FACTORIALPREC * 3000)

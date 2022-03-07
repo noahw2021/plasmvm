@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8C05BC6327B2B701006F57AD /* io_bus.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C05BC6227B2B701006F57AD /* io_bus.c */; };
+		8C180C2527D6735300AE0748 /* fpu_softtrig.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C180C2427D6735300AE0748 /* fpu_softtrig.c */; };
 		8C1DAC4027D26A56001A5485 /* fpu_softlogs.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C1DAC3F27D26A56001A5485 /* fpu_softlogs.c */; };
 		8C60515927CFE26300D4C6D4 /* fpu_softroots.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C60515827CFE26300D4C6D4 /* fpu_softroots.c */; };
 		8C925E7A27AAED6E00150F9E /* cpu_handlers.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C925E7927AAED6E00150F9E /* cpu_handlers.c */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		8C05BC6227B2B701006F57AD /* io_bus.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = io_bus.c; sourceTree = "<group>"; };
+		8C180C2427D6735300AE0748 /* fpu_softtrig.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fpu_softtrig.c; sourceTree = "<group>"; };
 		8C1DAC3F27D26A56001A5485 /* fpu_softlogs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fpu_softlogs.c; sourceTree = "<group>"; };
 		8C60515827CFE26300D4C6D4 /* fpu_softroots.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fpu_softroots.c; sourceTree = "<group>"; };
 		8C925E7927AAED6E00150F9E /* cpu_handlers.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cpu_handlers.c; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			children = (
 				8C60515827CFE26300D4C6D4 /* fpu_softroots.c */,
 				8C1DAC3F27D26A56001A5485 /* fpu_softlogs.c */,
+				8C180C2427D6735300AE0748 /* fpu_softtrig.c */,
 			);
 			path = softmath;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				8CAFC71527ADB33200FA69B7 /* mmu_stack.c in Sources */,
 				8CAFC70C27ADA8B100FA69B7 /* scd_init.c in Sources */,
 				8CAFC70627ADA69700FA69B7 /* kb.h in Sources */,
+				8C180C2527D6735300AE0748 /* fpu_softtrig.c in Sources */,
 				8C925E7E27AB043600150F9E /* mmu_read.c in Sources */,
 				8C925E8227AB08C000150F9E /* mmu_translate.c in Sources */,
 				8CA8731127C7F6F500C84A63 /* fpu_single.c in Sources */,

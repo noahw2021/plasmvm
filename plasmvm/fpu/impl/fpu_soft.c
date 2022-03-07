@@ -107,3 +107,28 @@ x64 fpud_logx(int Base, x64 Source) {
 x64 fpud_ln(x64 Source) {
 	return fpui_ln(Source);
 }
+
+x64 fpud_sin(x64 Source) {
+	return fpui_sin(Source);
+}
+
+x64 fpud_cos(x64 Source) {
+	return fpui_cos(Source);
+}
+
+x64 fpud_tan(x64 Source) {
+	return fpui_tan(Source);
+}
+
+x32 fpus_sin(x32 Source) {
+	return (x32)fpui_sin((x64)Source);
+}
+
+x32 fpus_cos(x32 Source) {
+	return (x32)fpui_cos((x64)Source);
+}
+
+x32 fpus_tan(x32 Source) {
+	return (x32)fpui_tan((x64)Source);
+}
+
