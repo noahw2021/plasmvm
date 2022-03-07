@@ -40,6 +40,8 @@ x32 fpus_mod(x32 Divisor, x32 Source);
 x32 fpus_log2(x32 Source);
 
 x64 fpui_rooti(x64 Number, int Root);
+x64 fpui_log(int Base, x64 Value);
+x64 fpui_ln(x64 Value);
 
 // Declarations for helper functions
 #define __FPU_FACTORIALB (_FPU_FACTORIALPREC * 3000)

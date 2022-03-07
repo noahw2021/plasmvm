@@ -5,7 +5,7 @@
 //  Created by Noah Wooten on 3/2/22.
 //
 
-#include "../fpu.h"
+#include "../../fpu.h"
 
 x64 fpu_primeroots[4][16] = {
 	{

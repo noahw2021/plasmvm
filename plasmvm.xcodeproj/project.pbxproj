@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8C05BC6327B2B701006F57AD /* io_bus.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C05BC6227B2B701006F57AD /* io_bus.c */; };
+		8C1DAC4027D26A56001A5485 /* fpu_softlogs.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C1DAC3F27D26A56001A5485 /* fpu_softlogs.c */; };
 		8C60515927CFE26300D4C6D4 /* fpu_softroots.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C60515827CFE26300D4C6D4 /* fpu_softroots.c */; };
 		8C925E7A27AAED6E00150F9E /* cpu_handlers.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C925E7927AAED6E00150F9E /* cpu_handlers.c */; };
 		8C925E7C27AAF04200150F9E /* cpu_engine.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C925E7B27AAF04200150F9E /* cpu_engine.c */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		8C05BC6227B2B701006F57AD /* io_bus.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = io_bus.c; sourceTree = "<group>"; };
+		8C1DAC3F27D26A56001A5485 /* fpu_softlogs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fpu_softlogs.c; sourceTree = "<group>"; };
 		8C60515827CFE26300D4C6D4 /* fpu_softroots.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fpu_softroots.c; sourceTree = "<group>"; };
 		8C925E7927AAED6E00150F9E /* cpu_handlers.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cpu_handlers.c; sourceTree = "<group>"; };
 		8C925E7B27AAF04200150F9E /* cpu_engine.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cpu_engine.c; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				8C60515827CFE26300D4C6D4 /* fpu_softroots.c */,
+				8C1DAC3F27D26A56001A5485 /* fpu_softlogs.c */,
 			);
 			path = softmath;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				8C925E8227AB08C000150F9E /* mmu_translate.c in Sources */,
 				8CA8731127C7F6F500C84A63 /* fpu_single.c in Sources */,
 				8CAFC71927ADBEBF00FA69B7 /* cpu_advops.c in Sources */,
+				8C1DAC4027D26A56001A5485 /* fpu_softlogs.c in Sources */,
 				8CB19B3027A9FF9A00CC7204 /* cpu_ops.c in Sources */,
 				8CA8731327C7F86A00C84A63 /* fpu_double.c in Sources */,
 				8CD94B4127CD1FFB0030DEF5 /* fpu_c.c in Sources */,
