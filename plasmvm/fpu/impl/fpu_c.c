@@ -35,5 +35,10 @@ x32 fpus_expi(int Exponent, x32 Source) {
 x32 fpus_mod(x32 Divisor, x32 Source) {
 	return fmodf(Source, Divisor);
 }
-
+x32 fpus_round(x32 Source) {
+	return roundf(Source);
+}
+x64 fpud_round(x64 Source) {
+	return round(Source);
+}
 #endif
