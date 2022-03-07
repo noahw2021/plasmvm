@@ -789,3 +789,91 @@ Instruction(FMODIFI) {
 Instruction(FEXPIIT) {
 
 } // Floating Exponent Immediate To Integer (FEXPIIT [F:(4,8),BASE] [I:(16,16),EXPONENT] [F:(4,8),DEST]):40
+
+Instruction(FLOG2) {
+
+}//  = 0x9F, // Floating Log2{x} (FLOG2 [F:(4,4),SRC] [F:(4,4),VAL]):16
+
+Instruction(FLOG10) {
+
+} // = 0xA0, // Floating Log10{x} (FLOG10 [F:(4,4),SRC] [F:(4,4),VAL]):16
+
+Instruction(FLOGE) {
+
+} //= 0xA1, // Floating Ln{x} (FLOGE [F:(4,4),SRC] [F:(4,4),VAL]):16
+
+Instruction(FE10X) {
+
+} //= 0xA2, // Floating 10^x (FE10X [F:(4,4),SRC] [F:(4,4),VAL]):16
+
+Instruction(FNOP) {
+
+} // 0xA3, // Floating No Operation (FNOP):8
+
+Instruction(F2XM1) {
+
+} //= 0xA4, // Flating {2^x}-1 (F2XM1 [F:(4,4),SRC] [F:(4,4),VAL]):16
+
+Instruction(FCMPFR) {
+
+} // = 0xA5, // Floating Compare Float Regular (FCMPFR [F:(4,4),VAL0] [R:(4,4),VAL1]):16
+
+Instruction(FCMPFF) {
+
+} // = 0xA6, // Floating Compare Float Float (FCMPFF [F:(4,4),VAL0] [F:(4,4),VAL1]):16
+
+Instruction(FCMPFRI) {
+
+} // = 0xA7, // Floating Compare Float Regular{Imm} (FCMPFRI [F:(4,8),VAL0] [I:(64,64),VAL1]):80
+
+Instruction(FCMPFFI) {
+
+} // = 0xA8, // Floating Compare Float Float{Imm} (FCMPFFI [F:(4,8),VAL0] [I:(64,64),VAL1]):80
+
+Instruction(FEEX) {
+
+} //0xA9, // Floating e^x (FEEX [F:(4,8),SRC]):16
+
+Instruction(CFFT) {
+
+} //0xAA, // Copy Floating Flags to System Flags (CFFT):8
+
+Instruction(FSQRT) {
+
+} // 0xAB, // Floating square root (FSQRT [F:(4,8),SRC]):16
+
+Instruction(FCBRT) {
+
+} // 0xAC, // Floating cubic root (FCBRT [F:(4,8),SRC]):16
+
+Instruction(FNRTI) {
+
+} // 0xAD, // Floating nth-root (FNRT [I:(4,4),ROOT] [F:(4,4),SRC]):16
+
+Instruction(FLOG2I) {
+
+} //= 0xAE, // Floating Log2{x}{Imm} (FLOG2I [F:(4,8),DEST] [I:(64,64),VALUE]):80
+
+Instruction(FLOG10I) {
+
+} // = 0xAF, // Floating Log10{x}{Imm} (FLOG10I [F:(4,8),DEST] [I:(64,64),VALUE]):80
+
+Instruction(FLOGEI) {
+
+} //= 0xB0, // Floating Ln{x}{Imm} (FLOGEI [F:(4,8),DEST] [I:(64,64),VALUE]):80
+
+Instruction(FLOG2R) {
+
+} //= 0xB1, // Floating Log2{x} with Regular (FLOG2R [F:(4,4),DEST] [R:(4,4),VALUE]):16
+
+Instruction(FLOG10R) {
+
+} // = 0xB2, // Floating Log10{x} with Regular (FLOG10R [F:(4,4),DEST] [R:(4,4),VALUE]):16
+
+Instruction(FLOGER) {
+
+} //= 0xB3, // Floating Ln{x} with Regular (FLOGER [F:(4,4),DEST] [R:(4,4),VALUE]):16
+
+Instruction(FNRTX) {
+
+} // 0xB4, // Floating nth-root with large root (FNRTX [I:(32,32),ROOT] [F:(4,8),SRC]):48
