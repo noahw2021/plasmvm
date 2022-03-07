@@ -166,7 +166,10 @@
     <ClCompile Include="mmu\mmu_translate.c" />
     <ClCompile Include="fpu\fpu_single.c" />
     <ClCompile Include="fpu\fpu_double.c" />
-    <ClCompile Include="fpu\fpu_soft.c" />
+    <ClCompile Include="fpu\impl\fpu_soft.c" />
+    <ClCompile Include="fpu\impl\fpu_c.c" />
+    <ClCompile Include="fpu\impl\softmath\fpu_softlogs.c" />
+    <ClCompile Include="fpu\impl\softmath\fpu_softroots.c" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
