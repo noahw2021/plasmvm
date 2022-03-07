@@ -1,8 +1,9 @@
 # plasmvm
-An interpreted PLASM emulator.
 <br>
 ![Lines of Code](https://tokei.rs/b1/github/noahw2021/plasmvm)
 ![Code size](https://img.shields.io/github/languages/code-size/noahw2021/plasmvm.svg)
+An interpreted PLASM emulator.
+
 ## Continous Integration
 Below, badges for continous integration are available.
 | Platform                 | Main |
