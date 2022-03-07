@@ -142,7 +142,6 @@ enum {
 	__LSFR = 0x66, // Load Single Precision Float from Register (LSFR [F:(4,4),FP_DEST] [R:(4,4),INT_SRC]):16
 	__LDFR = 0x67, // Load Double Precision Float from Register (LSFR [F:(4,4),FP_DEST] [R:(4,4),INT_SRC]):16
 	__FABS = 0x68, // Floating Absolute Value (FABS [F:(4,8),SRC]):16
-	__FABST = 0x68, // Floating Absolute Value To (FABS [F:(4,4),SRC] [F:(4,4),DEST]):16
 	__FADD = 0x69, // Floating Addition (FADD [F:(4,4),SRC] [F:(4,4),ADDER]):16
 	__FADDT = 0x6A, // Floating Addition To (FADDT [F:(4,4),SRC] [F:(4,4),ADDER] [F:(4,8),DST]):24
 	__FSUB = 0x6B, // Floating Subtraction (FSUB [F:(4,4),SRC] [F:(4,4),SUBBER]):16
@@ -163,8 +162,6 @@ enum {
 	__FSECT = 0x7A, // Floating Secant{x} To (FSECT [F:(4,4),SRC] [F:(4,4),DEST]):16
 	__FCSC = 0x7B, // Floating CoSecant{x} (FCSC [F:(4,8),SRC]):16
 	__FCSCT = 0x7C, // Floating CoSecant{x} To (FCSCT [F:(4,4),SRC] [F:(4,4),DEST]):16
-	__FCOT = 0x7B, // Floating CoTangent{x} (FCOT [F:(4,8),SRC]):16
-	__FCOTT = 0x7C, // Floating CoTangent{x} To (FCOTT [F:(4,4),SRC] [F:(4,4),DEST]):16
 	__FEXP = 0x7D, // Floating Exponent (FEXP [F:(4,4),BASE] [F:(4,4),EXPONENT]):16
 	__FEXPI = 0x7E, // Floating Exponent Integer (FEXPI [F:(4,4),BASE] [R:(4,4),EXPONENT]):16
 	__FEXPII = 0x7F, // Floating Exponent Immediate Integer (FEXPII [F:(4,8),BASE] [I:(16,16),EXPONENT]):32
@@ -221,6 +218,9 @@ enum {
 	__FLOG10R = 0xB2, // Floating Log10{x} with Regular (FLOG10R [F:(4,4),DEST] [R:(4,4),VALUE]):16
 	__FLOGER = 0xB3, // Floating Ln{x} with Regular (FLOGER [F:(4,4),DEST] [R:(4,4),VALUE]):16
 	__FNRTX = 0xB4, // Floating nth-root with large root (FNRTX [I:(32,32),ROOT] [F:(4,8),SRC]):48
+	__FCOT = 0xB5, // Floating CoTangent{x} (FCOT [F:(4,8),SRC]):16
+	__FCOTT = 0xB6, // Floating CoTangent{x} To (FCOTT [F:(4,4),SRC] [F:(4,4),DEST]):16
+	__FABST = 0xB7, // Floating Absolute Value To (FABS [F:(4,4),SRC] [F:(4,4),DEST]):16
 };
 
 extern void(*InstructionHandlers[256])(void);

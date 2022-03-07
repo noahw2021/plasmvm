@@ -769,7 +769,7 @@ Instruction(FCOT) {
 	else
 		ctx->FPR_SINGLE[REG_LO(Register)] = 1.f / fpus_tan(ctx->FPR_SINGLE[REG_LO(Register)]);
 	return;
-} // = 0x7B, // Floating CoTangent{x} (FCOT [F:(4,8),SRC]):16
+} // = 0xB5, // Floating CoTangent{x} (FCOT [F:(4,8),SRC]):16
 
 Instruction(FEXP) {
 	
@@ -806,7 +806,7 @@ Instruction(FEXPI) {
 
 Instruction(FCOTT) {
 
-} // = 0x7C, // Floating CoTangent{x} To (FCOTT [F:(4,4),SRC] [F:(4,4),DEST]):16
+} // = 0xB6, // Floating CoTangent{x} To (FCOTT [F:(4,4),SRC] [F:(4,4),DEST]):16
 
 Instruction(FCSCT) {
 
@@ -870,7 +870,7 @@ Instruction(FNCOT) {
 
 Instruction(FABST) {
 
-} // = 0x68, // Floating Absolute Value To (FABS [F:(4,4),SRC] [F:(4,4),DEST]):16
+} // = 0xB7, // Floating Absolute Value To (FABS [F:(4,4),SRC] [F:(4,4),DEST]):16
 
 Instruction(GFCPS) {
 

@@ -139,13 +139,13 @@ DeclInstruction(FEXPI);
 DeclInstruction(FEXPI);
 DeclInstruction(FEXPT);
 DeclInstruction(FEXPI);
-DeclInstruction(FEXPI);
+DeclInstruction(FEXPIT);
 DeclInstruction(FNSIN);
-DeclInstruction(FNSIN);
+DeclInstruction(FNSINT);
 DeclInstruction(FNCOS);
-DeclInstruction(FNCOS);
+DeclInstruction(FNCOST);
 DeclInstruction(FNTAN);
-DeclInstruction(FNTAN);
+DeclInstruction(FNTANT);
 DeclInstruction(FNSEC);
 DeclInstruction(FNCSC);
 DeclInstruction(FNCOT);
@@ -320,16 +320,14 @@ void(*InstructionHandlers[256])(void) = {
 	ListInstruction(FCOTT),
 	ListInstruction(FEXP),
 	ListInstruction(FEXPI),
-	ListInstruction(FEXPI),
 	ListInstruction(FEXPT),
-	ListInstruction(FEXPI),
-	ListInstruction(FEXPI),
+	ListInstruction(FEXPIT),
 	ListInstruction(FNSIN),
-	ListInstruction(FNSIN),
+	ListInstruction(FNSINT),
 	ListInstruction(FNCOS),
-	ListInstruction(FNCOS),
+	ListInstruction(FNCOST),
 	ListInstruction(FNTAN),
-	ListInstruction(FNTAN),
+	ListInstruction(FNTANT),
 	ListInstruction(FNSEC),
 	ListInstruction(FNCSC),
 	ListInstruction(FNCOT),
