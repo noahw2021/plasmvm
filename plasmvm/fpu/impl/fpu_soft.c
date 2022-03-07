@@ -132,3 +132,19 @@ x32 fpus_tan(x32 Source) {
 	return (x32)fpui_tan((x64)Source);
 }
 
+x64 fpud_round(x64 Source) {
+	x64 Integer;
+	x64 Fraction = modf(Source, &Integer);
+	
+	if (Fraction >= 0.5)
+		Integer++;
+	return Integer;
+}
+x32 fpus_round(x32 Source) {
+	x64 Integer;
+	x64 Fraction = modf(Source, &Integer);
+	
+	if (Fraction >= 0.5)
+		Integer++;
+	return (x32)Integer;
+}
