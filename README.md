@@ -1,5 +1,6 @@
 # plasmvm
 An interpreted PLASM emulator.
+![](https://tokei.rs/b1/github/noahw2021/plasmvm)
 ## Continous Integration
 Below, badges for continous integration are available.
 | Platform                 | Main |
