@@ -22,10 +22,16 @@
 x32 fpus_abs(x32 Source);
 x32 fpus_fact(x32 Source);
 x32 fpus_sin(x32 Source);
+x32 fpus_cos(x32 Source);
+x32 fpus_tan(x32 Source);
+x32 fpus_round(x32 Source);
 
 x64 fpud_abs(x64 Source);
 x64 fpud_fact(x64 Source);
 x64 fpud_sin(x64 Source);
+x64 fpud_cos(x64 Source);
+x64 fpud_tan(x64 Source);
+x64 fpud_round(x64 Source);
 
 // Lower component functions, should be optimized
 x64 fpud_pow(x64 Power, x64 Source);
@@ -43,10 +49,12 @@ x32 fpus_mod(x32 Divisor, x32 Source);
 x32 fpus_log2(x32 Source);
 x32 fpus_logx(int Base, x32 Source);
 x32 fpus_ln(x32 Source);
+x32 fpus_round(x32 Source);
 
 x64 fpui_rooti(x64 Number, int Root);
 x64 fpui_log(int Base, x64 Value);
 x64 fpui_ln(x64 Value);
+x64 fpui_round(x64 Value);
 
 // Declarations for helper functions
 #define __FPU_FACTORIALB (_FPU_FACTORIALPREC * 3000)

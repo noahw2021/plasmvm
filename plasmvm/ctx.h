@@ -58,7 +58,7 @@ typedef float x32;
 #define SET_USERFLAG(x)		(x |= FLAG_UF)
 #define SET_SYSTEMFLAG(x)	(x |= FLAG_SF)
 #define SET_INPUTFLAG(x) 	(x |= FLAG_XF)
-#define SAET_PRECISEFLAG(x) (x |= FLAG_PF)
+#define SET_PRECISEFLAG(x)  (x |= FLAG_PF)
 
 #define CLR_TRAPFLAG(x)		(x &= ~FLAG_TF)
 #define CLR_INTFLAG(x)		(x &= ~FLAG_IF)

@@ -541,107 +541,238 @@ Instruction(F1OX) {
 } // = 0x92, // Floating 1/x (F1OX [F:(4,8),REG]):16
 
 Instruction(FFCT) {
-	
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[Register] = fpud_fact(ctx->FPR_DOUBLE[Register]);
+	else
+		ctx->FPR_SINGLE[Register] = fpus_fact(ctx->FPR_SINGLE[Register]);
+	return;
 } // = 0x93, // Floating Factorial (FFCT [F:(4,8),REG]):16
 
 Instruction(FFSF) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[Register] *= -1.0;
+	else
+		ctx->FPR_SINGLE[Register] *= -1.0f;
+	return;
 } // = 0x94, // Floating Flip Sign (FFSF [F:(4,8),REG]):16
 
 Instruction(FAIF) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] += ctx->GPRs[REG_HI(Register)];
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] += ctx->GPRs[REG_HI(Register)];
+	return;
 } // = 0x95, // Floating Add Floating With Regular (FAIF [F:(4,4),SRC] [R:(4,4),REG]):16
 
 Instruction(FSIF) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] -= ctx->GPRs[REG_HI(Register)];
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] -= ctx->GPRs[REG_HI(Register)];
+	return;
 } // = 0x96, // Floating Sub Floating With Regular (FSIF [F:(4,4),SRC] [R:(4,4),REG]):16
 
 Instruction(FMIF) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] *= ctx->GPRs[REG_HI(Register)];
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] *= ctx->GPRs[REG_HI(Register)];
+	return;
 } // = 0x97, // Floating Multiply Floating With Regular (FMIF [F:(4,4),SRC] [R:(4,4),REG]):16
 
 Instruction(FDIF) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] /= (x64)ctx->GPRs[REG_HI(Register)];
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] /= (x32)ctx->GPRs[REG_HI(Register)];
+	return;
 } // = 0x98, // Floating Divison Floating With Regular (FDIF [F:(4,4),SRC] [R:(4,4),REG]):16
 
 Instruction(SFDP) {
-
+	SET_PRECISEFLAG(ctx->sf0);
 } // = 0x61, // Set Floating Double Precision (SFDP):8
 
 Instruction(CFDP) {
-
+	CLR_PRECISEFLAG(ctx->sf0);
 } // = 0x62, // Clear Floating Double Precision (CFDP):8
 
 Instruction(TFRX) {
-
+	x64 BackupF;
+	u64 BackupR;
+	byte Register = r1();
+	BackupR = ctx->GPRs[REG_HI(Register)];
+	if (GET_PRECISEFLAG(ctx->sf0)) {
+		BackupF = ctx->FPR_DOUBLE[REG_LO(Register)];
+		ctx->FPR_DOUBLE[REG_LO(Register)] = (x64)BackupR;
+	} else {
+		BackupF = ctx->FPR_SINGLE[REG_LO(Register)];
+		ctx->FPR_SINGLE[REG_LO(Register)] = (x32)BackupR;
+	}
+	ctx->GPRs[REG_HI(Register)] = (u64)BackupF;
+	return;
 } // = 0x63, // Exchange Floating with Regular Register (TFRX [F:(4,4),FP_REG] [R:(4,4),INT_REG]):16
 
 Instruction(CFRI) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->GPRs[REG_HI(Register)] = ctx->FPR_DOUBLE[REG_LO(Register)];
+	else
+		ctx->GPRs[REG_HI(Register)] = ctx->FPR_SINGLE[REG_LO(Register)];
+	return;
 } // = 0x64, // Convert Floating to Regular Integer (CFRI [F:(4,4),FP_REG] [R:(4,4),INT_REG]):16
 
 Instruction(CFFI) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] = fpud_round(ctx->FPR_DOUBLE[REG_HI(Register)]);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] = fpus_round(ctx->FPR_SINGLE[REG_HI(Register)]);
+	return;
 } // = 0x65, // Convert Floating to Floating Integer (CFFI [F:(4,4),FP_REG0] [F:(4,4),FP_REG1]):16
 
 Instruction(LSFR) {
-
+	union {
+		x32 Float;
+		u32 Raw;
+	}Data;
+	byte Register = r1();
+	Data.Raw = ctx->GPRs[REG_HI(Register)];
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] = (x64)Data.Float;
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] = Data.Float;
+	return;
 } // = 0x66, // Load Single Precision Float from Register (LSFR [F:(4,4),FP_DEST] [R:(4,4),INT_SRC]):16
 
 Instruction(LDFR) {
-
+	union {
+		x64 Float;
+		u64 Raw;
+	}Data;
+	byte Register = r1();
+	Data.Raw = ctx->GPRs[REG_HI(Register)];
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] = Data.Float;
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] = (x32)Data.Float;
 } // = 0x67, // Load Double Precision Float from Register (LSFR [F:(4,4),FP_DEST] [R:(4,4),INT_SRC]):16
 
 Instruction(FABS) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] = fpud_abs(ctx->FPR_DOUBLE[REG_LO(Register)]);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] = fpus_abs(ctx->FPR_SINGLE[REG_LO(Register)]);
+	return;
 } // = 0x68, // Floating Absolute Value (FABS [F:(4,8),SRC]):16
 
 Instruction(FADD) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] += ctx->FPR_DOUBLE[REG_HI(Register)];
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] += ctx->FPR_SINGLE[REG_HI(Register)];
+	return;
 } // = 0x69, // Floating Addition (FADD [F:(4,4),SRC] [F:(4,4),ADDER]):16
 
 Instruction(FSUB) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] -= ctx->FPR_DOUBLE[REG_HI(Register)];
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] -= ctx->FPR_SINGLE[REG_HI(Register)];
+	return;
 } // = 0x6B, // Floating Subtraction (FSUB [F:(4,4),SRC] [F:(4,4),SUBBER]):16
 
 Instruction(FMUL) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] *= ctx->FPR_DOUBLE[REG_HI(Register)];
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] *= ctx->FPR_SINGLE[REG_HI(Register)];
+	return;
 } // = 0x6D, // Floating Multiply (FMUL [F:(4,4),SRC] [F:(4,4),FACTOR]):16
 
 Instruction(FDIV) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] /= ctx->FPR_DOUBLE[REG_HI(Register)];
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] /= ctx->FPR_SINGLE[REG_HI(Register)];
+	return;
 } // = 0x6F, // Floating Divide (FDIV [F:(4,4),SRC] [F:(4,4),DIVISOR]):16
 
 Instruction(FMOD) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] = fpud_mod(ctx->FPR_DOUBLE[REG_HI(Register)], ctx->FPR_DOUBLE[REG_LO(Register)]);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] = fpus_mod(ctx->FPR_SINGLE[REG_HI(Register)], ctx->FPR_SINGLE[REG_LO(Register)]);
+	return;
 } // = 0x71, // Floating Modulo (FMOD [F:(4,4),SRC] [F:(4,4),DIVISOR]):16
 
 Instruction(FSIN) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] = fpud_sin(ctx->FPR_DOUBLE[REG_LO(Register)]);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] = fpus_sin(ctx->FPR_SINGLE[REG_LO(Register)]);
+	return;
 } // = 0x73, // Floating Sine{x} (FSIN [F:(4,8),SRC]):16
 
 Instruction(FCOS) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] = fpud_cos(ctx->FPR_DOUBLE[REG_LO(Register)]);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] = fpus_cos(ctx->FPR_SINGLE[REG_LO(Register)]);
+	return;
 } // = 0x75, // Floating CoSine{x} (FCOS [F:(4,8),SRC]):16
 
 Instruction(FTAN) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] = fpud_tan(ctx->FPR_DOUBLE[REG_LO(Register)]);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] = fpus_tan(ctx->FPR_SINGLE[REG_LO(Register)]);
+	return;
 } // = 0x77, // Floating Tangent{x} (FTAN [F:(4,8),SRC]):16
 
 Instruction(FSEC) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] = 1.0 / fpud_cos(ctx->FPR_DOUBLE[REG_LO(Register)]);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] = 1.f / fpus_cos(ctx->FPR_SINGLE[REG_LO(Register)]);
+	return;
 } // = 0x79, // Floating Secant{x} (FSEC [F:(4,8),SRC]):16
 
 Instruction(FCSC) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] = 1.0 / fpud_sin(ctx->FPR_DOUBLE[REG_LO(Register)]);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] = 1.f / fpus_sin(ctx->FPR_SINGLE[REG_LO(Register)]);
+	return;
 } // = 0x7B, // Floating CoSecant{x} (FCSC [F:(4,8),SRC]):16
 
 Instruction(FCOT) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] = 1.0 / fpud_tan(ctx->FPR_DOUBLE[REG_LO(Register)]);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] = 1.f / fpus_tan(ctx->FPR_SINGLE[REG_LO(Register)]);
+	return;
 } // = 0x7B, // Floating CoTangent{x} (FCOT [F:(4,8),SRC]):16
 
 Instruction(FEXP) {
-
+	
 } // = 0x7D, // Floating Exponent (FEXP [F:(4,4),BASE] [F:(4,4),EXPONENT]):16
 
 
