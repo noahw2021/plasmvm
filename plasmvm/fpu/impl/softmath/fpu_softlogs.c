@@ -10,7 +10,7 @@
 
 x64 fpui_lnx(x64 Value) {
 	x64 Return = 0.0;
-	for (int i = 1; i <= (1 / fpud_expi(2, Value)); i++) {
+	for (int i = 1; i <= (4 * (1 / (Value))); i++) {
 		Return += (fpud_expi(i + 1, -1.0) * (fpud_expi(i, (Value - 1))) / i);
 	}
 	return Return;
