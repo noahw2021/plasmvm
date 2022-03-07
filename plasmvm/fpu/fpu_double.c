@@ -17,19 +17,6 @@ x64 fpudi_integrand(x64 x, x64 Value) {
 	return Return;
 }
 
-x64 fpudi_taylorsin(int Degree, x64 Value) {
-	x64 Return = 0.00;
-	x64 RealValue = Value;
-	if (Value > 3.1416 || Value < -3.1416) {
-		RealValue = fpud_mod(3.141592653589793238462643383279, RealValue);
-	}
-	
-	for (int i = 0; i < Degree; i++) {
-		Return += (fpud_expi(i, -1.0) / fpud_fact((2 * i + 1))) * fpud_pow(Value, (2 * i + 1));
-	}
-	return Return;
-}
-
 x64 fpud_abs(x64 Source) {
 	x64 _Source = Source;
 	if (Source <= 0)
@@ -50,8 +37,4 @@ x64 fpud_fact(x64 Source) {
 	}
 	
 	return Area;
-}
-
-x64 fpud_sin(x64 Source) {
-	return fpudi_taylorsin(5, Source);
 }
