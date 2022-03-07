@@ -102,6 +102,94 @@ DeclInstruction(STWMII);
 DeclInstruction(STHMII);
 DeclInstruction(STQMII);
 DeclInstruction(STBMII);
+DeclInstruction(GFCPS);
+DeclInstruction(SFDP);
+DeclInstruction(CFDP);
+DeclInstruction(TFRX);
+DeclInstruction(CFRI);
+DeclInstruction(CFFI);
+DeclInstruction(LSFR);
+DeclInstruction(LDFR);
+DeclInstruction(FABS);
+DeclInstruction(FABST);
+DeclInstruction(FADD);
+DeclInstruction(FADDT);
+DeclInstruction(FSUB);
+DeclInstruction(FSUBT);
+DeclInstruction(FMUL);
+DeclInstruction(FMULT);
+DeclInstruction(FDIV);
+DeclInstruction(FDIVT);
+DeclInstruction(FMOD);
+DeclInstruction(FMODT);
+DeclInstruction(FSIN);
+DeclInstruction(FSINT);
+DeclInstruction(FCOS);
+DeclInstruction(FCOST);
+DeclInstruction(FTAN);
+DeclInstruction(FTANT);
+DeclInstruction(FSEC);
+DeclInstruction(FSECT);
+DeclInstruction(FCSC);
+DeclInstruction(FCSCT);
+DeclInstruction(FCOT);
+DeclInstruction(FCOTT);
+DeclInstruction(FEXP);
+DeclInstruction(FEXPI);
+DeclInstruction(FEXPI);
+DeclInstruction(FEXPT);
+DeclInstruction(FEXPI);
+DeclInstruction(FEXPI);
+DeclInstruction(FNSIN);
+DeclInstruction(FNSIN);
+DeclInstruction(FNCOS);
+DeclInstruction(FNCOS);
+DeclInstruction(FNTAN);
+DeclInstruction(FNTAN);
+DeclInstruction(FNSEC);
+DeclInstruction(FNCSC);
+DeclInstruction(FNCOT);
+DeclInstruction(FNSECT);
+DeclInstruction(FNCSCT);
+DeclInstruction(FNCOTT);
+DeclInstruction(FINC);
+DeclInstruction(FDEC);
+DeclInstruction(FNEG);
+DeclInstruction(F1OX);
+DeclInstruction(FFCT);
+DeclInstruction(FFSF);
+DeclInstruction(FAIF);
+DeclInstruction(FSIF);
+DeclInstruction(FMIF);
+DeclInstruction(FDIF);
+DeclInstruction(FMODIF);
+DeclInstruction(FAIFI);
+DeclInstruction(FSIFI);
+DeclInstruction(FMIFI);
+DeclInstruction(FDIFI);
+DeclInstruction(FMODIFI);
+DeclInstruction(FLOG2);
+DeclInstruction(FLOG10);
+DeclInstruction(FLOGE);
+DeclInstruction(FE10X);
+DeclInstruction(FNOP);
+DeclInstruction(F2XM1);
+DeclInstruction(FCMPFR);
+DeclInstruction(FCMPFF);
+DeclInstruction(FCMPFRI);
+DeclInstruction(FCMPFFI);
+DeclInstruction(FEEX);
+DeclInstruction(CFFT);
+DeclInstruction(FSQRT);
+DeclInstruction(FCBRT);
+DeclInstruction(FNRTI);
+DeclInstruction(FLOG2I);
+DeclInstruction(FLOG10I);
+DeclInstruction(FLOGEI);
+DeclInstruction(FLOG2R);
+DeclInstruction(FLOG10R);
+DeclInstruction(FLOGER);
+DeclInstruction(FNRTX);
 
 void(*InstructionHandlers[256])(void) = {
 	ListInstruction(SET),
@@ -198,4 +286,92 @@ void(*InstructionHandlers[256])(void) = {
 	ListInstruction(STHMII),
 	ListInstruction(STQMII),
 	ListInstruction(STBMII),
+	ListInstruction(GFCPS),
+	ListInstruction(SFDP),
+	ListInstruction(CFDP),
+	ListInstruction(TFRX),
+	ListInstruction(CFRI),
+	ListInstruction(CFFI),
+	ListInstruction(LSFR),
+	ListInstruction(LDFR),
+	ListInstruction(FABS),
+	ListInstruction(FABST),
+	ListInstruction(FADD),
+	ListInstruction(FADDT),
+	ListInstruction(FSUB),
+	ListInstruction(FSUBT),
+	ListInstruction(FMUL),
+	ListInstruction(FMULT),
+	ListInstruction(FDIV),
+	ListInstruction(FDIVT),
+	ListInstruction(FMOD),
+	ListInstruction(FMODT),
+	ListInstruction(FSIN),
+	ListInstruction(FSINT),
+	ListInstruction(FCOS),
+	ListInstruction(FCOST),
+	ListInstruction(FTAN),
+	ListInstruction(FTANT),
+	ListInstruction(FSEC),
+	ListInstruction(FSECT),
+	ListInstruction(FCSC),
+	ListInstruction(FCSCT),
+	ListInstruction(FCOT),
+	ListInstruction(FCOTT),
+	ListInstruction(FEXP),
+	ListInstruction(FEXPI),
+	ListInstruction(FEXPI),
+	ListInstruction(FEXPT),
+	ListInstruction(FEXPI),
+	ListInstruction(FEXPI),
+	ListInstruction(FNSIN),
+	ListInstruction(FNSIN),
+	ListInstruction(FNCOS),
+	ListInstruction(FNCOS),
+	ListInstruction(FNTAN),
+	ListInstruction(FNTAN),
+	ListInstruction(FNSEC),
+	ListInstruction(FNCSC),
+	ListInstruction(FNCOT),
+	ListInstruction(FNSECT),
+	ListInstruction(FNCSCT),
+	ListInstruction(FNCOTT),
+	ListInstruction(FINC),
+	ListInstruction(FDEC),
+	ListInstruction(FNEG),
+	ListInstruction(F1OX),
+	ListInstruction(FFCT),
+	ListInstruction(FFSF),
+	ListInstruction(FAIF),
+	ListInstruction(FSIF),
+	ListInstruction(FMIF),
+	ListInstruction(FDIF),
+	ListInstruction(FMODIF),
+	ListInstruction(FAIFI),
+	ListInstruction(FSIFI),
+	ListInstruction(FMIFI),
+	ListInstruction(FDIFI),
+	ListInstruction(FMODIFI),
+	ListInstruction(FLOG2),
+	ListInstruction(FLOG10),
+	ListInstruction(FLOGE),
+	ListInstruction(FE10X),
+	ListInstruction(FNOP),
+	ListInstruction(F2XM1),
+	ListInstruction(FCMPFR),
+	ListInstruction(FCMPFF),
+	ListInstruction(FCMPFRI),
+	ListInstruction(FCMPFFI),
+	ListInstruction(FEEX),
+	ListInstruction(CFFT),
+	ListInstruction(FSQRT),
+	ListInstruction(FCBRT),
+	ListInstruction(FNRTI),
+	ListInstruction(FLOG2I),
+	ListInstruction(FLOG10I),
+	ListInstruction(FLOGEI),
+	ListInstruction(FLOG2R),
+	ListInstruction(FLOG10R),
+	ListInstruction(FLOGER),
+	ListInstruction(FNRTX),
 };
