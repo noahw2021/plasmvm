@@ -170,6 +170,7 @@
     <ClCompile Include="fpu\impl\fpu_c.c" />
     <ClCompile Include="fpu\impl\softmath\fpu_softlogs.c" />
     <ClCompile Include="fpu\impl\softmath\fpu_softroots.c" />
+    <ClCompile Include="fpu\impl\softmath\fpu_softtrig.c" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
