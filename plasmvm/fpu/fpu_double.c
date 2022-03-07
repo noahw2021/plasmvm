@@ -12,7 +12,7 @@ x64 fpudi_integrand(x64 x, x64 Value) {
 	x64 Return;
 	
 	Return = fpud_pow(x, Value);
-	Return *= fpud_pow(2.7182818284590452353602874, x * -1.f);
+	Return *= fpud_pow(2.7182818284590452353602874, x * -1.0);
 	
 	return Return;
 }
@@ -33,7 +33,7 @@ x64 fpudi_taylorsin(int Degree, x64 Value) {
 x64 fpud_abs(x64 Source) {
 	x64 _Source = Source;
 	if (Source <= 0)
-		_Source *= -1.0f;
+		_Source *= -1.0;
 	return _Source;
 }
 
