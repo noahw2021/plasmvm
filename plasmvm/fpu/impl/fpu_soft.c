@@ -107,6 +107,41 @@ x64 fpud_logx(int Base, x64 Source) {
 x64 fpud_ln(x64 Source) {
 	return fpui_ln(Source);
 }
+x32 fpus_sin(x32 Source) {
+	return (x32)fpui_sin((x64)Source);
+}
+
+x32 fpus_cos(x32 Source) {
+	return (x32)fpui_cos((x64)Source);
+}
+
+x32 fpus_tan(x32 Source) {
+	return (x32)fpui_tan((x64)Source);
+}
+
+x32 fpus_csc(x32 Source) {
+	return (x32)(1.0f / (x32)fpui_sin(Source));
+}
+
+x32 fpus_sec(x32 Source) {
+	return (x32)(1.0f / (x32)fpui_cos(Source));
+}
+
+x32 fpus_cot(x32 Source) {
+	return (x32)(1.0f / (x32)fpui_tan(Source));
+}
+
+x32 fpus_arcsin(x32 Source) {
+	return (x32)fpui_arcsin((x64)Source);
+}
+
+x32 fpus_arccos(x32 Source) {
+	return (x32)fpui_arccos((x64)Source);
+}
+
+x32 fpus_arctan(x32 Source) {
+	return (x32)fpui_arctan((x64)Source);
+}
 
 x64 fpud_sin(x64 Source) {
 	return fpui_sin(Source);
@@ -120,31 +155,26 @@ x64 fpud_tan(x64 Source) {
 	return fpui_tan(Source);
 }
 
-x32 fpus_sin(x32 Source) {
-	return (x32)fpui_sin((x64)Source);
+x64 fpud_csc(x64 Source) {
+	return (1.0 / fpui_sin(Source));
 }
 
-x32 fpus_cos(x32 Source) {
-	return (x32)fpui_cos((x64)Source);
+x64 fpud_sec(x64 Source) {
+	return (1.0 / fpui_cos(Source));
 }
 
-x32 fpus_tan(x32 Source) {
-	return (x32)fpui_tan((x64)Source);
+x64 fpud_cot(x64 Source) {
+	return (1.0 / fpui_tan(Source));
 }
 
-x64 fpud_round(x64 Source) {
-	x64 Integer;
-	x64 Fraction = modf(Source, &Integer);
-	
-	if (Fraction >= 0.5)
-		Integer++;
-	return Integer;
+x64 fpud_arcsin(x64 Source) {
+	return fpui_arcsin(Source);
 }
-x32 fpus_round(x32 Source) {
-	x64 Integer;
-	x64 Fraction = modf(Source, &Integer);
-	
-	if (Fraction >= 0.5)
-		Integer++;
-	return (x32)Integer;
+
+x64 fpud_arccos(x64 Source) {
+	return fpui_arccos(Value);
+}
+
+x64 fpud_arctan(x64 Source) {
+	return fpui_arctan(Value);
 }
