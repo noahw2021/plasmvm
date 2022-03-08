@@ -772,28 +772,56 @@ Instruction(FCOT) {
 } // = 0xB5, // Floating CoTangent{x} (FCOT [F:(4,8),SRC]):16
 
 Instruction(FEXP) {
-	
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_HI(Register)] = fpud_pow(ctx->FPR_DOUBLE[REG_LO(Register)], ctx->FPR_DOUBLE[REG_HI(Register)]);
+	else
+		ctx->FPR_SINGLE[REG_HI(Register)] = fpud_pow(ctx->FPR_SINGLE[REG_LO(Register)], ctx->FPR_SINGLE[REG_HI(Register)]);
+	return;
 } // = 0x7D, // Floating Exponent (FEXP [F:(4,4),BASE] [F:(4,4),EXPONENT]):16
 
-
 Instruction(FAIFI) {
-
+	byte Register = r1();
+	u64 Immediate = rx(8);
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] += Immediate;
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] += Immediate;
+	return;
 } // = 0x9A, // Floating Add Floating with Regular (FAIFI [F:(4,8), SRC] [I:(64,64),IMMT]):80
 
 Instruction(FSIFI) {
-
+	byte Register = r1();
+	u64 Immediate = rx(8);
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] -= Immediate;
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] -= Immediate;
+	return;
 } // = 0x9B, // Floating Subtract Floating with Regular (FSIFI [F:(4,8), SRC] [I:(64,64),IMMT]):80
 
 Instruction(FMIFI) {
-
+	byte Register = r1();
+	u64 Immediate = rx(8);
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] *= Immediate;
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] *= Immediate;
+	return;
 } // = 0x9C, // Floating Multiply Floating with Regular (FMIFI [F:(4,8), SRC] [I:(64,64),IMMT]):80
 
 Instruction(FDIFI) {
-
+	byte Register = r1();
+	u64 Immediate = rx(8);
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] /= Immediate;
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] /= Immediate;
+	return;
 } // = 0x9D, // Floating Division Floating with Regular (FDIFI [F:(4,8), SRC] [I:(64,64),IMMT]):80
 
 Instruction(FNSIN) {
-
+	
 } // = 0x83, // Floating Inverse Sine{x} (FNSIN [F:(4,8),SRC]):16
 
 Instruction(FEXPT) {
