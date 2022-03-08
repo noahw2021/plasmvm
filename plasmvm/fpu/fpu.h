@@ -9,12 +9,16 @@
 #define fpu_h
 #include "../ctx.h"
 
+// Fixed Constants
 #define _FPU_PI 3.141592653589693
 
-#define _FPU_FACTORIALPREC  1
-#define _FPU_SINEPREC	    1
-#define _FPU_ARCTANPREC     1
+// Precision Controls
+#define _FPU_FACTORIALPREC  10
+#define _FPU_SINEPREC	    10
+#define _FPU_ARCTANPREC     10
+#define _FPU_ARCSINPREC     10
 
+// Enumerations
 #define __FPUENUM_SOFT	0x01
 #define __FPUENUM_CMATH	0x02
 
@@ -66,7 +70,8 @@ x64 fpui_arccos(x64 Value);
 x64 fpui_arctan(x64 Value);
 
 // Declarations for helper functions
-#define __FPU_FACTORIALB (_FPU_FACTORIALPREC * 3000)
+#define __FPU_FACTORIALB (_FPU_FACTORIALPREC * 300)
 #define __FPU_TAYLORPREC (5 * _FPU_SINEPREC)
-#define __FPU_ARCTANINC  (0.005 / _FPU_ARCTANPREC)
+#define __FPU_ARCTANINC  (0.05 / _FPU_ARCTANPREC)
+#define __FPU_ARCSINDEG  (1 * _FPU_ARCSINPREC)
 #endif /* fpu_h */
