@@ -178,3 +178,21 @@ x64 fpud_arccos(x64 Source) {
 x64 fpud_arctan(x64 Source) {
 	return fpui_arctan(Source);
 }
+
+x64 fpud_round(x64 Source) {
+	x64 Integer;
+	x64 Fraction = modf(Source, &Integer);
+	
+	if (Fraction >= 0.5)
+		Integer++;
+	return Integer;
+}
+
+x32 fpus_round(x32 Source) {
+	x64 Integer;
+	x64 Fraction = modf(Source, &Integer);
+	
+	if (Fraction >= 0.5)
+		Integer++;
+	return (x32)Integer;
+}
