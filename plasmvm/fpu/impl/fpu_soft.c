@@ -172,9 +172,9 @@ x64 fpud_arcsin(x64 Source) {
 }
 
 x64 fpud_arccos(x64 Source) {
-	return fpui_arccos(Value);
+	return fpui_arccos(Source);
 }
 
 x64 fpud_arctan(x64 Source) {
-	return fpui_arctan(Value);
+	return fpui_arctan(Source);
 }
