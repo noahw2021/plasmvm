@@ -10,6 +10,7 @@
 #include "../ctx.h"
 
 // Fixed Constants
+#define _FPU_E  2.718281828459045
 #define _FPU_PI 3.141592653589693
 
 // Precision Controls
