@@ -821,35 +821,76 @@ Instruction(FDIFI) {
 } // = 0x9D, // Floating Division Floating with Regular (FDIFI [F:(4,8), SRC] [I:(64,64),IMMT]):80
 
 Instruction(FNSIN) {
-	
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] = fpud_arcsin(ctx->FPR_DOUBLE[REG_lo(Register)]);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] = fpus_arcsin(ctx->FPR_DOUBLE[REG_LO(Register)]);
+	return;
 } // = 0x83, // Floating Inverse Sine{x} (FNSIN [F:(4,8),SRC]):16
 
 Instruction(FEXPT) {
-
+	byte Register0 = r1();
+	byte Register1 = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register1)] = fpud_pow(ctx->FPR_DOUBLE[REG_HI(Register0)], ctx->FPR_DOUBLE[REG_LO(Register0)]);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register1)] = fpus_pow(ctx->FPR_SINGLE[REG_HI(Register0)], ctx->FPR_SINGLE[REG_LO(Register0)]);
+	return;
 } // = 0x80, // Floating Exponent To (FEXPT [F:(4,4),BASE] [F:(4,4),EXPONENT] [F:(4,8),DEST]):24
 
 Instruction(FEXPI) {
-
+	byte Registers = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Registers)] = fpud_expi(ctx->GPRs[REG_HI(Registers)], ctx->FPR_DOUBLE[REG_LO(Registers)]);
+	else
+		ctx->FPR_SINGLE[REG_LO(Registers)] = fpus_expi(ctx->GPRs[REG_HI(Registers)], ctx->FPR_SINGLE[REG_LO(Registers)]);
+	return;
 } // = 0x7E, // Floating Exponent Integer (FEXPI [F:(4,4),BASE] [R:(4,4),EXPONENT]):16
 
 Instruction(FCOTT) {
-
+	byte Registers = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_HI(Registers)] = fpud_cot(ctx->FPR_DOUBLE[REG_LO(Registers)]);
+	else
+		ctx->FPR_SINGLE[REG_HI(Registers)] = fpus_cot(ctx->FPR_SINGLE[REG_LO(Registers)]);
+	return;
 } // = 0xB6, // Floating CoTangent{x} To (FCOTT [F:(4,4),SRC] [F:(4,4),DEST]):16
 
 Instruction(FCSCT) {
-
+	byte Registers = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_HI(Registers)] = fpud_csc(ctx->FPR_DOUBLE[REG_LO(Registers)]);
+	else
+		ctx->FPR_SINGLE[REG_HI(Registers)] = fpus_csc(ctx->FPR_SINGLE[REG_LO(Registers)]);
+	return;
 } // = 0x7C, // Floating CoSecant{x} To (FCSCT [F:(4,4),SRC] [F:(4,4),DEST]):16
 
 Instruction(FCOST) {
-
+	byte Registers = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_HI(Registers)] = fpud_cos(ctx->FPR_DOUBLE[REG_LO(Registers)]);
+	else
+		ctx->FPR_SINGLE[REG_HI(Registers)] = fpus_cos(ctx->FPR_SINGLE[REG_LO(Registers)]);
+	return;
 } // = 0x76, // Floating CoSine{x} To (FCOST [F:(4,4),SRC] [F:(4,4),DEST]):16
 
 Instruction(FSECT) {
-
+	byte Registers = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_HI(Registers)] = fpud_sec(ctx->FPR_DOUBLE[REG_LO(Registers)]);
+	else
+		ctx->FPR_SINGLE[REG_HI(Registers)] = fpus_sec(ctx->FPR_SINGLE[REG_LO(Registers)]);
+	return;
 } // = 0x7A, // Floating Secant{x} To (FSECT [F:(4,4),SRC] [F:(4,4),DEST]):16
 
 Instruction(FTANT) {
-
+	byte Registers = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_HI(Registers)] = fpud_tan(ctx->FPR_DOUBLE[REG_LO(Registers)]);
+	else
+		ctx->FPR_SINGLE[REG_HI(Registers)] = fpus_tan(ctx->FPR_SINGLE[REG_LO(Registers)]);
+	return;
 } // = 0x78, // Floating Tangnet{x} To (FTANT [F:(4,4),SRC] [F:(4,4),DEST]):16
 
 Instruction(FMULT) {
@@ -873,19 +914,34 @@ Instruction(FMODT) {
 } // = 0x72, // Floating Modulo To (FMODT [F:(4,4),SRC] [F:(4,4),DIVISOR] [F:(4,8),DEST]):24
 
 Instruction(FSINT) {
-
+	byte Registers = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_HI(Registers)] = fpud_sin(ctx->FPR_DOUBLE[REG_LO(Registers)]);
+	else
+		ctx->FPR_SINGLE[REG_HI(Registers)] = fpus_sin(ctx->FPR_SINGLE[REG_LO(Registers)]);
+	return;
 } // = 0x74, // Floating Sine{x} To (FSINT [F:(4,4),SRC] [F:(4,4),DEST]):16
 
 Instruction(FNCOS) {
-
+	byte Registers = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_HI(Registers)] = fpud_arccos(ctx->FPR_DOUBLE[REG_LO(Registers)]);
+	else
+		ctx->FPR_SINGLE[REG_HI(Registers)] = fpus_arccos(ctx->FPR_SINGLE[REG_LO(Registers)]);
+	return;
 } // = 0x85, // Floating Inverse CoSine{x} (FNCOS [F:(4,8),SRC]):16
 
 Instruction(FNTAN) {
-
+	byte Registers = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_HI(Registers)] = fpud_arctan(ctx->FPR_DOUBLE[REG_LO(Registers)]);
+	else
+		ctx->FPR_SINGLE[REG_HI(Registers)] = fpus_arctan(ctx->FPR_SINGLE[REG_LO(Registers)]);
+	return;
 } // = 0x87, // Floating Inverse Tangent{x} (FNTAN [F:(4,8),SRC]):16
 
 Instruction(FNSEC) {
-
+	
 } // = 0x89, // Floating Inverse Secant{x} (FNSEC [F:(4,8),SRC]):16
 
 Instruction(FNCSC) {

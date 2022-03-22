@@ -36,6 +36,9 @@
     <ClInclude Include="ctx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="fpu\fpu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cpu\cpu_advops.c">
@@ -84,6 +87,27 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fpu\fpu_single.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fpu\fpu_double.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fpu\impl\fpu_soft.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fpu\impl\fpu_c.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fpu\impl\softmath\fpu_softlogs.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fpu\impl\softmath\fpu_softroots.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fpu\impl\softmath\fpu_softtrig.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

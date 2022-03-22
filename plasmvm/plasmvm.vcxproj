@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClInclude Include="cpu\cpu.h" />
     <ClInclude Include="ctx.h" />
+    <ClInclude Include="fpu\fpu.h" />
     <ClInclude Include="io\io.h" />
     <ClInclude Include="io\kb\kb.h" />
     <ClInclude Include="io\scd\scd.h" />

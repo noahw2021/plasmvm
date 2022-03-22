@@ -49,3 +49,4 @@ x64 fpui_arctan(x64 Value) {
 		Area += (1.0 / (fpud_expi(2, Pos) + 1)) * __FPU_ARCTANINC;
 	return Area;
 }
+
