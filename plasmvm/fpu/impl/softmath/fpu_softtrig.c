@@ -50,3 +50,33 @@ x64 fpui_arctan(x64 Value) {
 	return Area;
 }
 
+x64 fpui_arccsc(x64 Value) {
+	x64 Area = 0.0;
+	if (Value >= 1.0) {
+		for (x64 Pos = Value; Pos < (Value + __FPU_ARCCSCSTART); Pos += __FPU_ARCCSCINC) {
+			Area += (1.0 / (Pos * fpud_rooti(2, (fpud_expi(2, Pos) - 1)))) * __FPU_ARCCSCINC;
+		}
+	}
+	else {
+		return 0.0 - fpui_arccsc(fpud_abs(Value));
+	}
+}
+
+x64 fpui_arcsec(x64 Value) {
+	x64 Area = 0.0;
+	if (Value >= 1.0) {
+		for (x64 Pos = 1.0; Pos < Value; Pos += __FPU_ARCSECINC) {
+			Area += (1.0 / (Pos * fpud_rooti(2, (fpud_expi(2, Pos) - 1)))) * __FPU_ARCSECINC;
+		}
+	}
+	else {
+		return 0.0 - fpui_arcsec(fpud_abs(Value) + _FPU_PI);
+	}
+}
+
+x64 fpui_arccot(x64 Value) {
+	x64 Area = 0.0;
+	for (x64 Pos = Value; Pos < (Value + __FPU_ARCCOTSTART); Pos += __FPU_ARCCOTADDER)
+		Area += (1.0 / (fpud_expi(2, Pos) + 1)) * __FPU_ARCCOTADDER;
+	return Area;
+}

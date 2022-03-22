@@ -196,3 +196,25 @@ x32 fpus_round(x32 Source) {
 		Integer++;
 	return (x32)Integer;
 }
+
+x64 fpud_arccsc(x64 Source) {
+	return fpui_arccsc(Source);
+}
+x64 fpud_arcsec(x64 Source) {
+	return fpui_arcsec(Source);
+}
+x64 fpud_arccot(x64 Source) {
+	return fpui_arccot(Source);
+}
+
+x32 fpus_arccsc(x32 Source) {
+	return (x32)fpui_arccsc((x64)Source);
+}
+
+x32 fpus_arcsec(x32 Source) {
+	return (x32)fpui_arcsec((x64)Source);
+}
+
+x32 fpus_arccot(x32 Source) {
+	return (x32)fpui_arccot((x64)Source);
+}

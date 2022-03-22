@@ -823,7 +823,7 @@ Instruction(FDIFI) {
 Instruction(FNSIN) {
 	byte Register = r1();
 	if (GET_PRECISEFLAG(ctx->sf0))
-		ctx->FPR_DOUBLE[REG_LO(Register)] = fpud_arcsin(ctx->FPR_DOUBLE[REG_lo(Register)]);
+		ctx->FPR_DOUBLE[REG_LO(Register)] = fpud_arcsin(ctx->FPR_DOUBLE[REG_LO(Register)]);
 	else
 		ctx->FPR_SINGLE[REG_LO(Register)] = fpus_arcsin(ctx->FPR_DOUBLE[REG_LO(Register)]);
 	return;
@@ -941,7 +941,12 @@ Instruction(FNTAN) {
 } // = 0x87, // Floating Inverse Tangent{x} (FNTAN [F:(4,8),SRC]):16
 
 Instruction(FNSEC) {
-	
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_HI(Register)] = fpud_arcsec(ctx->FPR_DOUBLE[REG_LO(Register)]);
+	else
+		ctx->FPR_SINGLE[REG_HI(Register)] = fpus_arcsec(ctx->FPR_DOUBLE[REG_LO(Register)]);
+	return;
 } // = 0x89, // Floating Inverse Secant{x} (FNSEC [F:(4,8),SRC]):16
 
 Instruction(FNCSC) {

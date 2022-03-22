@@ -17,6 +17,9 @@
 #define _FPU_SINEPREC	    10
 #define _FPU_ARCTANPREC     10
 #define _FPU_ARCSINPREC     10
+#define _FPU_ARCCOTPREC     10
+#define _FPU_ARCSECPREC     10
+#define _FPU_ARCCSCPREC     10
 
 // Enumerations
 #define __FPUENUM_SOFT	0x01
@@ -57,6 +60,9 @@ x64 fpud_cot(x64 Source);
 x64 fpud_arcsin(x64 Source);
 x64 fpud_arccos(x64 Source);
 x64 fpud_arctan(x64 Source);
+x64 fpud_arccsc(x64 Source);
+x64 fpud_arcsec(x64 Source);
+x64 fpud_arccot(x64 Source);
 
 x32 fpus_pow(x32 Power, x32 Source);
 x32 fpus_rooti(int Root, x32 Source);
@@ -75,6 +81,9 @@ x32 fpus_cot(x32 Source);
 x32 fpus_arcsin(x32 Source);
 x32 fpus_arccos(x32 Source);
 x32 fpus_arctan(x32 Source);
+x32 fpus_arccsc(x32 Source);
+x32 fpus_arcsec(x32 Source);
+x32 fpus_arccot(x32 Source);
 
 x64 fpui_rooti(x64 Number, int Root);
 x64 fpui_log(int Base, x64 Value);
@@ -86,10 +95,18 @@ x64 fpui_tan(x64 Value);
 x64 fpui_arcsin(x64 Value);
 x64 fpui_arccos(x64 Value);
 x64 fpui_arctan(x64 Value);
+x64 fpui_arccsc(x64 Value);
+x64 fpui_arcsec(x64 Value);
+x64 fpui_arccot(x64 Value);
 
 // Declarations for helper functions
 #define __FPU_FACTORIALB (_FPU_FACTORIALPREC * 300)
 #define __FPU_TAYLORPREC (5 * _FPU_SINEPREC)
 #define __FPU_ARCTANINC  (0.05 / _FPU_ARCTANPREC)
 #define __FPU_ARCSINDEG  (1 * _FPU_ARCSINPREC)
+#define __FPU_ARCCOTSTART (300 * _FPU_ARCCOTPREC)
+#define __FPU_ARCCOTADDER (0.05 / _FPU_ARCCOTPREC)
+#define __FPU_ARCSECINC (0.05 / _FPU_ARCSECPREC)
+#define __FPU_ARCCSCINC (0.05 / _FPU_ARCCSCPREC)
+#define __FPU_ARCCSCSTART (300 * _FPU_ARCCSCPREC)
 #endif /* fpu_h */
