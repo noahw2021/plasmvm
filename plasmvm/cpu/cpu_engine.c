@@ -11,6 +11,7 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 void cpu_init(void) {
 	ctx = malloc(sizeof(ictx_t));
@@ -20,8 +21,14 @@ void cpu_init(void) {
 	return;
 }
 void cpu_clock(void) {
+	clock_t Timer = clock();
 	byte Opcode = r1();
 	cpu_opcode(Opcode);
+	clock_t Timer2 = clock();
+
+	clock_t Difference = Timer2 - Timer;
+
+	
 }
 void cpu_opcode(byte Opcode) {
 	InstructionHandlers[Opcode]();
