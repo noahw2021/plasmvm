@@ -1168,19 +1168,104 @@ Instruction(F2XM1) {
 } //= 0xA4, // Floating {2^x}-1 (F2XM1 [F:(4,4),SRC] [F:(4,4),VAL]):16
 
 Instruction(FCMPFR) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0)) {
+		if (ctx->FPR_DOUBLE[REG_LO(Register)] > ctx->GPRs[REG_HI(Register)])
+			SET_GREATFLAG(ctx->sf0);
+		else
+			SET_LESSFLAG(ctx->sf0);
+		if (ctx->FPR_DOUBLE[REG_LO(Register)] == ctx->GPRs[REG_HI(Register)])
+			SET_EQUALFLAG(ctx->sf0);
+		else
+			CLR_EQUALFLAG(ctx->sf0);
+	} else {
+		if (ctx->FPR_SINGLE[REG_LO(Register)] > ctx->GPRs[REG_HI(Register)])
+			SET_GREATFLAG(ctx->sf0);
+		else
+			SET_LESSFLAG(ctx->sf0);
+		if (ctx->FPR_SINGLE[REG_LO(Register)] == ctx->GPRs[REG_HI(Register)])
+			SET_EQUALFLAG(ctx->sf0);
+		else
+			CLR_EQUALFLAG(ctx->sf0);
+	}
 } // = 0xA5, // Floating Compare Float Regular (FCMPFR [F:(4,4),VAL0] [R:(4,4),VAL1]):16
 
 Instruction(FCMPFF) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0)) {
+		if (ctx->FPR_DOUBLE[REG_LO(Register)] > ctx->FPR_DOUBLE[REG_HI(Register)])
+			SET_GREATFLAG(ctx->sf0);
+		else
+			SET_LESSFLAG(ctx->sf0);
+		if (ctx->FPR_DOUBLE[REG_LO(Register)] == ctx->FPR_DOUBLE[REG_HI(Register)])
+			SET_EQUALFLAG(ctx->sf0);
+		else
+			CLR_EQUALFLAG(ctx->sf0);
+	}
+	else {
+		if (ctx->FPR_SINGLE[REG_LO(Register)] > ctx->FPR_SINGLE[REG_HI(Register)])
+			SET_GREATFLAG(ctx->sf0);
+		else
+			SET_LESSFLAG(ctx->sf0);
+		if (ctx->FPR_SINGLE[REG_LO(Register)] == ctx->FPR_SINGLE[REG_HI(Register)])
+			SET_EQUALFLAG(ctx->sf0);
+		else
+			CLR_EQUALFLAG(ctx->sf0);
+	}
 } // = 0xA6, // Floating Compare Float Float (FCMPFF [F:(4,4),VAL0] [F:(4,4),VAL1]):16
 
 Instruction(FCMPFRI) {
-
+	byte Register = r1();
+	u64 Immediate = rx(8);
+	if (GET_PRECISEFLAG(ctx->sf0)) {
+		if (ctx->FPR_DOUBLE[REG_LO(Register)] > Immediate)
+			SET_GREATFLAG(ctx->sf0);
+		else
+			SET_LESSFLAG(ctx->sf0);
+		if (ctx->FPR_DOUBLE[REG_LO(Register)] == Immediate)
+			SET_EQUALFLAG(ctx->sf0);
+		else
+			CLR_EQUALFLAG(ctx->sf0);
+	}
+	else {
+		if (ctx->FPR_SINGLE[REG_LO(Register)] > Immediate)
+			SET_GREATFLAG(ctx->sf0);
+		else
+			SET_LESSFLAG(ctx->sf0);
+		if (ctx->FPR_SINGLE[REG_LO(Register)] == Immediate)
+			SET_EQUALFLAG(ctx->sf0);
+		else
+			CLR_EQUALFLAG(ctx->sf0);
+	}
 } // = 0xA7, // Floating Compare Float Regular{Imm} (FCMPFRI [F:(4,8),VAL0] [I:(64,64),VAL1]):80
 
 Instruction(FCMPFFI) {
-
+	byte Register = r1();
+	union {
+		x64 Float;
+		u64 Int;
+	}FloatData;
+	FloatData.Int = rx(8);
+	if (GET_PRECISEFLAG(ctx->sf0)) {
+		if (ctx->FPR_DOUBLE[REG_LO(Register)] > FloatData.Float)
+			SET_GREATFLAG(ctx->sf0);
+		else
+			SET_LESSFLAG(ctx->sf0);
+		if (ctx->FPR_DOUBLE[REG_LO(Register)] == FloatData.Float)
+			SET_EQUALFLAG(ctx->sf0);
+		else
+			CLR_EQUALFLAG(ctx->sf0);
+	}
+	else {
+		if (ctx->FPR_SINGLE[REG_LO(Register)] > FloatData.Float)
+			SET_GREATFLAG(ctx->sf0);
+		else
+			SET_LESSFLAG(ctx->sf0);
+		if (ctx->FPR_SINGLE[REG_LO(Register)] == FloatData.Float)
+			SET_EQUALFLAG(ctx->sf0);
+		else
+			CLR_EQUALFLAG(ctx->sf0);
+	}
 } // = 0xA8, // Floating Compare Float Float{Imm} (FCMPFFI [F:(4,8),VAL0] [I:(64,64),VAL1]):80
 
 Instruction(FEEX) {
@@ -1193,45 +1278,98 @@ Instruction(FEEX) {
 } //0xA9, // Floating e^x (FEEX [F:(4,8),SRC]):16
 
 Instruction(CFFT) {
-
+	ctx->sf0 = ctx->sf1;
 } //0xAA, // Copy Floating Flags to System Flags (CFFT):8
 
 Instruction(FSQRT) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] = fpud_rooti(2, ctx->FPR_DOUBLE[REG_LO(Register)]);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] = fpus_rooti(2, ctx->FPR_SINGLE[REG_LO(Register)]);
+	return;
 } // 0xAB, // Floating square root (FSQRT [F:(4,8),SRC]):16
 
 Instruction(FCBRT) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] = fpud_rooti(3, ctx->FPR_DOUBLE[REG_LO(Register)]);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] = fpus_rooti(3, ctx->FPR_SINGLE[REG_LO(Register)]);
+	return;
 } // 0xAC, // Floating cubic root (FCBRT [F:(4,8),SRC]):16
 
 Instruction(FNRTI) {
-
+	byte Data = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_HI(Data)] = fpud_rooti(REG_LO(Data), ctx->FPR_DOUBLE[REG_HI(Data)]);
+	else
+		ctx->FPR_SINGLE[REG_HI(Data)] = fpus_rooti(REG_LO(Data), ctx->FPR_SINGLE[REG_HI(Data)]);
 } // 0xAD, // Floating nth-root (FNRT [I:(4,4),ROOT] [F:(4,4),SRC]):16
 
 Instruction(FLOG2I) {
-
+	byte Register = r1();
+	u64 Immediate = rx(8);
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] = fpud_log2(Immediate);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] = fpus_log2(Immediate);
+	return;
 } //= 0xAE, // Floating Log2{x}{Imm} (FLOG2I [F:(4,8),DEST] [I:(64,64),VALUE]):80
 
 Instruction(FLOG10I) {
-
+	byte Register = r1();
+	u64 Immediate = rx(8);
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] = fpud_logx(10, Immediate);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] = fpus_logx(10, Immediate);
+	return;
 } // = 0xAF, // Floating Log10{x}{Imm} (FLOG10I [F:(4,8),DEST] [I:(64,64),VALUE]):80
 
 Instruction(FLOGEI) {
-
+	byte Register = r1();
+	u64 Immediate = rx(8);
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] = fpud_ln(Immediate);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] = fpus_ln(Immediate);
+	return;
 } //= 0xB0, // Floating Ln{x}{Imm} (FLOGEI [F:(4,8),DEST] [I:(64,64),VALUE]):80
 
 Instruction(FLOG2R) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] = fpud_log2(ctx->GPRs[REG_HI(Register)]);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] = fpus_log2(ctx->GPRs[REG_HI(Register)]);
+	return;
 } //= 0xB1, // Floating Log2{x} with Regular (FLOG2R [F:(4,4),DEST] [R:(4,4),VALUE]):16
 
 Instruction(FLOG10R) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] = fpud_logx(10, ctx->GPRs[REG_HI(Register)]);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] = fpus_logx(10, ctx->GPRs[REG_LO(Register)]);
+	return;
 } // = 0xB2, // Floating Log10{x} with Regular (FLOG10R [F:(4,4),DEST] [R:(4,4),VALUE]):16
 
 Instruction(FLOGER) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] = fpud_ln(ctx->GPRs[REG_HI(Register)]);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] = fpus_ln(ctx->GPRs[REG_LO(Register)]);
+	return;
 } //= 0xB3, // Floating Ln{x} with Regular (FLOGER [F:(4,4),DEST] [R:(4,4),VALUE]):16
 
 Instruction(FNRTX) {
-
+	u32 Immediate = rx(4);
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] = fpud_rooti(Immediate, ctx->FPR_DOUBLE[REG_HI(Register)]);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] = fpus_rooti(Immediate, ctx->FPR_SINGLE[REG_HI(Register)]);
+	return;
 } // 0xB4, // Floating nth-root with large root (FNRTX [I:(32,32),ROOT] [F:(4,8),SRC]):48
