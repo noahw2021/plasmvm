@@ -190,7 +190,20 @@ DeclInstruction(FLOG2R);
 DeclInstruction(FLOG10R);
 DeclInstruction(FLOGER);
 DeclInstruction(FNRTX);
-
+DeclInstruction(CPUFQ);
+DeclInstruction(CPUFS);
+DeclInstruction(CPUFC);
+DeclInstruction(CPUFDB);
+DeclInstruction(CPUFDQ);
+DeclInstruction(CPUFDH);
+DeclInstruction(CPUFDW);
+DeclInstruction(CPUFRB);
+DeclInstruction(CPUFRQ);
+DeclInstruction(CPUFRH);
+DeclInstruction(CPUFRW);
+DeclInstruction(FCOT);
+DeclInstruction(FCOTT);
+DeclInstruction(FABST);
 void(*InstructionHandlers[256])(void) = {
 	ListInstruction(SET),
 	ListInstruction(LDWM),
@@ -372,4 +385,18 @@ void(*InstructionHandlers[256])(void) = {
 	ListInstruction(FLOG10R),
 	ListInstruction(FLOGER),
 	ListInstruction(FNRTX),
+	ListInstruction(CPUFQ),
+	ListInstruction(CPUFS),
+	ListInstruction(CPUFC),
+	ListInstruction(CPUFDB),
+	ListInstruction(CPUFDQ),
+	ListInstruction(CPUFDH),
+	ListInstruction(CPUFDW),
+	ListInstruction(CPUFRB),
+	ListInstruction(CPUFRQ),
+	ListInstruction(CPUFRH),
+	ListInstruction(CPUFRW),
+	ListInstruction(FCOT),
+	ListInstruction(FCOTT),
+	ListInstruction(FABST),
 };
