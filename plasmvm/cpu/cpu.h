@@ -221,6 +221,17 @@ enum {
 	__FCOT = 0xB5, // Floating CoTangent{x} (FCOT [F:(4,8),SRC]):16
 	__FCOTT = 0xB6, // Floating CoTangent{x} To (FCOTT [F:(4,4),SRC] [F:(4,4),DEST]):16
 	__FABST = 0xB7, // Floating Absolute Value To (FABS [F:(4,4),SRC] [F:(4,4),DEST]):16
+	__CPUFQ = 0xB8, // CPU Feature Query (CPUFQ [R:(4,4),FEATURE] [R:(4,4),DEST]):16
+	__CPUFS = 0xB9, // CPU Feature Set {Enabled} (CPUFQ [R:(4,8),FEATURE]):16
+	__CPUFC = 0xBA, // CPU Feature Clear {Disabled} (CPUFQ [R:(4,8),FEATURE]):16
+	__CPUFDB = 0xBB, // CPU Feature SendData Byte (CPUFDB [R:(4,4),FEATURE] [R:(4,4),DATA]):16
+	__CPUFDQ = 0xBC, // CPU Feature SendData QuarterWord (CPUFDQ [R:(4,4),FEATURE] [R:(4,4),DATA]):16
+	__CPUFDH = 0xBD, // CPU Feature SendData HalfWord (CPUFDH [R:(4,4),FEATURE] [R:(4,4),DATA]):16
+	__CPUFDW = 0xBE, // CPU Feature SendData Word (CPUFDW [R:(4,4),FEATURE] [R:(4,4),DATA]):16
+	__CPUFRB = 0xBF, // CPU Feature RecvData Byte (CPUFRB [R:(4,4),FEATURE] [R:(4,4),DEST]):16
+	__CPUFRQ = 0xC0, // CPU Feature RecvData QuarterWord (CPUFRQ [R:(4,4),FEATURE] [R:(4,4),DEST]):16
+	__CPUFRH = 0xC1, // CPU Feature RecvData HalfWord (CPUFRH [R:(4,4),FEATURE] [R:(4,4),DEST]):16
+	__CPUFRW = 0xC2, // CPU Feature RecvData Word (CPUFRW [R:(4,4),FEATURE] [R:(4,4),DEST]):16
 };
 
 extern void(*InstructionHandlers[256])(void);
