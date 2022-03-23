@@ -39,6 +39,9 @@
     <ClInclude Include="fpu\fpu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="cpu\features\cpuf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cpu\cpu_advops.c">
@@ -108,6 +111,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="fpu\impl\softmath\fpu_softtrig.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cpu\features\cpuf_timer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cpu\features\cpuf_power.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cpu\features\cpuf_engine.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
