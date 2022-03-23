@@ -894,22 +894,53 @@ Instruction(FTANT) {
 } // = 0x78, // Floating Tangnet{x} To (FTANT [F:(4,4),SRC] [F:(4,4),DEST]):16
 
 Instruction(FMULT) {
-
+	byte Register0 = r1();
+	byte Register1 = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register1)] = ctx->FPR_DOUBLE[REG_LO(Register0)] * ctx->FPR_DOUBLE[REG_HI(Register1)];
+	else
+		ctx->FPR_SINGLE[REG_LO(Register1)] = ctx->FPR_SINGLE[REG_LO(Register0)] * ctx->FPR_SINGLE[REG_HI(Register1)];
+	return;
 } // = 0x6E, // Floating Multiply To (FMULT [F:(4,4),SRC] [F:(4,4),FACTOR] [F:(4,8),DEST]):24
 
 Instruction(FADDT) {
-
+	byte Register0 = r1();
+	byte Register1 = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register1)] = ctx->FPR_DOUBLE[REG_LO(Register0)] + ctx->FPR_DOUBLE[REG_HI(Register1)];
+	else
+		ctx->FPR_SINGLE[REG_LO(Register1)] = ctx->FPR_SINGLE[REG_LO(Register0)] + ctx->FPR_SINGLE[REG_HI(Register1)];
+	return;
 } // = 0x6A, // Floating Addition To (FADDT [F:(4,4),SRC] [F:(4,4),ADDER] [F:(4,8),DST]):24
 
 Instruction(FSUBT) {
-
+	byte Register0 = r1();
+	byte Register1 = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register1)] = ctx->FPR_DOUBLE[REG_LO(Register0)] - ctx->FPR_DOUBLE[REG_HI(Register1)];
+	else
+		ctx->FPR_SINGLE[REG_LO(Register1)] = ctx->FPR_SINGLE[REG_LO(Register0)] - ctx->FPR_SINGLE[REG_HI(Register1)];
+	return;
 } // = 0x6C, // Floating Subtraction To (FSUBT [F:(4,4),SRC] [F:(4,4),SUBBER], [F:(4,8),DEST]):24
 
 Instruction(FDIVT) {
-
+	byte Register0 = r1();
+	byte Register1 = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register1)] = ctx->FPR_DOUBLE[REG_LO(Register0)] / ctx->FPR_DOUBLE[REG_HI(Register1)];
+	else
+		ctx->FPR_SINGLE[REG_LO(Register1)] = ctx->FPR_SINGLE[REG_LO(Register0)] / ctx->FPR_SINGLE[REG_HI(Register1)];
+	return;
 } // = 0x70, // Floating Divide To (FDIVT [F:(4,4),SRC] [F:(4,4),DIVISOR] [F:(4,8),DEST]):24
 
 Instruction(FMODT) {
+	byte Register0 = r1();
+	byte Register1 = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register1)] = fpud_mod(ctx->FPR_DOUBLE[REG_HI(Register0)], ctx->FPR_DOUBLE[REG_LO(Register0)]);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register1)] = fpus_mod(ctx->FPR_SINGLE[REG_HI(Register0)], ctx->FPR_SINGLE[REG_LO(Register0)]);
+	return;
 
 } // = 0x72, // Floating Modulo To (FMODT [F:(4,4),SRC] [F:(4,4),DIVISOR] [F:(4,8),DEST]):24
 
@@ -1037,23 +1068,54 @@ Instruction(FNCOTT) {
 } //  = 0x8E, // Floating Inverse CoTangent{x} To (FNCOTT [F:(4,4),SRC] [F:(4,4),DEST]):16
 
 Instruction(FMODIF) {
-
+	byte Register = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] = fpud_mod(ctx->GPRs[REG_HI(Register)], ctx->FPR_DOUBLE[REG_LO(Register)]);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] = fpus_mod(ctx->FPRs[REG_HI(Register)], ctx->FPR_SINGLE[REG_LO(Register)]);
+	return;
 } //  = 0x99, // Floating Modulo Floating With Regular (FMODIF [F:(4,4),SRC] [R:(4,4),REG]):16
 
 Instruction(FEXPII) {
-
+	byte Register = r1();
+	u16 Exponenet = rx(2);
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register)] = fpud_pow(Exponenet, ctx->FPR_DOUBLE[REG_LO(Register)]);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register)] = fpus_pow(Exponenet, ctx->FPR_SINGLE[REG_LO(Register)]);
+	return;
 } //  = 0x7F, // Floating Exponent Immediate Integer (FEXPII [F:(4,8),BASE] [I:(16,16),EXPONENT]):32
 
 Instruction(FEXPIT) {
-
+	byte Register0 = r1();
+	byte Register1 = r1();
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register1)] = fpud_pow(ctx->GPRs[REG_HI(Register0)], ctx->FPR_DOUBLE[REG_LO(Register0)]);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register1)] = fpus_pow(ctx->GPRs[REG_HI(Register0)], ctx->FPR_SINGLE[REG_LO(Register0)]);
+	return;
 } //  = 0x81, // Floating Exponent Integer To (FEXPIT [F:(4,4),BASE] [R:(4,4),EXPONENT] [F:(4,8),DEST]):24
 
 Instruction(FMODIFI) {
-
+	byte Register0 = r1();
+	u64 Immediate = rx(8);
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register0)] = fpud_mod(ctx->FPR_DOUBLE[REG_LO(Register0)], Immediate);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register0)] = fpus_mod(ctx->FPR_SINGLE[REG_LO(Register0)], Immediate);
+	return;
 } // Floating Modulo Floating with Regular (FMODIFI [F:(4,8), SRC] [I:(64,64),IMMT]):80
 
 Instruction(FEXPIIT) {
+	byte Register0 = r1();
+	u16 Immediate = rx(2);
+	byte Register1 = r1();
 
+	if (GET_PRECISEFLAG(ctx->sf0))
+		ctx->FPR_DOUBLE[REG_LO(Register1)] = fpud_pow(Immediate, ctx->FPR_DOUBLE[REG_LO(Register0)]);
+	else
+		ctx->FPR_SINGLE[REG_LO(Register1)] = fpus_pow(Immediate, ctx->FPR_SINGLE[REG_LO(Register0)]);
+	return;
 } // Floating Exponent Immediate To Integer (FEXPIIT [F:(4,8),BASE] [I:(16,16),EXPONENT] [F:(4,8),DEST]):40
 
 Instruction(FLOG2) {
