@@ -6,6 +6,7 @@
 //
 
 #include "cpu.h"
+#include "features/cpuf.h"
 #include "../mmu/mmu.h"
 
 #include <stdlib.h>
@@ -14,6 +15,8 @@
 void cpu_init(void) {
 	ctx = malloc(sizeof(ictx_t));
 	memset(ctx, 0, sizeof(ictx_t));
+
+	cpuf_init();
 	return;
 }
 void cpu_clock(void) {
@@ -25,4 +28,5 @@ void cpu_opcode(byte Opcode) {
 }
 void cpu_shutdown(void) {
 	free(ctx);
+	cpuf_shutdown();
 }

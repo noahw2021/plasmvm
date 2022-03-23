@@ -1373,3 +1373,47 @@ Instruction(FNRTX) {
 		ctx->FPR_SINGLE[REG_LO(Register)] = fpus_rooti(Immediate, ctx->FPR_SINGLE[REG_HI(Register)]);
 	return;
 } // 0xB4, // Floating nth-root with large root (FNRTX [I:(32,32),ROOT] [F:(4,8),SRC]):48
+
+Instruction(CPUFQ) {
+
+} // = 0xB8, // CPU Feature Query (CPUFQ [R:(4,4),FEATURE] [R:(4,4),DEST]):16
+
+Instruction(CPUFS) {
+
+} //  = 0xB9, // CPU Feature Set {Enabled} (CPUFQ [R:(4,8),FEATURE]):16
+
+Instruction(CPUFC) {
+
+} // = 0xBA, // CPU Feature Clear {Disabled} (CPUFQ [R:(4,8),FEATURE]):16
+
+Instruction(CPUFDB) {
+
+} // = 0xBB, // CPU Feature SendData Byte (CPUFDB [R:(4,4),FEATURE] [R:(4,4),DATA]):16
+
+Instruction(CPUFDQ) {
+
+} // = 0xBC, // CPU Feature SendData QuarterWord (CPUFDQ [R:(4,4),FEATURE] [R:(4,4),DATA]):16
+
+Instruction(CPUFDH) {
+
+} // = 0xBD, // CPU Feature SendData HalfWord (CPUFDH [R:(4,4),FEATURE] [R:(4,4),DATA]):16
+
+Instruction(CPUFDW) {
+
+} // = 0xBE, // CPU Feature SendData Word (CPUFDW [R:(4,4),FEATURE] [R:(4,4),DATA]):16
+
+Instruction(CPUFRB) {
+
+} // = 0xBF, // CPU Feature RecvData Byte (CPUFRB [R:(4,4),FEATURE] [R:(4,4),DEST]):16
+
+Instruction(CPUFRQ) {
+
+} // = 0xC0, // CPU Feature RecvData QuarterWord (CPUFRQ [R:(4,4),FEATURE] [R:(4,4),DEST]):16
+
+Instruction(CPUFRH) {
+
+} // = 0xC1, // CPU Feature RecvData HalfWord (CPUFRH [R:(4,4),FEATURE] [R:(4,4),DEST]):16
+
+Instruction(CPUFRW) {
+
+} // = 0xC2, // CPU Feature RecvData Word (CPUFRW [R:(4,4),FEATURE] [R:(4,4),DEST]):16
