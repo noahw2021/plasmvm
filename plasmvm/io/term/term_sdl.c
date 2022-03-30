@@ -145,3 +145,18 @@ void termi_sendcc(byte Code) {
 			break;
 	}
 }
+
+void termi_black(void) {
+	SDL_Rect Rectangle;
+	Rectangle.x = 0;
+	Rectangle.y = 0;
+	Rectangle.w = 640;
+	Rectangle.h = 400;
+	SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 255);
+	SDL_RenderFillRect(Renderer, &Rectangle);
+	SDL_RenderPresent(Renderer);
+	return;
+}
+void termi_restore(void) {
+	return;
+}
