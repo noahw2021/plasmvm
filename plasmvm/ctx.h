@@ -137,6 +137,7 @@ typedef struct ictx {
 	};
 	u64 InterruptHandlers[256]; // This should be a location in memory probably
 	u32 ClockSpeed; // Used for sleeping
+	u64 HighResolutionTimer;
 }ictx_t;
 
 #define _SUCCESS		   0x10000000

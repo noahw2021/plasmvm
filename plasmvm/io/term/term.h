@@ -27,6 +27,8 @@ void term_data(byte Data);
 void termi_print(char Data);
 void termi_bigdata(u32 Data);
 void termi_sendcc(byte Code);
+void termi_black(void);
+void termi_restore(void);
 
 typedef struct _termctx {
 	u32 Color;

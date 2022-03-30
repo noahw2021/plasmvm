@@ -24,6 +24,11 @@ typedef struct _cpufctx {
 			byte TimerAvailable : 1;
 			byte PowerAvailable : 1;
 			byte HasPowerInterrupt : 1;
+			byte PowerActive : 1;
+			byte PowerShuttingDown : 1;
+			byte Restarting : 1;
+			byte Sleeping : 1;
+			byte Asleep : 1;
 		};
 	}Flags;
 	struct {
@@ -33,6 +38,8 @@ typedef struct _cpufctx {
 	}Waiting;
 	byte PowerInterrupt;
 	byte PowerState;
+	u64 PowerBackupTimer;
+	u32 PowerTimerTargetTicks;
 }cpufctx_t;
 extern cpufctx_t* cpuf;
 
@@ -57,6 +64,7 @@ void cpuf_power_sleep(void);
 void cpuf_power_restart(void);
 void cpuf_power_handle(byte Interrupt);
 void cpuf_power_unhandle(void);
+void cpuf_power_wakeup(void);
 
 #define CPUFENUM_TIMER 0x01
 #define CPUFENUM_POWER 0x02
@@ -76,5 +84,11 @@ void cpuf_power_unhandle(void);
 #define CPUFPWR_CMD_RESTART  0x05 // SEND Command (No Data Recievable)
 #define CPUFPWR_CMD_HANDLE   0x06 // SEND Command (No Data Recievable)
 #define CPUFPWR_CMD_UNHANDLE 0x07 // SEND Command (No Data Recievable)
+
+#define CPUFPWR_DATA_SHUTTINGDOWN500000TICKS  0x1000000000000100
+#define CPUFPWR_DATA_SHUTTINGDOWN5000TICKS    0x1000000000000200
+#define CPUFPWR_DATA_RESTART				  0x2000000000000100
+#define CPUFPWR_DATA_SLEEP                    0x3000000000000000
+#define CPUFPWR_DATA_WAKEUP                   0x3100000000000000
 
 #endif /* cpuf.h */

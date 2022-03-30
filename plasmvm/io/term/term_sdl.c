@@ -14,6 +14,7 @@
 #include "term.h"
 #include "../kb/kb.h"
 #include "../scd/scd.h"
+#include "../../cpu/features/cpuf.h"
 
 SDL_Window* Window;
 SDL_Renderer* Renderer;
@@ -51,13 +52,16 @@ void term_init(void) {
 
 void term_clock(void) {
 	SDL_Event Event;
-	SDL_PollEvent(&Event);
-	if (Event.type == SDL_KEYDOWN)
-		kbi_keydown(Event.key.keysym.scancode);
-	if (Event.type == SDL_KEYUP)
-		kbi_keyup(Event.key.keysym.scancode);
-	if (Event.type == SDL_QUIT)
-		scdi_sendevent(SCD_SHUTDOWN);
+	while (SDL_PollEvent(&Event)) {
+		if (Event.type == SDL_KEYDOWN)
+			kbi_keydown(Event.key.keysym.scancode);
+		if (Event.type == SDL_KEYUP)
+			kbi_keyup(Event.key.keysym.scancode);
+		if (Event.type == SDL_QUIT)
+			scdi_sendevent(SCD_SHUTDOWN);
+		if (cpuf->Flags.Asleep && Event.type == SDL_KEYUP)
+			cpuf_power_wakeup();
+	}
 	return;
 }
 

@@ -8,10 +8,16 @@
 #include "cpu.h"
 #include "features/cpuf.h"
 #include "../mmu/mmu.h"
+#include "../io/io.h"
+#include "../io/term/term.h"
 
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+
+extern int GlobalArgc;
+extern char** GlobalArgv;
+extern int main(int, char**);
 
 void cpu_init(void) {
 	ctx = malloc(sizeof(ictx_t));
@@ -21,6 +27,7 @@ void cpu_init(void) {
 	return;
 }
 void cpu_clock(void) {
+	ctx->HighResolutionTimer++;
 	clock_t Timer, Timer2;
 	if (cpuf->Flags.Active)
 		Timer = clock();
@@ -54,6 +61,26 @@ void cpu_clock(void) {
 		}
 	}
 	
+	if (cpuf->Flags.PowerActive) {
+		if (cpuf->Flags.PowerShuttingDown) {
+			cpuf->PowerTimerTargetTicks--;
+			if (cpuf->PowerTimerTargetTicks == 0) {
+				SET_HALTFLAG(ctx->sf0);
+				CLR_INTFLAG(ctx->sf0);
+			}
+			if (cpuf->Flags.Restarting) {
+				mmu_shutdown();
+				io_shutdown();
+				cpu_shutdown();
+				main(GlobalArgc, GlobalArgv); // recursion
+			}
+		}
+		if (cpuf->Flags.Sleeping) {
+			cpuf->Flags.Asleep = 1;
+			cpuf->Flags.Sleeping = 0;
+			termi_black();
+		}
+	}
 }
 void cpu_opcode(byte Opcode) {
 	InstructionHandlers[Opcode]();

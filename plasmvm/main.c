@@ -28,7 +28,13 @@ void __stdcall Sleep(int Milliseconds);
 #define _usleep usleep
 #endif
 
+int GlobalArgc;
+char** GlobalArgv;
+
 int main(int argc, char** argv) {
+	GlobalArgc = argc;
+	GlobalArgv = argv;
+
 	vmctx = malloc(sizeof(vmctx_t));
 	memset(vmctx, 0, sizeof(vmctx_t));
 	

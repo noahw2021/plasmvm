@@ -6,6 +6,7 @@
 //
 
 #include "scd.h"
+#include "../../cpu/features/cpuf.h"
 
 void scd_data(byte Event) {
 	
@@ -14,8 +15,7 @@ void scd_data(byte Event) {
 void scdi_sendevent(byte Event) {
 	switch (Event) {
 		case SCD_SHUTDOWN:
-			SET_HALTFLAG(ctx->sf0);
-			CLR_INTFLAG(ctx->sf0);
+			cpuf_power_shutdown();
 			break;
 	}
 }
