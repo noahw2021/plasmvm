@@ -11,11 +11,16 @@
 
 typedef struct _cpufctx {
 	u32 TimerMs;
+	u32 LocalOffset;
 	byte Interrupt;
 	union {
 		byte Flags;
 		struct {
 			byte Active : 1;
+			byte Skip : 1;
+			byte Wait : 1;
+			byte Repeat : 1;
+			byte Interrupt : 1;
 		};
 	}Flags;
 }cpufctx_t;
