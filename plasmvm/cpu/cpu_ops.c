@@ -12,6 +12,7 @@
 #include "../mmu/mmu.h"
 #include "../io/io.h"
 #include "../fpu/fpu.h"
+#include "features/cpuf.h"
 
 Instruction(SET) { // Set Register (SET [R:(4,4),DEST] [R:(4,4),SRC]):16
 	byte Registers = r1();
@@ -1375,45 +1376,67 @@ Instruction(FNRTX) {
 } // 0xB4, // Floating nth-root with large root (FNRTX [I:(32,32),ROOT] [F:(4,8),SRC]):48
 
 Instruction(CPUFQ) {
-
+	byte Register = r1();
+	ctx->GPRs[REG_HI(Register)] = cpuf_query(ctx->GPRs[REG_LO(Register)]);
+	return;
 } // = 0xB8, // CPU Feature Query (CPUFQ [R:(4,4),FEATURE] [R:(4,4),DEST]):16
 
 Instruction(CPUFS) {
-
+	byte Register = r1();
+	cpuf_genset(ctx->GPRs[REG_LO(Register)]);
+	return;
 } //  = 0xB9, // CPU Feature Set {Enabled} (CPUFQ [R:(4,8),FEATURE]):16
 
 Instruction(CPUFC) {
-
+	byte Register = r1();
+	cpuf_genclr(ctx->GPRs[REG_LO(Register)]);
+	return;
 } // = 0xBA, // CPU Feature Clear {Disabled} (CPUFQ [R:(4,8),FEATURE]):16
 
 Instruction(CPUFDB) {
-
+	byte Register = r1();
+	cpuf_send(ctx->GPRs[REG_LO(Register)], 1, ctx->GPRs[REG_HI(Register)] & 0xFF);
+	return;
 } // = 0xBB, // CPU Feature SendData Byte (CPUFDB [R:(4,4),FEATURE] [R:(4,4),DATA]):16
 
 Instruction(CPUFDQ) {
-
+	byte Register = r1();
+	cpuf_send(ctx->GPRs[REG_LO(Register)], 2, ctx->GPRs[REG_HI(Register)] & 0xFFFF);
+	return;
 } // = 0xBC, // CPU Feature SendData QuarterWord (CPUFDQ [R:(4,4),FEATURE] [R:(4,4),DATA]):16
 
 Instruction(CPUFDH) {
-
+	byte Register = r1();
+	cpuf_send(ctx->GPRs[REG_LO(Register)], 4, ctx->GPRs[REG_HI(Register)] & 0xFFFFFFFF);
+	return;
 } // = 0xBD, // CPU Feature SendData HalfWord (CPUFDH [R:(4,4),FEATURE] [R:(4,4),DATA]):16
 
 Instruction(CPUFDW) {
-
+	byte Register = r1();
+	cpuf_send(ctx->GPRs[REG_LO(Register)], 8, ctx->GPRs[REG_HI(Register)] & 0xFF);
+	return;
 } // = 0xBE, // CPU Feature SendData Word (CPUFDW [R:(4,4),FEATURE] [R:(4,4),DATA]):16
 
 Instruction(CPUFRB) {
-
+	byte Register = r1();
+	ctx->GPRs[REG_HI(Register)] = cpuf_get(ctx->GPRs[REG_LO(Register)], 1);
+	return;
 } // = 0xBF, // CPU Feature RecvData Byte (CPUFRB [R:(4,4),FEATURE] [R:(4,4),DEST]):16
 
 Instruction(CPUFRQ) {
-
+	byte Register = r1();
+	ctx->GPRs[REG_HI(Register)] = cpuf_get(ctx->GPRs[REG_LO(Register)], 2);
+	return;
 } // = 0xC0, // CPU Feature RecvData QuarterWord (CPUFRQ [R:(4,4),FEATURE] [R:(4,4),DEST]):16
 
 Instruction(CPUFRH) {
-
+	byte Register = r1();
+	ctx->GPRs[REG_HI(Register)] = cpuf_get(ctx->GPRs[REG_LO(Register)], 4);
+	return;
 } // = 0xC1, // CPU Feature RecvData HalfWord (CPUFRH [R:(4,4),FEATURE] [R:(4,4),DEST]):16
 
 Instruction(CPUFRW) {
-
+	byte Register = r1();
+	ctx->GPRs[REG_HI(Register)] = cpuf_get(ctx->GPRs[REG_LO(Register)], 8);
+	return;
 } // = 0xC2, // CPU Feature RecvData Word (CPUFRW [R:(4,4),FEATURE] [R:(4,4),DEST]):16
