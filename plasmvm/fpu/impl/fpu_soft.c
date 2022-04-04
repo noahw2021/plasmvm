@@ -164,7 +164,7 @@ x64 fpud_sec(x64 Source) {
 }
 
 x64 fpud_cot(x64 Source) {
-	return (1.0 / fpui_tan(Source));
+	return (fpui_cos(Source) / fpui_sin(Source));
 }
 
 x64 fpud_arcsin(x64 Source) {
